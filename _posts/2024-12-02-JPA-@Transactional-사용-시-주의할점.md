@@ -1,3 +1,10 @@
+---
+title: "JPA @Transactional 사용 시 주의할 점"
+date: 2024-12-02 12:00:00 +0900
+categories: [Backend, JPA]
+tags: [java, spring, jpa, transactional]
+---
+
 ### 1. Lazy Loading 문제
 
 **코드**
