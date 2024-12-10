@@ -2,7 +2,7 @@
 title: Jekyll Exporter Obsidian에서 Jekyll 블로그로의 자동화
 date: 2024-12-10
 categories: []
-tags: [jekyll, obsidian, blogging, markdown, front-matter, jekyll-exporter, plugin-development, openai, automatic-tag-generation, image-link-processing]
+tags: [jekyll, obsidian, blogging, markdown, front-matter, jekyll-exporter, plugin-development, openai, automatic-tag-generation, image-and-link-management]
 ---
 # Jekyll Exporter: Obsidian에서 Jekyll 블로그로의 자동화
 
@@ -18,9 +18,7 @@ tags: [jekyll, obsidian, blogging, markdown, front-matter, jekyll-exporter, plug
 
 ## **플러그인을 만들자**
 
-"비싼 obsidian publish만큼 편하게 포스팅 할 수 없을까?". 블로그 작성하는 시간에 하나라도 더 공부해서 머리속에 넣자 라는 생각을 가지던 나에게 블로그를 작성하는 외적인 시간 예를들면 테마나 가독성좋게 블로그를 꾸미는 작업을 하는 나자신을 인지하는 순간 현타가 쎄게 왔습니다. 월 10$를 결제하기로 했을때 마음은 나는 시간을 샀다였는데....
-
-[https://github.com/bingryan/obsidian-markdown-export-plugin](https://github.com/bingryan/obsidian-markdown-export-plugin)
+"비싼 obsidian publish만큼 편하게 포스팅 할 수 없을까?"  블로그 작성하는 시간에 하나라도 더 공부해서 머리속에 넣자 라는 생각을 가지던 나에게 블로그를 작성하는 외적인 시간 예를들면 테마나 가독성좋게 블로그를 꾸미는 작업을 하는 나자신을 인지하는 순간 현타가 쎄게 왔습니다. 월 10$를 결제하기로 했을때 마음은 나는 시간을 샀다였는데....
 
 ## **만들면서 고민했던 부분**
 
@@ -40,5 +38,5 @@ tags: [jekyll, obsidian, blogging, markdown, front-matter, jekyll-exporter, plug
     
 
 ## **결론**
-
-저처럼 Obsidian을 사용하면서 Jekyll 블로그를 운영하는 사람이라면 이 플러그인이 분명 시간을 절약해줄 겁니다. 특히, 저처럼 현타를 느끼는 분들에게 추천합니다.
+[https://github.com/Fred-Ko/obsidian-jekyll-exporter](https://github.com/Fred-Ko/obsidian-jekyll-exporter)
+아직 등록은 못했지만 beta 버전으로서 테스트 중인데 꽤 만족하고 있습니다. 저처럼 Obsidian을 사용하면서 Jekyll 블로그를 운영하는 사람이라면 이 플러그인이 분명 시간을 절약해줄 겁니다. 특히, 저처럼 현타를 느끼는 분들에게 추천합니다.
