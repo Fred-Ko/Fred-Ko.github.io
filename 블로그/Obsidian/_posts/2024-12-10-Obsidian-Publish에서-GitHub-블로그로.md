@@ -2,7 +2,7 @@
 title: Obsidian Publish에서 GitHub 블로그로
 date: 2024-12-10
 categories: []
-tags: [obsidian-publish, github-blog, jekyll, blogging, markdown, plugin-development, version-control, git, user-experience, content-publishing]
+tags: [obsidian-publish, github-blog, jekyll, blogging, markdown, plugin-development, versioning, publishing, user-interface, content-management]
 ---
 ### Obsidian Publish에서 GitHub 블로그로
 
@@ -49,6 +49,7 @@ GitHub 블로그는 기본적으로 제 요구를 충족시킬 수 있는 플랫
 
 ![](assets/img/pasted-image-20241211013304.png)
 ![](assets/img/pasted-image-20241211030549.png)
+
 반나절 만에 필요한 핵심 기능을 구현할 수 있었습니다. 결과적으로, 다음과 같은 기능을 가진 플러그인을 완성했습니다:
 
 1. 지정된 폴더로 마크다운 파일을 추출
