@@ -45,7 +45,9 @@ GitHub 블로그는 기본적으로 제 요구를 충족시킬 수 있는 플랫
 
 ![](assets/img/pasted-image-20241210200020.webp)
 
-![](assets/img/pasted-image-20241210210713.webp)
+![](assets/img/pasted-image-20241210210713.webp|954)
+
+![](assets/img/pasted-image-20241211013304.png|951)
 
 반나절 만에 필요한 핵심 기능을 구현할 수 있었습니다. 결과적으로, 다음과 같은 기능을 가진 플러그인을 완성했습니다:
 
