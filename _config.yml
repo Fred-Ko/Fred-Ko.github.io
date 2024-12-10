@@ -151,7 +151,7 @@ pwa:
 paginate: 10
 
 # The base URL of your site
-baseurl: "/Fred-Ko.github.io"
+# baseurl: "https://github.com/Fred-Ko/Fred-Ko.github.io"
 
 # ------------ The following options are not recommended to be modified ------------------
 
