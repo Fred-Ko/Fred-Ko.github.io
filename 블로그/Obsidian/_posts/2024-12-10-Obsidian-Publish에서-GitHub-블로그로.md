@@ -2,7 +2,7 @@
 title: Obsidian Publish에서 GitHub 블로그로
 date: 2024-12-10
 categories: []
-tags: [obsidian-publish, github-blog, jekyll, blogging, markdown, plugin-development, version-control, web-publishing, user-interface, content-management]
+tags: [obsidian-publish, github-blog, jekyll, blogging, markdown, plugin-development, version-control, git, user-experience, content-publishing]
 ---
 ### Obsidian Publish에서 GitHub 블로그로
 
