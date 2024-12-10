@@ -2,7 +2,7 @@
 title: Jekyll Exporter Obsidian에서 Jekyll 블로그로의 자동화
 date: 2024-12-10
 categories: []
-tags: [obsidian, jekyll, blogging, markdown-files, front-matter, plugin-development, file-management, openai, automatic-tag-generation, image-and-link-processing]
+tags: [obsidian, jekyll, blogging, markdown-files, front-matter, jekyll-exporter, plugin-development, openai, automatic-tag-generation, image-and-link-processing]
 ---
 ## 들어가며
 
@@ -37,6 +37,17 @@ tags: [obsidian, jekyll, blogging, markdown-files, front-matter, plugin-developm
     이미지를 따로 복사하고 링크를 수정하는 작업도 번거로운 일이었습니다. 이제는 Obsidian 파일에 첨부된 이미지를 지정된 Jekyll 폴더로 자동 복사하고, 링크를 블로그에서 제대로 작동하도록 변환할 수 있게 되었습니다.
     
 
+## **어떻게 사용하나요?**
+
+1. [https://github.com/Fred-Ko/obsidian-jekyll-exporter](https://github.com/Fred-Ko/obsidian-jekyll-exporter) 에서 플러그인을 다운로드합니다.
+2. 터미널에서 `npm run build` 명령어를 실행합니다.
+3. Obsidian 플러그인 폴더에 **obsidian-jekyll-exporter**라는 이름의 폴더를 생성합니다.
+4. 다음 세 가지 파일을 생성한 폴더에 복사합니다:
+    - `styles.css`
+    - `main.js`
+    - `manifest.json`
+5. Obsidian을 종료한 후 다시 실행합니다.
+6. 설정 -> 커뮤니티 플러그인에 들어가서 활성화 해주세요.
+
 ## **결론**
-[https://github.com/Fred-Ko/obsidian-jekyll-exporter](https://github.com/Fred-Ko/obsidian-jekyll-exporter)
 아직 등록은 못했지만 beta 버전으로서 테스트 중인데 꽤 만족하고 있습니다. 저처럼 Obsidian을 사용하면서 Jekyll 블로그를 운영하는 사람이라면 이 플러그인이 분명 시간을 절약해줄 겁니다. 특히, 저처럼 현타를 느끼는 분들에게 추천합니다.
