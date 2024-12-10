@@ -2,9 +2,9 @@
 title: Jekyll Exporter Obsidian에서 Jekyll 블로그로의 자동화
 date: 2024-12-10
 categories: []
-tags: [jekyll, obsidian, blogging, markdown, front-matter, jekyll-exporter, plugin-development, openai, automatic-tag-generation, image-and-link-management]
+tags: [obsidian, jekyll, blogging, markdown-files, front-matter, plugin-development, file-management, openai, automatic-tag-generation, image-and-link-processing]
 ---
-# Jekyll Exporter: Obsidian에서 Jekyll 블로그로의 자동화
+## 들어가며
 
 최근 Obsidian을 사용하면서 제 노트가 점점 체계적으로 정리되는 것을 느꼈습니다. 특히 마크다운 파일의 유연함 덕분에 글쓰기에 더 많은 시간을 쏟을 수 있었죠. 하지만 문제는 여기서부터였습니다. Jekyll로 블로그를 운영하다 보니, Obsidian에서 작성한 글을 블로그로 옮기는 과정이 생각보다 번거로웠습니다.
 
