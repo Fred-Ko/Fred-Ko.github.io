@@ -10,6 +10,8 @@ OpenTelemetry는 벤더에 종속되지 않는 오픈 소스 관찰 가능성 �
 
 ### **Metrics, Logs, Trace의 통합 필요성**
 
+![](assets/img/pasted-image-20241212024442.webp)
+
 분산 시스템에서 MSA(Microservices Architecture)와 EDA(Event-Driven Architecture)가 널리 채택되면서 서비스 간 상호작용과 복잡성이 기하급수적으로 증가하고 있습니다. 이러한 환경에서는 시스템의 상태를 종합적으로 이해하고 문제를 해결하는 데 더욱 어려움이 따릅니다. Metrics, Logs, Trace의 통합은 중요합니다.
 
 #### **모놀리스 아키텍처**
