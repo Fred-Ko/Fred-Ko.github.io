@@ -18,11 +18,11 @@ tags: []
 
 Cursor가 처음 등장했을 때부터 Obsidian과 함께 사용하며 생산성을 높이고 있었습니다. 처음에는 이를 개인적으로만 사용했지만, 최근 Obsidian에 Cursor를 활용하는 관련된 유튜브 강좌들이 많아지며 비슷한 활용법이 많이 알려졌습니다. 이제는 제가 추가로 발견한 효율적인 방법을 공유하고자 합니다.
 
-참고 - [# 옵시디언의 노트를 Cursor AI에 활용하기(RAG 쉽게하는 방법)]([https://www.youtube.com/watch?v=60zNMCINesg&t=540s](https://www.youtube.com/watch?v=60zNMCINesg&t=540s))
+참고 - [# 옵시디언의 노트를 Cursor AI에 활용하기(RAG 쉽게하는 방법)](https://www.youtube.com/watch?v=60zNMCINesg&t=540s)
 
 #### Open With 플러그인 설치
 
-- **플러그인 주소:** [Open With 플러그인]([https://github.com/phibr0/obsidian-open-with](https://github.com/phibr0/obsidian-open-with))  
+- **플러그인 주소:** [Open With 플러그인](https://github.com/phibr0/obsidian-open-with)  
     이 플러그인은 Obsidian에서 파일을 우클릭하여 원하는 프로그램으로 열 수 있게 해주는 플러그인입니다. 처음에는 직접 개발을 고려했지만, 검색해보니 이미 원하는 플러그인이 있어서 만족하면서 활용하고 있습니다.
 
 ##### Open With 설정 및 사용법
@@ -43,7 +43,7 @@ Cursor는 **Chat**과 **Composer** 기능을 통해 글을 빠르게 구조화�
 
 ### Context 제한의 필요성
 
-LLM은 컨텍스트 크기가 증가할수록 성능이 점차 저하되는 경향이 있습니다. ([관련 논문]([https://arxiv.org/html/2406.10149v1](https://arxiv.org/html/2406.10149v1))) 따라서 다음과 같은 방식으로 컨텍스트를 제한하면 최적의 성능을 얻을 수 있습니다.
+LLM은 컨텍스트 크기가 증가할수록 성능이 점차 저하되는 경향이 있습니다. ([관련 논문](https://arxiv.org/html/2406.10149v1)) 따라서 다음과 같은 방식으로 컨텍스트를 제한하면 최적의 성능을 얻을 수 있습니다.
 
 #### 컨텍스트 관리 팁
 
