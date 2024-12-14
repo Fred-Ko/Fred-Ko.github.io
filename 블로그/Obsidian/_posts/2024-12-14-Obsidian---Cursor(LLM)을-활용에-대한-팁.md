@@ -22,6 +22,8 @@ Cursor가 처음 등장했을 때부터 Obsidian과 함께 사용하며 생산�
 
 #### Open With 플러그인 설치
 
+![](assets/img/pasted-image-20241214234112.webp){:width="337px"}
+
 - **플러그인 주소:** [Open With 플러그인](https://github.com/phibr0/obsidian-open-with)  
     이 플러그인은 Obsidian에서 파일을 우클릭하여 원하는 프로그램으로 열 수 있게 해주는 플러그인입니다. 처음에는 직접 개발을 고려했지만, 검색해보니 이미 원하는 플러그인이 있어서 만족하면서 활용하고 있습니다.
 
