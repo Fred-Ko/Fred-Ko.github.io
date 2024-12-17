@@ -1,8 +1,19 @@
 ---
-title: Obsidian Publish에서 GitHub 블로그로
-date: 2024-12-10
-categories: []
-tags: [obsidian-publish, github-blog, jekyll, blogging, markdown, plugin-development, versioning, publishing, user-interface, content-management]
+title: Obsidian Publish에서 GitHub 블로그로.md
+datetime: 2024-12-17T09:28:59.738Z
+nanoId: EjFgOk9UuO29kS92H7gf4aKET
+permalink: /EjFgOk9UuO29kS92H7gf4aKET/
+tags:
+  - obsidian-publish
+  - github-blog
+  - jekyll-based
+  - markdown-files
+  - plugin-development
+  - obsidian-jekyll-exporter
+  - blog-posting
+  - automation
+  - git-versioning
+  - chirpy-theme
 ---
 ### Obsidian Publish에서 GitHub 블로그로
 
@@ -13,9 +24,11 @@ tags: [obsidian-publish, github-blog, jekyll, blogging, markdown, plugin-develop
 ### 대안 탐색
 
 #### 티스토리와 벨로그
+
 티스토리와 벨로그를 검토해 보았습니다. 둘 다 사용성은 훌륭했지만, Obsidian과의 통합성 측면에서 부족했습니다. 버튼 몇 번으로 글을 퍼블리쉬할 수 있는 방법을 찾지 못했죠. Obsidian과의 작업 흐름을 유지하고 싶었던 저에게는 적합하지 않았습니다. 결국 제게 남은 선택지는 GitHub 블로그였습니다.
 
 #### GitHub 블로그 (Jekyll 기반)
+
 GitHub 블로그를 선택한 이유는 다음과 같습니다:
 
 1. **버저닝 가능**: 모든 글이 Git 리포지토리로 관리되므로 버전 관리를 할 수 있습니다. 글의 수정 내역을 추적할 수 있다는 점은 큰 장점입니다.
@@ -28,45 +41,41 @@ GitHub 블로그를 선택한 이유는 다음과 같습니다:
 
 1. **쉬운 포스팅**: 번거로운 과정을 줄이고 클릭 몇 번으로 글을 올릴 수 있는 환경 조성.
 2. **가독성과 디자인의 만족**: 단순히 보기 좋고 깔끔한 디자인을 넘어서, 독자가 편하게 읽을 수 있는 가독성 확보.
-
-GitHub 블로그는 기본적으로 제 요구를 충족시킬 수 있는 플랫폼이었습니다. 그러나 Obsidian에서 작성한 마크다운 파일을 어떻게 규칙적으로 넣고 관리할지가 과제였습니다. 단순히 글을 저장하는 것을 넘어, 효율적으로 포스팅을 자동화하는 방안이 필요했습니다.
+   GitHub 블로그는 기본적으로 제 요구를 충족시킬 수 있는 플랫폼이었습니다. 그러나 Obsidian에서 작성한 마크다운 파일을 어떻게 규칙적으로 넣고 관리할지가 과제였습니다. 단순히 글을 저장하는 것을 넘어, 효율적으로 포스팅을 자동화하는 방안이 필요했습니다.
 
 ---
 
 ### 해결 방안: Obsidian 플러그인 개발
 
 #### 초기 탐색
-[https://github.com/bingryan/obsidian-markdown-export-plugin](https://github.com/bingryan/obsidian-markdown-export-plugin) 플러그인을 발견했습니다. 이 플러그인은 지정된 폴더에 마크다운 파일을 추출하는 기능을 제공했지만, 제가 원하는 "정해진 규칙"으로의 변환은 지원하지 않았습니다. 원하는 포맷에 맞춰 파일을 변환하는 과정이 없었기 때문에 직접적인 해결책은 되지 못했죠. 결국 소스 코드를 직접 살펴보기로 했습니다.
+
+[obsidian-markdown-export-plugin](https://github.com/bingryan/obsidian-markdown-export-plugin) 플러그인을 발견했습니다. 이 플러그인은 지정된 폴더에 마크다운 파일을 추출하는 기능을 제공했지만, 제가 원하는 "정해진 규칙"으로의 변환은 지원하지 않았습니다. 원하는 포맷에 맞춰 파일을 변환하는 과정이 없었기 때문에 직접적인 해결책은 되지 못했죠. 결국 소스 코드를 직접 살펴보기로 했습니다.
 
 #### 플러그인 개발
+
 코드를 분석한 결과 소스가 비교적 간단해서 금방 이해할 수 있었습니다. 필요한 기능은 "정해진 규칙"으로 변환하는 로직을 추가하는 것이었죠. 그래서 아예 플러그인을 새로 만들기로 했습니다. 이 과정에서 GPT를 사용해서 요구사항을 정리하고 빠르게 코드를 작성했습니다.
-
-[https://github.com/Fred-Ko/obsidian-jekyll-exporter](https://github.com/Fred-Ko/obsidian-jekyll-exporter)
-
+[obsidian-jekyll-exporter](https://github.com/Fred-Ko/obsidian-jekyll-exporter)
 ![](assets/img/pasted-image-20241210200020.webp)
-
 ![](assets/img/pasted-image-20241210210713.webp)
-
 ![](assets/img/pasted-image-20241211013304.png)
 ![](assets/img/pasted-image-20241211030549.png)
-
 반나절 만에 필요한 핵심 기능을 구현할 수 있었습니다. 결과적으로, 다음과 같은 기능을 가진 플러그인을 완성했습니다:
 
 1. 지정된 폴더로 마크다운 파일을 추출
 2. 정해진 규칙에 따라 파일 이름과 경로 변환
 3. 첨부 이미지 복사 및 변환
-
-이를 통해 Obsidian에서 작성된 콘텐츠가 두 번의 클릭으로 Jekyll 블로그에 자동으로 최적화되어 업로드되는 환경을 만들었습니다.
+   이를 통해 Obsidian에서 작성된 콘텐츠가 두 번의 클릭으로 Jekyll 블로그에 자동으로 최적화되어 업로드되는 환경을 만들었습니다.
 
 #### 이미지 처리 문제
+
 포스팅 시 이미지 처리도 중요한 과제였습니다. 단순히 텍스트를 업로드하는 것을 넘어 이미지를 어떻게 다룰지에 대한 고민이 있었습니다. 이미지 관련 작업은 다음 두 가지 방법으로 해결했습니다:
 
 1. **외부 저장소 업로드**: 이미지를 붙여넣을 때 플러그인을 통해 외부 저장소에 업로드하고, 해당 링크를 그대로 사용하는 방식. 이 방법은 비교적 간단하지만, 외부 의존성이 생길 수 있었습니다.
 2. **로컬 이미지 관리**: 로컬 이미지를 Jekyll 소스코드에 포함하고 경로를 지정하는 방식. 이 방법은 자체적으로 관리할 수 있다는 점에서 안정적이었습니다.
-
-결국 플러그인에서 이미지 링크를 분석하여 외부 링크는 그대로 두고, 내부 링크는 변환 후 Jekyll 레포지토리에 복사하는 기능을 추가했습니다. 이렇게 플러그인의 기능을 확장하며 이미지 처리 문제를 해결했습니다.
+   결국 플러그인에서 이미지 링크를 분석하여 외부 링크는 그대로 두고, 내부 링크는 변환 후 Jekyll 레포지토리에 복사하는 기능을 추가했습니다. 이렇게 플러그인의 기능을 확장하며 이미지 처리 문제를 해결했습니다.
 
 ---
+
 ### 결론
 
 이렇게 Obsidian에서 작성한 마크다운 파일을 Jekyll 기반 GitHub 블로그로 간편하게 퍼블리쉬할 수 있는 플러그인 버전 0.0.1을 완성했습니다. 블로그를 쓰겠다고 시작한 일이 플러그인 개발로 이어졌지만, 결과적으로 제 블로그 환경을 이상적으로 세팅하는 데 성공했습니다. 이를 통해 시간과 노력을 절약할 수 있는 시스템을 구축했습니다.

@@ -1,8 +1,19 @@
 ---
-title: OpenTelemetry - OpenTelemetry란?
-date: 2024-12-11
-categories: []
-tags: [opentelemetry, open-source, telemetry-data, metrics, logs, trace, microservices-architecture, event-driven-architecture, api, sdk]
+title: OpenTelemetry - OpenTelemetry란?.md
+datetime: 2024-12-17T09:29:01.947Z
+nanoId: 1n1RxDQUaGnJt7dvoGJOOBaHi
+permalink: /1n1RxDQUaGnJt7dvoGJOOBaHi/
+tags:
+  - opentelemetry
+  - distributed-trace
+  - metrics
+  - logs
+  - microservices-architecture
+  - event-driven-architecture
+  - cloud-native
+  - observability
+  - monitoring
+  - performance-optimization
 ---
 ## **OpenTelemetry란?**
 
@@ -10,16 +21,18 @@ OpenTelemetry는 벤더에 종속되지 않는 오픈 소스 관찰 가능성 �
 
 ### **Metrics, Logs, Trace의 통합 필요성**
 
-![](assets/img/pasted-image-20241212024442.webp)
+![](assets/img/pasted-image-20241212024442.webp){:width="820px"}
 
 분산 시스템에서 MSA(Microservices Architecture)와 EDA(Event-Driven Architecture)가 널리 채택되면서 서비스 간 상호작용과 복잡성이 기하급수적으로 증가하고 있습니다. 이러한 환경에서는 시스템의 상태를 종합적으로 이해하고 문제를 해결하는 데 더욱 어려움이 따릅니다. Metrics, Logs, Trace의 통합은 중요합니다.
 
 #### **모놀리스 아키텍처**
+
 - 단일 애플리케이션 내에서 모든 기능이 통합되어 실행
 - 로깅과 모니터링이 비교적 단순
 - 문제 발생 시 로그 파일만으로도 문제 추적 가능
 
 #### **MSA + EDA 아키텍처**
+
 - 여러 마이크로서비스가 분산되어 실행
 - 서비스 간 비동기 이벤트 기반 통신
 - 복잡한 서비스 의존성과 상호작용
@@ -28,6 +41,7 @@ OpenTelemetry는 벤더에 종속되지 않는 오픈 소스 관찰 가능성 �
 ##### **분산 Trace의 필요성**
 
 1. **End to End 가시성**
+
    - 요청의 전체 여정 추적
    - 서비스 간 지연 시간 식별
    - 병목 구간 파악
@@ -40,6 +54,7 @@ OpenTelemetry는 벤더에 종속되지 않는 오픈 소스 관찰 가능성 �
 ##### **통합 모니터링의 중요성**
 
 1. **상호 연계된 분석**
+
    - Trace로 식별된 문제 구간의 상세 로그 확인
    - 성능 지표(Metrics)와 Trace 정보의 연계
    - 시스템 전반의 건강 상태 통합 모니터링
@@ -54,7 +69,7 @@ OpenTelemetry는 벤더에 종속되지 않는 오픈 소스 관찰 가능성 �
 ## **핵심 개념**
 
 ### **Trace**
-  
+
 **Trace**는 분산 시스템에서 요청이 처리되는 전체 경로를 추적하는 데 사용되는 텔레메트리 데이터의 한 유형입니다.
 
 - **정의**: Trace는 하나의 요청이 시스템을 통해 이동하는 **전체 과정**을 나타내며, 여러 개의 Span으로 구성됩니다. 각 Span은 특정 작업이나 프로세스를 나타내며, 이러한 Span들이 함께 모여 전체 요청의 경로를 형성합니다.
@@ -113,32 +128,40 @@ OTLP는 OpenTelemetry가 사용하는 효율적인 데이터 전송 프로토콜
 ### **왜 필요한가요?**
 
 #### **MSA 환경의 복잡성**
+
 - 모놀리스 아키텍처와 달리, MSA 환경에서는 여러 마이크로서비스가 동기적 및 비동기적 통신을 통해 하나의 요청을 처리합니다.
 - 이로 인해 요청이 처리되는 경로가 복잡해지며, 에러가 발생한 구간을 파악하기 어려워집니다.
 
 #### **분산 Trace의 필요성**
+
 - 분산 Trace는 요청의 전체 경로를 시각적으로 표현하여, 각 서비스 간의 통신 정보를 종합적으로 보여줍니다.
 - 이는 에러가 발생한 구간을 빠르게 식별하고, 문제를 해결하는 데 도움이 됩니다.
 
 ### **무엇을 제공해주나요?**
 
 #### **요청 관점의 FLOW 시각화**
+
 - OpenTelemetry는 요청이 처리되는 전체 경로를 시각적으로 제공하여, 각 서비스의 통신 정보를 하나의 흐름으로 표현합니다.
 
 #### **서비스 간 통신 정보 통합**
+
 - Trace, Logs, Metrics 데이터를 통합하여, 특정 시점에서 어떤 상황이었는지 정보를 제공합니다.
 - 이는 각 서비스의 상태와 성능을 종합적으로 이해하는 데 도움이 됩니다.
 
 #### **상호 연계된 분석**
+
 - Trace와 Logs, Metrics 데이터 간의 상호 연계를 지원하여, 문제 구간의 상세 로그 확인, 성능 지표와 Trace 정보의 연계, 시스템 전반의 건강 상태 통합 모니터링이 가능합니다.
 
 ### **무엇을 얻을 수 있나요?**
 
 #### **빠른 장애 파악과 대응**
+
 - 복잡한 시스템에서 에러가 발생한 구간을 빠르게 식별하고 대응할 수 있어, 비용을 절감할 수 있습니다.
 
 #### **조기 대응**
+
 - 문제가 발생하기 전에 예방적 모니터링을 통해 조기 대응이 가능해, 비용을 절감할 수 있습니다.
 
 #### **성능 최적화**
+
 - 시스템의 성능을 실시간으로 모니터링하여, 성능 최적화 지점을 식별하고 개선할 수 있어, 비용을 절감할 수 있습니다.
