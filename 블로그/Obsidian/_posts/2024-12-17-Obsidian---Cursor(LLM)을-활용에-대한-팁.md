@@ -1,15 +1,25 @@
 ---
-title: Obsidian - Cursor(LLM)을 활용에 대한 팁
-date: 2024-12-14
-categories: []
-tags: []
+title: Obsidian - Cursor(LLM)을 활용에 대한 팁.md
+datetime: 2024-12-17T09:28:58.024Z
+nanoId: w1fGIy5OgbcqoYV4nvqRsHJZS
+permalink: /w1fGIy5OgbcqoYV4nvqRsHJZS/
+tags:
+  - llm
+  - large-language-model
+  - cursor-llm
+  - obsidian
+  - open-with-plugin
+  - context-management
+  - chat-function
+  - composer-function
+  - open-in-new-window
+  - productivity-tools
 ---
 ### Obsidian - Cursor(LLM)을 활용에 대한 팁
 
 ---
 
 최근 LLM(Large Language Model)을 활용한 작업이 점점 더 다양해지고 있습니다. 저 또한 블로그를 작성하면서 모든 과정을 수작업으로 처리하는 비효율성에 한계를 느껴, LLM을 적극적으로 활용하는 방법을 모색하고 있습니다. 블로그 작성의 본질인 정보 전달과 학습 정리에만 초점을 맞추고, 보다 효율적으로 작업을 진행하기 위해 Cursor를 사용하고 있습니다.
-
 이 글에서는 Cursor와 Obsidian을 함께 활용하며 블로그를 작성하는 팁을 공유하려 합니다.
 
 ---
@@ -17,19 +27,18 @@ tags: []
 ### Obsidian에서 Cursor를 활용하는 기본 설정
 
 Cursor가 처음 등장했을 때부터 Obsidian과 함께 사용하며 생산성을 높이고 있었습니다. 처음에는 이를 개인적으로만 사용했지만, 최근 Obsidian에 Cursor를 활용하는 관련된 유튜브 강좌들이 많아지며 비슷한 활용법이 많이 알려졌습니다. 이제는 제가 추가로 발견한 효율적인 방법을 공유하고자 합니다.
-
 참고 - [# 옵시디언의 노트를 Cursor AI에 활용하기(RAG 쉽게하는 방법)](https://www.youtube.com/watch?v=60zNMCINesg&t=540s)
 
 #### Open With 플러그인 설치
 
-![](assets/img/pasted-image-20241214234112.webp){:width="337px"}
+![](assets/img/pasted-image-20241214234112.webp)
 
 - **플러그인 주소:** [Open With 플러그인](https://github.com/phibr0/obsidian-open-with)  
-    이 플러그인은 Obsidian에서 파일을 우클릭하여 원하는 프로그램으로 열 수 있게 해주는 플러그인입니다. 처음에는 직접 개발을 고려했지만, 검색해보니 이미 원하는 플러그인이 있어서 만족하면서 활용하고 있습니다.
+   이 플러그인은 Obsidian에서 파일을 우클릭하여 원하는 프로그램으로 열 수 있게 해주는 플러그인입니다. 처음에는 직접 개발을 고려했지만, 검색해보니 이미 원하는 플러그인이 있어서 만족하면서 활용하고 있습니다.
 
 ##### Open With 설정 및 사용법
 
-![](assets/img/pasted-image-20241214214605.webp){:width="793px"}
+![](assets/img/pasted-image-20241214214605.webp)
 
 1. Open With 플러그인에 Cursor를 등록합니다.
 2. Obsidian에서 파일이나 폴더를 우클릭하고 **"Open With Cursor"**를 선택합니다.
@@ -64,7 +73,8 @@ Cursor의 Chat 기능은 기본적으로 현재 파일을 컨텍스트로 자동
 1. Cursor의 확장 메뉴에서 **Open in New Window**를 검색하여 설치합니다.
 2. 파일이나 폴더를 우클릭하고 **"Open in New Window"**를 실행합니다.
 3. 특정 Depth의 폴더로 Codebase를 제한하여 작업 시 컨텍스트를 명확히 설정합니다.
-4. 
+4.
+
 ---
 
 ### 결론
