@@ -1,6 +1,6 @@
 ---
-title: OpenTelemetry - OpenTelemetry란?.md
-datetime: 2024-12-17T09:29:01.947Z
+title: OpenTelemetry - OpenTelemetry란?
+datetime: 2024-12-17T14:51:20.749Z
 nanoId: 1n1RxDQUaGnJt7dvoGJOOBaHi
 permalink: /1n1RxDQUaGnJt7dvoGJOOBaHi/
 tags:
@@ -10,10 +10,10 @@ tags:
   - distributed-tracing
   - metrics
   - logs
-  - cloud-native
-  - instrumentation
   - context-propagation
-  - tracing
+  - instrumentation
+  - cloud-native
+  - software-architecture
 ---
 # OpenTelemetry란?
 

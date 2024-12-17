@@ -1,5 +1,5 @@
 ---
-title: Obsidian - Cursor(LLM)을 활용에 대한 팁.md
+title: Obsidian - Cursor(LLM)을 활용에 대한 팁
 datetime: 2024-12-17T09:28:58.024Z
 nanoId: w1fGIy5OgbcqoYV4nvqRsHJZS
 permalink: /w1fGIy5OgbcqoYV4nvqRsHJZS/

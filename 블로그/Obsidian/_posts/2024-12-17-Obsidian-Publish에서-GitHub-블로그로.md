@@ -1,5 +1,5 @@
 ---
-title: Obsidian Publish에서 GitHub 블로그로.md
+title: Obsidian Publish에서 GitHub 블로그로
 datetime: 2024-12-17T09:28:59.738Z
 nanoId: EjFgOk9UuO29kS92H7gf4aKET
 permalink: /EjFgOk9UuO29kS92H7gf4aKET/

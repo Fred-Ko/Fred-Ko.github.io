@@ -1,5 +1,5 @@
 ---
-title: Jekyll Exporter Obsidian에서 Jekyll 블로그로의 자동화.md
+title: Jekyll Exporter Obsidian에서 Jekyll 블로그로의 자동화
 datetime: 2024-12-17T09:28:56.253Z
 nanoId: 6crS1GYctcBpj1m9HPZck9mLg
 permalink: /6crS1GYctcBpj1m9HPZck9mLg/
