@@ -10,16 +10,16 @@ tags:
   - distributed-tracing
   - metrics
   - logs
+  - cloud-native
+  - instrumentation
   - context-propagation
   - resource
-  - instrumentation
-  - cloud-native-computing
 ---
 # OpenTelemetry란?
 
 ## 개요
 
-현대 소프트웨어 시스템은 **모놀리스** 구조에서 **마이크로서비스 아키텍처(MSA)**로 전환됨에 따라 복잡성이 급증했습니다.
+현대 소프트웨어 시스템은 **모놀리스** 구조에서 **마이크로서비스 아키텍처(MSA)**로 전환됨에 따라 복잡성이 급증했습니다.  
 기존의 **로그**와 **메트릭**만으로는 각 서비스 간의 연관성과 오류의 원인을 파악하기 어려워졌으며, 이를 해결하기 위해 등장한 개념이 **Observability**입니다.
 
 **OpenTelemetry**는 Observability를 달성하기 위해 **트레이스(Trace), 메트릭(Metric), 로그(Log)** 데이터를 표준화된 방식으로 수집하고 관리하는 오픈소스 프레임워크입니다.
@@ -60,7 +60,9 @@ tags:
 
 ## OpenTelemetry 주요 개념
 
+
 ![](assets/img/pasted-image-20241212024442.webp){:width="760px"}
+
 
 | **개념**                | **설명**                                                                          |
 | ----------------------- | --------------------------------------------------------------------------------- |
@@ -81,7 +83,9 @@ tags:
 
 ### OpenTelemetry Collector 흐름
 
-![[Pasted image 20241217231926-1.webp]]
+![](assets/img/pasted-image-20241217232643-1.webp)
+
+
 ---
 
 ## Observability 구현 절차
