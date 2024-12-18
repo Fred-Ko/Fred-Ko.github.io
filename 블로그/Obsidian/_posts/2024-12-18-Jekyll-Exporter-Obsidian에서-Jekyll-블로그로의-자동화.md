@@ -9,11 +9,11 @@ tags:
   - markdown
   - front-matter
   - plugin
-  - openai
   - automation
-  - blogging
-  - note-taking
-  - productivity
+  - openai
+  - image-processing
+  - link-management
+  - content-creation
 ---
 ## 들어가며
 
@@ -38,18 +38,26 @@ tags:
 1. **프론트 매터 자동 생성**  
    파일을 내보낼 때 매번 제목, 날짜, 태그를 수작업으로 입력하는 것은 비효율적이었습니다. 그래서 설정 탭에서 사용자 정의 템플릿을 제공하고, 자동으로 프론트 매터를 추가하도록 만들었습니다.
 2. **중복 파일 관리**
-   ![](pasted-image-20241211013304.png)
+   
+![](assets/img/pasted-image-20241211013304.png){:width="390px"}
+
    블로그에 같은 이름의 파일이 있을 경우, 무작정 덮어쓰는 것이 아니라, 덮어쓸지 취소할지 선택할 수 있도록 모달 창을 추가했습니다. 기존 파일을 안전하게 유지하면서도 업데이트할 수 있도록 했습니다.
 3. **OpenAI를 활용한 자동 태그 생성**  
-	![Pasted image 20241217222608.webp](pasted-image-20241217222608.webp)
+	
+![](assets/img/pasted-image-20241217222608-1.webp)
+
    태그를 생성하는 것도 생각보다 고민이 되는 작업입니다. 그래서 OpenAI API를 사용해 콘텐츠에서 자동으로 태그를 생성하도록 했습니다. 제가 직접 태그를 고민하는 시간을 줄이고, 자동으로 추천 받은 태그를 수정만 하면 되니 훨씬 편리했습니다.
 4. **이미지와 링크 처리**
-   ![Pasted image 20241217222707.webp](pasted-image-20241217222707.webp)
+   
+![](assets/img/pasted-image-20241217222707-1.webp){:width="460px"}
+
    이미지를 따로 복사하고 링크를 수정하는 작업도 번거로운 일이었습니다. 이제는 Obsidian 파일에 첨부된 이미지를 지정된 Jekyll 폴더로 자동 복사하고, 링크를 블로그에서 제대로 작동하도록 변환할 수 있게 되었습니다.
    특히 Obsidian 에서 이미지 크기를 조절하면 파일명에 크기가 포함되어 버리는데 이것을 어떻게 반영할까 고민을 했었습니다.
    Jekyll에서 kramdown을 md 엔진으로 사용하는데 {:width="820px"} 와 같이 크기 조절이 가능한 옵션이 있어서 kramdown으로 변환하도록 하여 크기조절 문제도 해결하였습니다.
 5. **문서의 고유 식별자와 permalink를 통해 url friendly 하게 만들기**  
-   ![Pasted image 20241217222410.webp](pasted-image-20241217222410.webp)
+   
+![](assets/img/pasted-image-20241217222410-1.webp)
+
    기존에는 /posts/{title} 이런 형식으로 변환이 되었는데 문서에 한글이 들어가니 url에 한글이 그대로 노출되고 공백도 문제가 있었습니다.
    프론트매터에 nanoId와 permalink를 nanoId로 생성하여 jekyll 옵션으로 permalink를 url friendly 하게 만들 수 있었습니다.
    nanoId가 변경되면 기존에 링크를 저장한게 망가지는 문제점은 export시 이미 파일이 존재하고 nanoId와 permalink가 존재하는 경우 보존하도록 구현했습니다.
