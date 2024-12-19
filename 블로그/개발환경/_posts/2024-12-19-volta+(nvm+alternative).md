@@ -6,12 +6,12 @@ tags:
   - volta
   - nvm
   - package-json
-  - node-version-management
   - cross-platform
-  - automation
+  - version-management
+  - node-version-manager
+  - yarn
+  - npm
   - development-tools
-  - version-control
-  - productivity
 nanoId: YGBY1KdZ7ykvFQ7qxrQXPy7Zm
 permalink: /YGBY1KdZ7ykvFQ7qxrQXPy7Zm/
 ---
@@ -101,5 +101,12 @@ volta install yarn
 
 ## 결론
 
-항상 공식처럼 nvm만 사용하다가 대안을 찾고나니 왜 진작에 안찾아봤나 후회가 됩니다. 정말 편하네요.
-다른 것들도 이처럼 의심하지 않고 받아들인 무언가가 있나 한번 찾아봐야겠습니다.
+~~항상 공식처럼 nvm만 사용하다가 대안을 찾고나니 왜 진작에 안찾아봤나 후회가 됩니다. 정말 편하네요.~~
+~~다른 것들도 이처럼 의심하지 않고 받아들인 무언가가 있나 한번 찾아봐야겠습니다.~~
+
+## 추가 (2024-12-20)
+회사 mac에서는 문제 없이 동작 하던 부분이 집 Linux 환경에서는 문제가 있었다.
+volta는 node 파일을 심볼릭 링크로 volta-shim 파일에 연결해놓는데
+volta-shim 내부에서 로직을 돌면서 작동한다.
+linux-mint 환경에서 cursor를 ide로 사용하고 있는데 node 명령어가 재대로 실행되지 않고 있다.
+volta 코드를 보면서 고쳐보려 했지만 대안인 fnm으로 갈아타보려 한다.
