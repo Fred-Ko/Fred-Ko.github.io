@@ -5,13 +5,13 @@ tags:
   - node-js
   - volta
   - nvm
+  - node-version-management
+  - cross-platform-support
+  - automatic-version-switching
+  - fast-speed
+  - tool-management
   - package-json
-  - yarn
-  - npm
-  - cross-platform
-  - version-management
-  - node-version-manager
-  - development-tools
+  - development-environment
 nanoId: YGBY1KdZ7ykvFQ7qxrQXPy7Zm
 permalink: /YGBY1KdZ7ykvFQ7qxrQXPy7Zm/
 ---
@@ -25,15 +25,15 @@ Node.js 환경에서 개발할 때, 프로젝트별로 Node 버전을 관리하�
 
 ## Volta와 NVM 비교
 
-|**특징**|**NVM**|**Volta**|
-|---|---|---|
-|**설정 파일 위치**|`.nvmrc` 파일을 사용하여 Node.js 버전을 지정합니다.|`package.json` 파일의 `volta` 섹션에 설정합니다.|
-|**버전 전환 방식**|`nvm use` 명령어로 수동으로 버전을 전환합니다.|디렉토리 이동만으로 자동으로 버전이 전환됩니다.|
-|**속도**|Node.js 버전을 로드할 때 시간이 비교적 오래 걸립니다.|즉각적인 버전 전환을 지원합니다.|
-|**추가 도구 관리**|Node.js만 관리 가능하며, 추가 도구는 별도로 설정해야 합니다.|Yarn, npm 등의 도구 버전도 함께 관리할 수 있습니다.|
-|**설치 용이성**|셸 프로파일 파일 설정이 필요하며, 초기 설정 과정이 복잡할 수 있습니다.|간단한 설치 프로세스와 자동 설정을 제공합니다.|
-|**Cross-Platform 지원**|Unix 기반 환경에서만 지원합니다.|Windows와 Unix 기반 환경 모두에서 지원합니다.|
-|**사용 편의성**|프로젝트 디렉토리를 변경할 때마다 명령어를 실행해야 하는 번거로움이 있습니다.|프로젝트 디렉토리 변경 시 자동으로 설정이 적용됩니다.|
+|   **특징**   |                **NVM**                 |            **Volta**            |
+| :--------: | :------------------------------------: | :-----------------------------: |
+| **설정 파일**  |       `.nvmrc` 파일로 Node.js 버전 지정       | `package.json`의 `volta` 섹션에 설정  |
+| **버전 전환**  |          `nvm use` 명령어로 수동 전환          |         디렉토리 이동 시 자동 전환         |
+|   **속도**   |         Node.js 버전 로드 시 시간이 걸림         |           즉각적인 버전 전환            |
+| **도구 관리**  |    Node.js만 관리 가능, 추가 도구는 별도 설정 필요     |   Yarn, npm 등 다양한 도구 버전 관리 가능   |
+| **설치 용이성** |         셸 프로파일 설정 필요, 초기 설정 복잡         |        간단한 설치 및 자동 설정 제공        |
+| **지원 플랫폼** | Unix 기반 환경에서 주로 사용, Windows는 비공식 포크 사용 | Windows와 Unix 기반 환경 모두에서 원활히 동작 |
+| **사용 편의성** |        프로젝트 디렉토리 변경 시 명령어 실행 필요        |       디렉토리 변경 시 자동 설정 적용        |
 
 ## Volta의 주요 장점
 
