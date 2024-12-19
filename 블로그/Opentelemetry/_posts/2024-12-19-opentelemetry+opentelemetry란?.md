@@ -1,23 +1,21 @@
 ---
 title: OpenTelemetry - OpenTelemetry란?
-datetime: 2024-12-17T09:29:01.947Z
+datetime: 2024-12-17T14:51:20.749Z
 nanoId: 1n1RxDQUaGnJt7dvoGJOOBaHi
 permalink: /1n1RxDQUaGnJt7dvoGJOOBaHi/
 tags:
-  - opentelemetry
   - observability
+  - opentelemetry
   - microservices-architecture
   - distributed-tracing
-  - metrics
   - logs
+  - metrics
   - cloud-native
   - instrumentation
   - context-propagation
   - resource
 ---
-# OpenTelemetry란?
-
-## 개요
+## Intro
 
 현대 소프트웨어 시스템은 **모놀리스** 구조에서 **마이크로서비스 아키텍처(MSA)**로 전환됨에 따라 복잡성이 급증했습니다.  
 기존의 **로그**와 **메트릭**만으로는 각 서비스 간의 연관성과 오류의 원인을 파악하기 어려워졌으며, 이를 해결하기 위해 등장한 개념이 **Observability**입니다.
@@ -64,13 +62,13 @@ tags:
 ![](assets/img/pasted-image-20241212024442.webp){:width="760px"}
 
 
-| **개념**                | **설명**                                                                          |
-| ----------------------- | --------------------------------------------------------------------------------- |
-| **Traces (트레이스)**   | 분산 트레이싱으로 요청 흐름을 추적하여 문제 구간 시각화                           |
-| **Metrics (메트릭)**    | CPU 사용률, 응답 시간, 에러율과 같은 시간 기반의 성능 지표를 측정                 |
-| **Logs (로그)**         | 특정 이벤트나 상태 변화를 기록하는 메시지                                         |
-| **Context Propagation** | 서비스 간 요청 흐름을 연결하여 전체 트레이스 단위를 완성하는 기술                 |
-| **Resource**            | 텔레메트리 데이터를 생성한 엔티티의 속성 정의 (`service.name`, `k8s.pod.name` 등) |
+|         **개념**          |                            **설명**                            |
+| :---------------------: | :----------------------------------------------------------: |
+|    **Traces (트레이스)**    |               분산 트레이싱으로 요청 흐름을 추적하여 문제 구간 시각화                |
+|    **Metrics (메트릭)**    |           CPU 사용률, 응답 시간, 에러율과 같은 시간 기반의 성능 지표를 측정           |
+|      **Logs (로그)**      |                   특정 이벤트나 상태 변화를 기록하는 메시지                    |
+| **Context Propagation** |            서비스 간 요청 흐름을 연결하여 전체 트레이스 단위를 완성하는 기술             |
+|      **Resource**       | 텔레메트리 데이터를 생성한 엔티티의 속성 정의 (`service.name`, `k8s.pod.name` 등) |
 
 ---
 
@@ -83,8 +81,8 @@ tags:
 
 ### OpenTelemetry Collector 흐름
 
-![](assets/img/pasted-image-20241217232643-1.webp)
 
+![](assets/img/pasted-image-20241217232643-1.webp)
 
 ---
 
@@ -102,6 +100,9 @@ tags:
 3. **Export & Backend**
 
    - Traces, Metrics, Logs를 **Jaeger**, **Prometheus** 등의 백엔드로 전달해 시각화 및 분석
+
+
+> 	**"계측하고 모아서 Backend로 보내고 시각화하고 분석하는게 목적"**
 
 ---
 

@@ -1,19 +1,19 @@
 ---
 title: Obsidian - Cursor(LLM)을 활용에 대한 팁
-datetime: 2024-12-17T09:28:58.024Z
+datetime: 2024-12-19T13:58:37.030Z
 nanoId: w1fGIy5OgbcqoYV4nvqRsHJZS
-permalink: /w1fGIy5OgbcqoYV4nvqRsHJZS/
 tags:
-  - llm
   - large-language-model
-  - cursor-llm
   - obsidian
-  - open-with-plugin
+  - cursor
+  - artificial-intelligence
+  - productivity
+  - blog-writing
   - context-management
+  - open-with-plugin
   - chat-function
   - composer-function
-  - open-in-new-window
-  - productivity-tools
+permalink: /w1fGIy5OgbcqoYV4nvqRsHJZS/
 ---
 ### Obsidian - Cursor(LLM)을 활용에 대한 팁
 
@@ -31,14 +31,18 @@ Cursor가 처음 등장했을 때부터 Obsidian과 함께 사용하며 생산�
 
 #### Open With 플러그인 설치
 
+
 ![](assets/img/pasted-image-20241214234112.webp)
+
 
 - **플러그인 주소:** [Open With 플러그인](https://github.com/phibr0/obsidian-open-with)  
    이 플러그인은 Obsidian에서 파일을 우클릭하여 원하는 프로그램으로 열 수 있게 해주는 플러그인입니다. 처음에는 직접 개발을 고려했지만, 검색해보니 이미 원하는 플러그인이 있어서 만족하면서 활용하고 있습니다.
 
 ##### Open With 설정 및 사용법
 
+
 ![](assets/img/pasted-image-20241214214605.webp)
+
 
 1. Open With 플러그인에 Cursor를 등록합니다.
 2. Obsidian에서 파일이나 폴더를 우클릭하고 **"Open With Cursor"**를 선택합니다.

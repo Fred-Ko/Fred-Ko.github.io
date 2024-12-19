@@ -5,13 +5,13 @@ tags:
   - node-js
   - volta
   - nvm
-  - node-version-management
-  - cross-platform-support
-  - automatic-version-switching
-  - fast-speed
-  - tool-management
   - package-json
-  - development-environment
+  - node-version-management
+  - cross-platform
+  - automation
+  - development-tools
+  - version-control
+  - productivity
 nanoId: YGBY1KdZ7ykvFQ7qxrQXPy7Zm
 permalink: /YGBY1KdZ7ykvFQ7qxrQXPy7Zm/
 ---

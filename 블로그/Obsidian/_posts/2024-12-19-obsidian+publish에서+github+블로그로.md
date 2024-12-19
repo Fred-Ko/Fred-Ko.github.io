@@ -6,14 +6,14 @@ permalink: /EjFgOk9UuO29kS92H7gf4aKET/
 tags:
   - obsidian-publish
   - github-blog
-  - jekyll-based
-  - markdown-files
+  - jekyll
+  - markdown
+  - blogging
   - plugin-development
-  - obsidian-jekyll-exporter
-  - blog-posting
   - automation
-  - git-versioning
-  - chirpy-theme
+  - efficiency
+  - blog-design
+  - content-management
 ---
 ### Obsidian Publish에서 GitHub 블로그로
 
@@ -55,10 +55,18 @@ GitHub 블로그를 선택한 이유는 다음과 같습니다:
 
 코드를 분석한 결과 소스가 비교적 간단해서 금방 이해할 수 있었습니다. 필요한 기능은 "정해진 규칙"으로 변환하는 로직을 추가하는 것이었죠. 그래서 아예 플러그인을 새로 만들기로 했습니다. 이 과정에서 GPT를 사용해서 요구사항을 정리하고 빠르게 코드를 작성했습니다.
 [obsidian-jekyll-exporter](https://github.com/Fred-Ko/obsidian-jekyll-exporter)
+
 ![](assets/img/pasted-image-20241210200020.webp)
+
+
 ![](assets/img/pasted-image-20241210210713.webp)
+
+
 ![](assets/img/pasted-image-20241211013304.png)
+
+
 ![](assets/img/pasted-image-20241211030549.png)
+
 반나절 만에 필요한 핵심 기능을 구현할 수 있었습니다. 결과적으로, 다음과 같은 기능을 가진 플러그인을 완성했습니다:
 
 1. 지정된 폴더로 마크다운 파일을 추출
