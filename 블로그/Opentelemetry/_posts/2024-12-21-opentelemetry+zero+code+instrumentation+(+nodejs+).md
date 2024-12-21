@@ -3,15 +3,15 @@ title: Opentelemetry - AutoInstrumentation ( Nodejs )
 datetime: 2024-12-21T21:02:25.950Z
 tags:
   - opentelemetry
-  - node-js
+  - nodejs
   - automatic-instrumentation
   - distributed-tracing
   - monitoring
   - performance
   - observability
   - docker-compose
-  - grafana
-  - environment-variables
+  - env-variables
+  - nodejs-development
 nanoId: yjCxVy1uMGz5CUzypKY9rP4Mw
 permalink: /yjCxVy1uMGz5CUzypKY9rP4Mw/
 ---
@@ -64,7 +64,7 @@ docker compose up -d
 
 OpenTelemetry 자동 계측은 다양한 환경 변수를 통해 세밀하게 설정할 수 있습니다. `.env` 파일을 생성하고 아래와 같이 필요한 환경 변수들을 정의하여 애플리케이션의 모니터링 동작을 사용자 정의할 수 있습니다.
 
-```bash (.env)
+```bash
 # OTEL_BSP_SCHEDULE_DELAY: Batch Span Processor가 데이터를 내보내기 전에 대기하는 시간(밀리초)을 설정합니다.
 # 기본값: 5000 (5초)
 # 예: 1000 (1초)
