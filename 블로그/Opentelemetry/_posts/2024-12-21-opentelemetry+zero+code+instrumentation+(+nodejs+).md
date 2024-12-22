@@ -140,23 +140,23 @@ NODE_OPTIONS="--require @opentelemetry/auto-instrumentations-node/register"
 
 **주요 환경 변수 상세 설명:**
 
-| 환경 변수                          | 설명                                                                                   |
-|-----------------------------------|----------------------------------------------------------------------------------------|
-| **OTEL_BSP_SCHEDULE_DELAY**       | 스팬 데이터를 일괄 처리하여 내보내기 전에 대기하는 시간 (밀리초). 네트워크 부하를 줄이는 데 유용합니다. |
-| **OTEL_BSP_MAX_QUEUE_SIZE**       | Batch Span Processor가 메모리에 보관할 수 있는 최대 스팬 수.                           |
-| **OTEL_BSP_MAX_EXPORT_BATCH_SIZE**| 한 번의 요청으로 내보낼 최대 스팬 수.                                                  |
-| **OTEL_BSP_EXPORT_TIMEOUT**       | 스팬 내보내기 작업의 최대 허용 시간 (밀리초).                                          |
-| **OTEL_TRACES_EXPORTER**          | 수집된 트레이스 데이터를 전송할 익스포터의 유형을 지정합니다. 일반적으로 `otlp`를 사용합니다. |
-| **OTEL_EXPORTER_OTLP_ENDPOINT**   | OTLP 익스포터가 데이터를 전송할 엔드포인트 URL입니다. OpenTelemetry Collector의 주소를 입력합니다. |
-| **OTEL_SERVICE_NAME**             | 모니터링 시스템에서 애플리케이션을 식별하는 데 사용될 서비스 이름입니다.                |
-| **OTEL_LOG_LEVEL**                | OpenTelemetry 라이브러리의 로그 출력 수준을 설정합니다. 디버깅 시 유용합니다.          |
-| **OTEL_NODE_RESOURCE_DETECTORS**  | 애플리케이션이 실행되는 환경에 대한 정보를 자동으로 감지하는 기능을 설정합니다.        |
-| **OTEL_NODE_ENABLED_INSTRUMENTATIONS** | 활성화할 특정 라이브러리 계측을 설정합니다. 예를 들어, 특정 데이터베이스 드라이버의 모니터링을 제외할 수 있습니다. |
-| **OTEL_NODE_DISABLED_INSTRUMENTATIONS**| 비활성화할 특정 라이브러리 계측을 설정합니다.                                        |
-| **OTEL_TRACES_SAMPLER**           | 트레이스 샘플링 전략을 설정합니다. 모든 트레이스를 수집하는 대신 특정 비율로 샘플링하여 시스템 부하를 줄일 수 있습니다. |
-| **OTEL_TRACES_SAMPLER_ARG**       | 샘플링 전략에 대한 추가 매개변수를 설정합니다.                                         |
-| **OTEL_PROPAGATORS**              | 분산 트레이싱 환경에서 요청의 컨텍스트를 전파하는 방식을 정의합니다.                   |
-| **NODE_OPTIONS**                  | Node.js가 시작될 때 OpenTelemetry 자동 계측을 로드하는 데 필수적인 설정입니다.         |
+| 환경 변수                                   | 설명                                                                       |
+| --------------------------------------- | ------------------------------------------------------------------------ |
+| **OTEL_BSP_SCHEDULE_DELAY**             | 스팬 데이터를 일괄 처리하여 내보내기 전에 대기하는 시간 (밀리초).<br>네트워크 부하를 줄이는 데 유용합니다.          |
+| **OTEL_BSP_MAX_QUEUE_SIZE**             | Batch Span Processor가 메모리에 보관할 수 있는 최대 스팬 수.                             |
+| **OTEL_BSP_MAX_EXPORT_BATCH_SIZE**      | 한 번의 요청으로 내보낼 최대 스팬 수.                                                   |
+| **OTEL_BSP_EXPORT_TIMEOUT**             | 스팬 내보내기 작업의 최대 허용 시간 (밀리초).                                              |
+| **OTEL_TRACES_EXPORTER**                | 수집된 트레이스 데이터를 전송할 익스포터의 유형을 지정합니다. <br>일반적으로 `otlp`를 사용합니다.              |
+| **OTEL_EXPORTER_OTLP_ENDPOINT**         | OTLP 익스포터가 데이터를 전송할 엔드포인트 URL입니다.<br>OpenTelemetry Collector의 주소를 입력합니다. |
+| **OTEL_SERVICE_NAME**                   | 모니터링 시스템에서 애플리케이션을 식별하는 데 사용될 서비스 이름입니다.                                 |
+| **OTEL_LOG_LEVEL**                      | OpenTelemetry 라이브러리의 로그 출력 수준을 설정합니다. 디버깅 시 유용합니다.                       |
+| **OTEL_NODE_RESOURCE_DETECTORS**        | 애플리케이션이 실행되는 환경에 대한 정보를 자동으로 감지하는 기능을 설정합니다.                             |
+| **OTEL_NODE_ENABLED_INSTRUMENTATIONS**  | 활성화할 특정 라이브러리 계측을 설정합니다. <br>예를 들어, 특정 데이터베이스 드라이버의 모니터링을 제외할 수 있습니다.    |
+| **OTEL_NODE_DISABLED_INSTRUMENTATIONS** | 비활성화할 특정 라이브러리 계측을 설정합니다.                                                |
+| **OTEL_TRACES_SAMPLER**                 | 트레이스 샘플링 전략을 설정합니다. 모든 트레이스를 수집하는 대신 <br>특정 비율로 샘플링하여 시스템 부하를 줄일 수 있습니다. |
+| **OTEL_TRACES_SAMPLER_ARG**             | 샘플링 전략에 대한 추가 매개변수를 설정합니다.                                               |
+| **OTEL_PROPAGATORS**                    | 분산 트레이싱 환경에서 요청의 컨텍스트를 전파하는 방식을 정의합니다.                                   |
+| **NODE_OPTIONS**                        | Node.js가 시작될 때 OpenTelemetry 로드하는 데 필수적인 설정입니다.                          |
 
 ## 중요한 주의사항: NODE_OPTIONS
 
