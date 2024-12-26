@@ -26,5 +26,8 @@
   // Run tasks in macOS
   "terminal.integrated.profiles.osx": {
     "zsh": { "path": "/bin/zsh", "args": ["-l", "-i"] }
+  },
+  "[properties]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
   }
 }
