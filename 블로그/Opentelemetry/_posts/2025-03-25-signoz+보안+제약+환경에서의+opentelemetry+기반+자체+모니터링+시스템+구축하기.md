@@ -145,6 +145,8 @@ Kubernetes에 **Prometheus MySQL, PostgreSQL Exporter**를 배포하고, **OpenT
 2. **"context deadline exceeded"**
    - `signozclickhousemetrics`의 `timeout` 값 증가
 
+1. **"logs 탭이나 traces 탭으로 이동시 EC2 다운되는 문제 ( 2025-04-09 추가 )**
+   - EC2에서 swap은 기본적으로 비활성화 상태이다. 순간적으로 Memory 사용량이 치솟으면서 EC2가 다운되버리는 증상이 보여서 swap을 통해 해결.
 ### 운영 시 주의사항
 
 - **디스크 볼륨 주기적 모니터링**:
