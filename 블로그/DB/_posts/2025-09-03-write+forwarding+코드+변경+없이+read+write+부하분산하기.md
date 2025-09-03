@@ -52,7 +52,9 @@ ProxySQL이 제공하는 기능
 * **Failover (장애 조치)**: 백엔드 MySQL 서버에 장애가 발생하면 자동으로 다른 서버로 연결을 전환합니다.
 
 위와 같이 ProxySQL은 MySQL 계열에서 많이 쓰이는 솔루션이고, read/write 스플리팅도 지원합니다. 하지만 문제는 Aurora 환경이었습니다.
+
 Aurora는 **GTID(Global Transaction ID)**를 사용하여 동일한 클러스터의 인스턴스 간에 데이터를 복제하지 않습니다. - ([AWS Aurora 공식 문서](https://docs.aws.amazon.com/ko_kr/AmazonRDS/latest/AuroraUserGuide/mysql-replication-gtid.html))
+
 ProxySQL이 GTID 기반 라우팅을 활용하지 못하니, 결국 read-after-write 문제를 완전히 커버하기 어려웠습니다.
 
 만약 GTID를 지원했다면 ProxySQL은 Read After Write 문제를 해결하기 위해서 다음과 같이 동작합니다. - ([ProxySQL GTID Causal Reads](https://proxysql.com/blog/proxysql-gtid-causal-reads/))
