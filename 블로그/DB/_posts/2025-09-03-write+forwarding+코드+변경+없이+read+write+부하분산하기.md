@@ -53,7 +53,7 @@ ProxySQL이 제공하는 기능
 
 위와 같이 ProxySQL은 MySQL 계열에서 많이 쓰이는 솔루션이고, read/write 스플리팅도 지원합니다. 하지만 문제는 Aurora 환경이었습니다.
 Aurora는 **GTID(Global Transaction ID)**를 사용하여 동일한 클러스터의 인스턴스 간에 데이터를 복제하지 않습니다. - ([AWS Aurora 공식 문서](https://docs.aws.amazon.com/ko_kr/AmazonRDS/latest/AuroraUserGuide/mysql-replication-gtid.html))
-ProxySQL이 GTID 기반 라우팅을 활용하지 못하니, 결국 read-after-write 문제를 완전히 커버하기 어려웠습니다.3
+ProxySQL이 GTID 기반 라우팅을 활용하지 못하니, 결국 read-after-write 문제를 완전히 커버하기 어려웠습니다.
 
 만약 GTID를 지원했다면 ProxySQL은 Read After Write 문제를 해결하기 위해서 다음과 같이 동작합니다. - ([ProxySQL GTID Causal Reads](https://proxysql.com/blog/proxysql-gtid-causal-reads/))
 
@@ -80,7 +80,7 @@ Aurora는 자체적으로 **Write Forwarding** 기능을 제공합니다. - ([AW
 
 실제 구현 과정에서 클러스터 설정을 변경하고 모니터링을 통해 지연 시간을 확인했는데, Global 옵션이 예상보다 부하를 적게 주면서도 안정성을 제공해 만족스러웠습니다.
 
-## 결론과 회고
+## 마무리
 
 결국 **Aurora Write Forwarding + Global consistency** 조합으로, 코드 변경 없이도 read/write 부하 분산을 구현할 수 있었습니다.
 
