@@ -4,11 +4,11 @@ datetime: 2025-12-07T11:18:21.676Z
 tags:
   - ephemeral-port-exhaustion
   - tcp-time-wait
-  - linux-kernel-tuning
   - connection-pooling
-  - http-keep-alive
-  - nestjs
+  - os-kernel-tuning
+  - tcp-tw-reuse
   - microservices
+  - nestjs
 nanoId: GqA43z1WKMUATGjNpbltaQg6s
 permalink: /GqA43z1WKMUATGjNpbltaQg6s/
 ---
@@ -55,14 +55,6 @@ sysctl -w net.ipv4.ip_local_port_range="1024 65535"
 sysctl -w net.ipv4.tcp_tw_reuse=1
 ```
 이 설정은 비교적 안전하며 효과적이지만, 클라이언트와 서버 모두 TCP 타임스탬프(`net.ipv4.tcp_timestamps`) 옵션이 켜져 있어야 동작합니다.
-#### 3. TIME_WAIT 지속 시간 단축
-`TIME_WAIT` 상태의 지속 시간을 줄여 포트가 더 빨리 재사용되도록 할 수 있습니다. 기본값은 60초이므로, 필요에 따라 30초 정도로 줄이는 것이 일반적입니다. (주의: 너무 짧게 설정하면 네트워크 패킷 재전송 문제가 발생할 수 있음)
-```bash
-# 현재 값 확인
-sysctl net.ipv4.tcp_fin_timeout
-# 지속 시간 단축 (예: 30초)
-sysctl -w net.ipv4.tcp_fin_timeout=30
-```
 
 ---
 
@@ -70,7 +62,7 @@ sysctl -w net.ipv4.tcp_fin_timeout=30
 
 OS 튜닝이 '증상 완화'라면, **Connection Pooling**은 '원인 치료'에 가깝습니다. 매 요청마다 3-way Handshake와 4-way Handshake를 반복하는 것이 문제의 핵심이기 때문입니다.
 
-HTTP Keep-Alive를 사용하여 한 번 맺은 TCP 연결을 끊지 않고 재사용한다면, 핸드쉐이크 비용을 줄일 뿐만 아니라 포트 고갈 문제도 완벽하게 해결할 수 있습니다.
+HTTP Keep-Alive를 사용하여 한 번 맺은 TCP 연결을 끊지 않고 재사용한다면, 핸드쉐이크 비용을 줄일 뿐만 아니라 포트 고갈 문제를 해결할 수 있습니다.
 
 
 ![](assets/img/infographic-20251207-201959-os-connection-pooling.png)
