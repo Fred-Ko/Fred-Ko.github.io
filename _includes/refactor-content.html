@@ -216,33 +216,76 @@
 
     {% else %}
       {% assign _left = _snippet | split: '><' | last %}
+      {% assign _lang_class = '' %}
+      {% assign _has_file = false %}
 
       {% if _left contains 'file="' %}
         {% assign _label_text = _left | split: 'file="' | last | split: '"' | first %}
         {% assign _label_icon = 'far fa-file-code fa-fw' %}
+        {% assign _has_file = true %}
       {% else %}
         {% assign _lang = _left | split: 'language-' | last | split: ' ' | first %}
         {% capture _label_text %}{% include language-alias.html language=_lang %}{% endcapture %}
         {% assign _label_icon = 'fas fa-code fa-fw small' %}
+        {% if _lang != '' %}
+          {% assign _lang_class = 'language-' | append: _lang %}
+        {% endif %}
       {% endif %}
 
       {% capture _label %}
         <span data-label-text="{{ _label_text | strip }}"><i class="{{ _label_icon }}"></i></span>
       {% endcapture %}
 
-      {% assign _new_content = _new_content
-        | append: _snippet
-        | append: '<div class="code-header">'
-        | append: _label
-        | append: '<button aria-label="copy" data-title-succeed="'
-        | append: site.data.locales[include.lang].post.button.copy_code.succeed
-        | append: '"><i class="far fa-clipboard"></i></button></div>'
-        | append: '<div class="highlight"><code>'
-      %}
+      {% if _lang_class != '' %}
+        {% assign _new_content = _new_content
+          | append: _snippet
+          | append: '<div class="'
+          | append: _lang_class
+          | append: '"><div class="code-header">'
+          | append: _label
+          | append: '<button aria-label="copy" data-title-succeed="'
+          | append: site.data.locales[include.lang].post.button.copy_code.succeed
+          | append: '"><i class="far fa-clipboard"></i></button></div>'
+          | append: '<div class="highlight"><code>'
+        %}
+      {% else %}
+        {% assign _new_content = _new_content
+          | append: _snippet
+          | append: '<div class="code-header">'
+          | append: _label
+          | append: '<button aria-label="copy" data-title-succeed="'
+          | append: site.data.locales[include.lang].post.button.copy_code.succeed
+          | append: '"><i class="far fa-clipboard"></i></button></div>'
+          | append: '<div class="highlight"><code>'
+        %}
+      {% endif %}
     {% endif %}
   {% endfor %}
 
   {% assign _content = _new_content %}
+
+  <!-- Close the language wrapper div for code blocks that have language class -->
+  {% if _content contains '</code></div>' %}
+    {% assign _code_end_snippets = _content | split: '</code></div>' %}
+    {% assign _final_content = '' %}
+    {% assign _wrapper_count = 0 %}
+
+    {% for _end_snippet in _code_end_snippets %}
+      {% if forloop.last %}
+        {% assign _final_content = _final_content | append: _end_snippet %}
+      {% else %}
+        {% assign _before_code_end = _end_snippet | split: '<div class="language-' %}
+        {% if _before_code_end.size > 1 %}
+          {% assign _wrapper_count = _wrapper_count | plus: 1 %}
+          {% assign _final_content = _final_content | append: _end_snippet | append: '</code></div></div>' %}
+        {% else %}
+          {% assign _final_content = _final_content | append: _end_snippet | append: '</code></div>' %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    {% assign _content = _final_content %}
+  {% endif %}
 {% endif %}
 
 <!-- Create heading anchors -->
