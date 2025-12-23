@@ -13,7 +13,7 @@
   @extend %rounded;
   @extend %code-snippet-bg;
 
-  overflow: auto;
+  overflow: visible;
   padding-bottom: 0.75rem;
 
   @at-root figure#{&} {
@@ -24,6 +24,8 @@
     margin-bottom: 0;
     font-size: v.$code-font-size;
     line-height: 1.4rem;
+    white-space: pre-wrap;
+    word-wrap: break-word;
   }
 
   table {
