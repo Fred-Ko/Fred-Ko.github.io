@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>직접 HTML 테스트</title>
+</head>
+<body>
+  <h1>빌드된 HTML 직접 테스트</h1>
+  <p>이 파일은 빌드된 HTML의 코드 블록 부분만 추출한 것입니다.</p>
+
+  <!-- 실제 빌드된 HTML의 코드 블록 구조 -->
+  <div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="c1">// test</span>
+<span class="k">const</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></div>
+
+  <script>
+    console.log('=== 직접 HTML 테스트 ===');
+    const codeBlock = document.querySelector('.highlight code');
+    if (codeBlock) {
+      const hasToken = codeBlock.querySelector('.token');
+      const hasRouge = codeBlock.querySelector('.rouge-table');
+      console.log('.token 있음:', !!hasToken);
+      console.log('.rouge-table 있음:', !!hasRouge);
+      console.log('HTML 구조:', codeBlock.innerHTML.substring(0, 200));
+    }
+  </script>
+</body>
+</html>

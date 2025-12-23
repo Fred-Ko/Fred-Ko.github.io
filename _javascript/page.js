@@ -3,7 +3,8 @@ import {
   loadImg,
   imgPopup,
   initClipboard,
-  loadMermaid
+  loadMermaid,
+  initCodeProtection
 } from './modules/components';
 
 loadImg();
@@ -12,4 +13,5 @@ initSidebar();
 initTopbar();
 initClipboard();
 loadMermaid();
+initCodeProtection();
 basic();
