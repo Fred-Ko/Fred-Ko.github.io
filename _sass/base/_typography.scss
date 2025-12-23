@@ -227,25 +227,55 @@ main {
 
 /* it will be created by Liquid */
 .table-wrapper {
+  width: 100%;
   overflow-x: auto;
   margin-bottom: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  background-color: var(--main-bg);
 
   > table {
-    min-width: 100%;
-    overflow-x: auto;
+    width: 100%;
+    max-width: 100%;
     border-spacing: 0;
+    border-collapse: separate;
+    background-color: var(--main-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    table-layout: auto;
 
     thead {
-      border-bottom: solid 2px rgb(210 215 217 / 75%);
+      background-color: var(--tb-header-bg, var(--sidebar-bg));
+      border-bottom: solid 3px var(--tb-header-border, rgb(180 185 190));
 
       th {
         @extend %table-cell;
+        font-weight: 600;
+        color: var(--tb-header-text, var(--heading-color));
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 0.5px;
+        padding: 0.75rem 1rem;
+        transition: background-color 0.2s ease;
+        white-space: nowrap;
+        border-bottom: 1px solid var(--tb-header-border, rgb(180 185 190));
+        border-right: 1.5px solid var(--tb-border-color);
+
+        &:first-child {
+          padding-left: 1.5rem;
+        }
+
+        &:last-child {
+          padding-right: 1.5rem;
+          border-right: none;
+        }
       }
     }
 
     tbody {
       tr {
-        border-bottom: 1px solid var(--tb-border-color);
+        border-bottom: 1.5px solid var(--tb-border-color);
+        transition: background-color 0.2s ease, transform 0.1s ease;
 
         &:nth-child(2n) {
           background-color: var(--tb-even-bg);
@@ -255,8 +285,35 @@ main {
           background-color: var(--tb-odd-bg);
         }
 
+        &:hover {
+          background-color: var(--tb-hover-bg, var(--sidebar-hover-bg));
+          transform: scale(1.001);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        &:last-child {
+          border-bottom: none;
+        }
+
         td {
           @extend %table-cell;
+          padding: 0.75rem 1rem;
+          transition: color 0.2s ease;
+          word-wrap: break-word;
+          word-break: break-word;
+          white-space: normal;
+          overflow-wrap: break-word;
+          border-right: 1.5px solid var(--tb-border-color);
+
+          &:first-child {
+            padding-left: 1.5rem;
+            font-weight: 500;
+          }
+
+          &:last-child {
+            padding-right: 1.5rem;
+            border-right: none;
+          }
         }
       }
     } /* tbody */
