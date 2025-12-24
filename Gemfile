@@ -13,3 +13,8 @@ end
 
 gem "wdm", "~> 0.2.0", :platforms => [:mingw, :x64_mingw, :mswin]
 gem 'jekyll-sitemap'
+
+# Required for Ruby 3.4+ compatibility
+gem "csv"
+gem "logger"
+gem "base64"
