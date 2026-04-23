@@ -1,6 +1,6 @@
 ---
 title: GraphQL과 DDD (3) - Cross-domain Query와 Command는 어떻게 풀어야 할까?
-datetime: 2026-04-22T09:45:27.497Z
+datetime: 2026-02-22T09:45:27.497Z
 tags:
   - graphql-federation
   - ddd
@@ -12,8 +12,6 @@ tags:
 nanoId: IDB5lqdeRfdEZAP3aXEBjPrvG
 permalink: /IDB5lqdeRfdEZAP3aXEBjPrvG/
 ---
-# GraphQL과 DDD (3) — Cross-domain Query와 Command는 어떻게 풀어야 할까?
-
 ## Intro
 
 이 글은 시리즈의 세 번째 글입니다. 앞선 글들에서는 GraphQL, Relay, DDD, CQRS를 함께 가져갈 때 어디서 긴장이 생기는지를 정리했습니다. 통합 그래프를 지향하더라도 경계는 통합하지 않아야 하고, 풍부한 payload를 제공하더라도 command는 말수가 적어야 하며, mutation payload의 최신성은 스키마가 아니라 코드와 조회 경로가 책임져야 한다는 이야기였습니다.

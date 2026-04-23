@@ -1,6 +1,6 @@
 ---
 title: GraphQL과 DDD (1) - GraphQL을 REST처럼 쓰고 있지는 않나요?
-datetime: 2026-04-22T09:44:55.698Z
+datetime: 2026-02-22T09:44:55.698Z
 tags:
   - graphql
   - relay
@@ -11,8 +11,6 @@ tags:
 nanoId: BmN8lVtxWOZeJWa8JtA7R9GWx
 permalink: /BmN8lVtxWOZeJWa8JtA7R9GWx/
 ---
-# GraphQL과 DDD (1) — GraphQL을 REST처럼 쓰고 있지는 않나요?
-
 ## Intro
 
 이 글은 시리즈의 첫 번째 글입니다. GraphQL과 DDD를 본격적으로 붙여 보기 전에, 먼저 제가 GraphQL을 바라보는 관점이 어떻게 바뀌었는지부터 정리해 보려 합니다.

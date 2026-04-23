@@ -25,3 +25,6 @@ package-lock.json
 # Misc
 
 Gemfile.lock
+.omx/
+
+블로그/.DS_Store

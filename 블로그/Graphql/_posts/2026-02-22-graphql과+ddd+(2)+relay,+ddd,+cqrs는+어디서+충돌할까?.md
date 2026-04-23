@@ -1,6 +1,6 @@
 ---
 title: GraphQL과 DDD (2) - Relay, DDD, CQRS는 어디서 충돌할까?
-datetime: 2026-04-22T09:45:20.743Z
+datetime: 2026-02-22T09:45:20.743Z
 tags:
   - graphql
   - relay
@@ -12,8 +12,6 @@ tags:
 nanoId: zz7x9WMHUg4YYfPKfVVhYqWc3
 permalink: /zz7x9WMHUg4YYfPKfVVhYqWc3/
 ---
-# GraphQL과 DDD (2) — Relay, DDD, CQRS는 어디서 충돌할까?
-
 ## Intro
 
 이 글은 시리즈의 두 번째 글입니다. 앞선 글에서는 GraphQL을 REST의 연장선처럼 쓰게 되는 순간들, 그래프 탐색이라는 감각, 그리고 Relay Cursor Connection이 왜 생각보다 설득력 있게 느껴졌는지를 정리했습니다.
