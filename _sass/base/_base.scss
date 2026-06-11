@@ -431,7 +431,9 @@ mjx-container {
   }
 
   > .container {
-    min-height: 100vh;
+    /* Footer hugs the content instead of being pushed to the bottom of the
+       viewport, so short pages don't leave a large empty gap above the footer. */
+    min-height: auto;
 
     @include bp.lte(bp.get(md)) {
       @include mx.max-w-100;
