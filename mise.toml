@@ -1,2 +1,19 @@
 [tools]
-ruby = "latest"
+node = "22"
+ruby = "3.3"
+
+[tasks.setup]
+description = "Install Node and Ruby dependencies"
+run = "npm install && bundle install"
+
+[tasks.build]
+description = "Build frontend assets and the Jekyll site"
+run = "npm run build && bundle exec jekyll build"
+
+[tasks.test]
+description = "Run JS/SCSS lint and build the Jekyll site"
+run = "npm test && bundle exec jekyll build"
+
+[tasks.serve]
+description = "Serve the Jekyll site locally"
+run = "bundle exec jekyll serve --livereload --host 127.0.0.1"
