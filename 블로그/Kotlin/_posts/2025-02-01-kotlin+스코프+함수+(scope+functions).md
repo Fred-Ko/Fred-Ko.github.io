@@ -1,4 +1,5 @@
 ---
+post_id: c14c4a18-51f0-56bf-8bf4-fd94da448561
 title: Kotlin - 스코프 함수 (Scope Functions)
 datetime: 2025-01-30T15:33:45.799Z
 tags:

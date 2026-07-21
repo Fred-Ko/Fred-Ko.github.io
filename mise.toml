@@ -1,6 +1,6 @@
 [tools]
 node = "22"
-ruby = "3.3"
+ruby = "3.3.11"
 
 [tasks.setup]
 description = "Install Node and Ruby dependencies"

@@ -1,4 +1,5 @@
 ---
+post_id: 74e0bf35-4322-574f-8c4b-7263334f4a3d
 title: OpenTelemetry - OpenTelemetry란?
 datetime: 2024-12-17T14:51:20.749Z
 nanoId: 1n1RxDQUaGnJt7dvoGJOOBaHi

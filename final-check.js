@@ -15,10 +15,11 @@
 
   // 2. HTML 소스에서 코드 블록 찾기
   const sourceCodeMatch = htmlText.match(/<div class="highlight"><code[^>]*>([\s\S]{0,1000})/);
+  let hasTokenInSource = false;
 
   if (sourceCodeMatch) {
     const sourceCode = sourceCodeMatch[1];
-    const hasTokenInSource = sourceCode.includes('token');
+    hasTokenInSource = sourceCode.includes('token');
     const hasRougeInSource = sourceCode.includes('rouge-table');
 
     console.log('📄 HTML 소스 분석:');

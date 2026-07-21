@@ -1,0 +1,5 @@
+dynamic_blog:
+  enabled: true
+  api_base: http://127.0.0.1:8787/api
+  view_delay_ms: 2000
+  oauth_enabled: false

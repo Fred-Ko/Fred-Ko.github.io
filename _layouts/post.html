@@ -5,15 +5,17 @@ panel_includes:
 tail_includes:
   - related-posts
   - post-nav
-script_includes:
-  - comment
 ---
 
 {% include lang.html %}
 
 {% include toc-status.html %}
 
-<article class="px-1" data-toc="{{ enable_toc }}">
+<article
+  class="px-1"
+  data-toc="{{ enable_toc }}"
+  {% if page.post_id %}data-post-id="{{ page.post_id }}"{% endif %}
+>
   <header>
     <h1 data-toc-skip>{{ page.title }}</h1>
     {% if page.description %}
@@ -175,4 +177,8 @@ script_includes:
     <!-- .post-tail-bottom -->
   </div>
   <!-- div.post-tail-wrapper -->
+
+  {% if site.dynamic_blog.enabled and page.post_id %}
+    {% include dynamic/blog.html %}
+  {% endif %}
 </article>

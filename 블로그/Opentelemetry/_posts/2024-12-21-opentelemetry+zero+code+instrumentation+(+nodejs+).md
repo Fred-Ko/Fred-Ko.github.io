@@ -1,4 +1,5 @@
 ---
+post_id: 21c8cf67-262b-5442-abe1-62344d4d9a48
 title: Opentelemetry - AutoInstrumentation ( Nodejs )
 datetime: 2024-12-21T21:02:25.950Z
 tags:

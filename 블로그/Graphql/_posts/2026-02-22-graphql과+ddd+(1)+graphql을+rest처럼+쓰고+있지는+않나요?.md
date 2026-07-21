@@ -1,4 +1,5 @@
 ---
+post_id: 250a5b1f-cf36-593d-a54b-90d0410f0add
 title: GraphQL과 DDD (1) - GraphQL을 REST처럼 쓰고 있지는 않나요?
 datetime: 2026-02-22T09:44:55.698Z
 tags:

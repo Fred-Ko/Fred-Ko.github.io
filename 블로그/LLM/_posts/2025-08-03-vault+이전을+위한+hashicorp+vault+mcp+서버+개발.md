@@ -1,4 +1,5 @@
 ---
+post_id: a4d2b394-dc2e-5f0d-8b0a-8853ab37eab1
 title: Vault 이전을 위한 HashiCorp Vault MCP 서버 개발
 datetime: 2025-08-03T19:53:07.569Z
 tags:

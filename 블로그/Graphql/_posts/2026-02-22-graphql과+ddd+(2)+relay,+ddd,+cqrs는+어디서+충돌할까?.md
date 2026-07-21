@@ -1,4 +1,5 @@
 ---
+post_id: 12497aa7-c968-5b9c-b810-855abf04e688
 title: GraphQL과 DDD (2) - Relay, DDD, CQRS는 어디서 충돌할까?
 datetime: 2026-02-22T09:45:20.743Z
 tags:

@@ -1,4 +1,5 @@
 ---
+post_id: ca496374-6551-5aad-a8ed-9b84d6cf7fce
 title: Opentelemetry - Zero-code instrumentation의 NODE_OPTIONS 적용 안되는 문제
 datetime: 2024-12-21T15:32:21.590Z
 tags:

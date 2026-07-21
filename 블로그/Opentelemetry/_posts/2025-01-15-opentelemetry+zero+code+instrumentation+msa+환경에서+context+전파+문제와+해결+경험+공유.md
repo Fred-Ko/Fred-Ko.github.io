@@ -1,4 +1,5 @@
 ---
+post_id: 7cf792cf-e53b-564a-8418-078216555b22
 title: Opentelemetry - Zero-Code Instrumentation MSA 환경에서 Context 전파 문제와 해결 경험 공유
 datetime: 2025-01-15T10:08:53.430Z
 tags:

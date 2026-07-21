@@ -2,9 +2,9 @@
 <div align="center">
 
   <!-- markdownlint-disable-next-line -->
-  # Chirpy Jekyll Theme
+  # Fredko Dev Log
 
-  A minimal, responsive, and feature-rich Jekyll theme for technical writing.
+  Markdown/Jekyll 기반 정적 콘텐츠에 Cloudflare Workers와 D1의 동적 기능을 결합한 개발 블로그입니다.
 
   [![CI](https://img.shields.io/github/actions/workflow/status/cotes2020/jekyll-theme-chirpy/ci.yml?logo=github)][ci]&nbsp;
   [![Codacy Badge](https://img.shields.io/codacy/grade/4e556876a3c54d5e8f2d2857c4f43894?logo=codacy)][codacy]&nbsp;
@@ -17,6 +17,12 @@
   [![Devices Mockup](https://chirpy-img.netlify.app/commons/devices-mockup.png)][demo]
 
 </div>
+
+## Project Architecture
+
+게시물은 기존과 동일하게 `블로그/**/_posts/*.md`에서 작성하고 Git으로 발행합니다. 조회수, 순 방문자, 좋아요, GitHub 로그인 댓글은 `cloudflare/blog-api`가 처리합니다. 웹 기반 게시물 작성 기능은 없습니다.
+
+개발, 인증 설정, D1 migration, 배포 절차는 [`docs/DYNAMIC_BLOG.md`](docs/DYNAMIC_BLOG.md)를 참고하세요.
 
 ## Features
 

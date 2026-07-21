@@ -231,7 +231,7 @@ main {
   overflow-x: auto;
   margin-bottom: 1.5rem;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
   background-color: var(--main-bg);
 
   > table {
@@ -250,6 +250,7 @@ main {
 
       th {
         @extend %table-cell;
+
         font-weight: 600;
         color: var(--tb-header-text, var(--heading-color));
         text-transform: uppercase;
@@ -288,7 +289,7 @@ main {
         &:hover {
           background-color: var(--tb-hover-bg, var(--sidebar-hover-bg));
           transform: scale(1.001);
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
         }
 
         &:last-child {
@@ -297,12 +298,11 @@ main {
 
         td {
           @extend %table-cell;
+
           padding: 0.75rem 1rem;
           transition: color 0.2s ease;
-          word-wrap: break-word;
-          word-break: break-word;
-          white-space: normal;
           overflow-wrap: break-word;
+          white-space: normal;
           border-right: 1.5px solid var(--tb-border-color);
 
           &:first-child {

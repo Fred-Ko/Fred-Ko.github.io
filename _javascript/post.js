@@ -9,6 +9,7 @@ import {
   loadMermaid,
   initCodeProtection
 } from './modules/components';
+import { initDynamicBlog } from './modules/dynamic/blog';
 
 loadImg();
 initToc();
@@ -19,4 +20,5 @@ initClipboard();
 initTopbar();
 loadMermaid();
 initCodeProtection();
+initDynamicBlog();
 basic();

@@ -14,6 +14,7 @@ _site
 # NPM dependencies
 node_modules
 package-lock.json
+!cloudflare/blog-api/package-lock.json
 
 # IDE configurations
 .idea
@@ -26,5 +27,9 @@ package-lock.json
 
 Gemfile.lock
 .omx/
+
+# Cloudflare local state and secrets
+cloudflare/blog-api/.dev.vars
+cloudflare/blog-api/.wrangler/
 
 블로그/.DS_Store

@@ -1,4 +1,5 @@
 ---
+post_id: 949b2b34-a4d0-5ff2-a7d8-a55f8f17aabe
 title: Obsidian Publish에서 GitHub 블로그로
 datetime: 2024-12-17T09:28:59.738Z
 nanoId: EjFgOk9UuO29kS92H7gf4aKET

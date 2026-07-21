@@ -1,4 +1,5 @@
 ---
+post_id: 35c399ee-1118-569f-8c2b-b93ca95b6dc3
 title: GraphQL과 DDD (3) - Cross-domain Query와 Command는 어떻게 풀어야 할까?
 datetime: 2026-02-22T09:45:27.497Z
 tags:

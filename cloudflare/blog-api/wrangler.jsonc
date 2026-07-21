@@ -1,0 +1,27 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "fredko-blog-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-07-14",
+  "workers_dev": true,
+  "routes": [
+    {
+      "pattern": "fredko.kr/api/*",
+      "zone_name": "fredko.kr"
+    }
+  ],
+  "vars": {
+    "SITE_URL": "https://fredko.kr",
+    "SESSION_TTL_DAYS": "30",
+    "COMMENTS_REQUIRE_APPROVAL": "false",
+    "ADMIN_GITHUB_LOGINS": "fred-ko"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "fredko-blog",
+      "database_id": "b4af93a3-5035-4ddf-b660-6377f51f4ad0",
+      "migrations_dir": "migrations"
+    }
+  ]
+}

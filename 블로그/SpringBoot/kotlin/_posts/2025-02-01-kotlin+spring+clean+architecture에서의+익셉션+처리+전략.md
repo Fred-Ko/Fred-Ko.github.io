@@ -1,4 +1,5 @@
 ---
+post_id: 4e624586-6b13-5db7-9d61-14ff0f737dc6
 title: Kotlin Spring Clean Architecture에서의 익셉션 처리 전략
 datetime: 2025-02-01T20:42:33.324Z
 tags:

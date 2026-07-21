@@ -1,4 +1,5 @@
 ---
+post_id: d159b017-37f5-5c97-b55d-27d6d2e96611
 title: 이기종 트랜잭션과 Best-Effort Atomicity
 datetime: 2025-01-24T21:45:35.137Z
 tags:

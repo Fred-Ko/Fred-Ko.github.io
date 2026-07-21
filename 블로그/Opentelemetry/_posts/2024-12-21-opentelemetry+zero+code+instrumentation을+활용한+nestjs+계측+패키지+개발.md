@@ -1,4 +1,5 @@
 ---
+post_id: 850c4ee0-8a04-585b-9d9c-515b898c8865
 title: Opentelemetry - Zero-Code Instrumentation을 활용한 NestJS 계측 패키지 개발
 datetime: 2024-12-21T17:26:12.878Z
 tags:

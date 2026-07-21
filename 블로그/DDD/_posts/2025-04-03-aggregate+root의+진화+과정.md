@@ -1,4 +1,5 @@
 ---
+post_id: cc31893d-dfad-575a-b245-d85f0732d0df
 title: Aggregate Root의 진화 과정
 datetime: 2025-04-03T17:20:42.145Z
 tags:

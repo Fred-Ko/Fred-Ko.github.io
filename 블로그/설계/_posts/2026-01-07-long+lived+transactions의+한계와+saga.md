@@ -1,4 +1,5 @@
 ---
+post_id: 617aa0d1-05fb-5747-9175-80f2ebc40b5e
 title: Long-Lived Transactions의 한계와 Saga
 datetime: 2026-01-07T11:59:48.038Z
 tags:

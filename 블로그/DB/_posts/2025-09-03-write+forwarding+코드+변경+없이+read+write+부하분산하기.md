@@ -1,4 +1,5 @@
 ---
+post_id: 92a46271-1b07-5c8d-9dcc-cf0aa3c1b22a
 title: Write Forwarding - 코드 변경 없이 Read - Write 부하분산하기
 datetime: 2025-09-03T11:44:40.914Z
 tags:

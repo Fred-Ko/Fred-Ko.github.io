@@ -1,4 +1,5 @@
 ---
+post_id: 29a73168-f2d0-5515-b369-50b597d3e899
 title: Obsidian - Cursor(LLM)을 활용에 대한 팁
 datetime: 2024-12-19T13:58:37.030Z
 nanoId: w1fGIy5OgbcqoYV4nvqRsHJZS

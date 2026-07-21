@@ -1,4 +1,5 @@
 ---
+post_id: 332c951f-ef7b-5e5b-926e-cac9a9669202
 title: 파편화된 개발 환경을 통합하자 - mise로 구축하는 No-Shim 통합 환경
 datetime: 2025-12-24T05:51:07.910Z
 tags:

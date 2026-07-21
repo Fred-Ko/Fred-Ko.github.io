@@ -1,0 +1,169 @@
+.dynamic-blog {
+  margin-top: 2.5rem;
+}
+
+.dynamic-stats {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--main-border-color);
+  border-radius: 0.65rem;
+  color: var(--text-muted-color);
+
+  > span,
+  .dynamic-like {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+}
+
+.dynamic-like {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+
+  &[aria-pressed='true'] {
+    color: #dc3545;
+  }
+}
+
+.dynamic-comments {
+  margin-top: 3rem;
+}
+
+.dynamic-comments-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+
+  h2 {
+    margin: 0;
+  }
+
+  [data-auth-state] {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+}
+
+.dynamic-notice {
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  background: var(--prompt-info-bg);
+
+  &.is-error {
+    background: var(--prompt-danger-bg);
+  }
+}
+
+.dynamic-comment-form {
+  margin-bottom: 2rem;
+
+  label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+  }
+
+  textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--btn-border-color);
+    border-radius: 0.5rem;
+    outline: none;
+    resize: vertical;
+    background: var(--main-bg);
+    color: var(--text-color);
+
+    &:focus {
+      border-color: var(--input-focus-border-color);
+      box-shadow: 0 0 0 0.15rem rgb(13 110 253 / 15%);
+    }
+  }
+}
+
+.dynamic-form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.6rem;
+  color: var(--text-muted-color);
+}
+
+.dynamic-comment {
+  display: flex;
+  gap: 0.8rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--main-border-color);
+}
+
+.dynamic-comment-avatar {
+  flex: 0 0 auto;
+  border-radius: 50%;
+}
+
+.dynamic-comment-body {
+  min-width: 0;
+  flex: 1;
+}
+
+.dynamic-comment-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+
+  a {
+    font-weight: 600;
+  }
+
+  time {
+    color: var(--text-muted-color);
+    font-size: 0.85rem;
+  }
+}
+
+.dynamic-comment-content {
+  margin-top: 0.45rem;
+  overflow-wrap: anywhere;
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+  pre {
+    padding: 0.75rem;
+    border-radius: 0.4rem;
+    background: var(--highlight-bg-color);
+  }
+}
+
+.dynamic-comment-actions {
+  display: flex;
+  gap: 0.15rem;
+  margin-top: 0.25rem;
+
+  .btn {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .dynamic-stats {
+    gap: 0.8rem;
+    justify-content: space-between;
+  }
+
+  .dynamic-comments-heading,
+  .dynamic-form-actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

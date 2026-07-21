@@ -1,4 +1,5 @@
 ---
+post_id: 06a27fc6-782e-522e-b676-8f041b97a1b5
 title: SIGNOZ - 보안 제약 환경에서의 OpenTelemetry 기반 자체 모니터링 시스템 구축하기
 datetime: 2025-03-25T10:59:41.193Z
 tags:

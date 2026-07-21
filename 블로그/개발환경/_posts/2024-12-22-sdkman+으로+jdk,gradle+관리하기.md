@@ -1,4 +1,5 @@
 ---
+post_id: cf97c8b2-cf0d-53f0-8a72-da2fe81e2d76
 title: SDKMAN 으로 JDK,Gradle 관리하기
 datetime: 2024-12-22T16:02:47.978Z
 tags:
