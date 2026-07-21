@@ -86,8 +86,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
   {% endunless %}
 
+  {% assign asset_version = site.time | date: '%s' %}
+
   <!-- Theme style -->
-  <link rel="stylesheet" href="{{ '/assets/css/:THEME.css' | replace: ':THEME', site.theme | relative_url }}">
+  <link
+    rel="stylesheet"
+    href="{{ '/assets/css/:THEME.css' | replace: ':THEME', site.theme | relative_url }}?v={{ asset_version }}"
+  >
 
   <!-- Web Font -->
   <link rel="stylesheet" href="{{ site.data.origin[type].webfonts | relative_url }}">
@@ -116,7 +121,7 @@
 
   <!-- Scripts -->
 
-  <script src="{{ '/assets/js/dist/theme.min.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/dist/theme.min.js' | relative_url }}?v={{ asset_version }}"></script>
 
   {% include js-selector.html lang=lang %}
 
