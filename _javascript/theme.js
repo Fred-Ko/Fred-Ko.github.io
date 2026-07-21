@@ -7,7 +7,7 @@ class Theme {
   static #modeKey = 'mode';
   static #modeAttr = 'data-mode';
   static #darkMedia = window.matchMedia('(prefers-color-scheme: dark)');
-  static switchable = !document.documentElement.hasAttribute(this.#modeAttr);
+  static switchable = true;
 
   static get DARK() {
     return 'dark';
@@ -40,6 +40,7 @@ class Theme {
 
   static get #mode() {
     return (
+      localStorage.getItem(this.#modeKey) ||
       sessionStorage.getItem(this.#modeKey) ||
       document.documentElement.getAttribute(this.#modeAttr)
     );
@@ -74,23 +75,6 @@ class Theme {
    * Initializes the theme based on system preferences or stored mode
    */
   static init() {
-    if (!this.switchable) {
-      return;
-    }
-
-    this.#darkMedia.addEventListener('change', () => {
-      const lastMode = this.#mode;
-      this.#clearMode();
-
-      if (lastMode !== this.visualState) {
-        this.#notify();
-      }
-    });
-
-    if (!this.#hasMode) {
-      return;
-    }
-
     if (this.#isDarkMode) {
       this.#setDark();
     } else {
@@ -102,26 +86,23 @@ class Theme {
    * Flips the current theme mode
    */
   static flip() {
-    if (this.#hasMode) {
-      this.#clearMode();
+    if (this.#isDarkMode) {
+      this.#setLight();
     } else {
-      this.#sysDark ? this.#setLight() : this.#setDark();
+      this.#setDark();
     }
     this.#notify();
   }
 
   static #setDark() {
     document.documentElement.setAttribute(this.#modeAttr, this.DARK);
-    sessionStorage.setItem(this.#modeKey, this.DARK);
+    localStorage.setItem(this.#modeKey, this.DARK);
+    sessionStorage.removeItem(this.#modeKey);
   }
 
   static #setLight() {
     document.documentElement.setAttribute(this.#modeAttr, this.LIGHT);
-    sessionStorage.setItem(this.#modeKey, this.LIGHT);
-  }
-
-  static #clearMode() {
-    document.documentElement.removeAttribute(this.#modeAttr);
+    localStorage.setItem(this.#modeKey, this.LIGHT);
     sessionStorage.removeItem(this.#modeKey);
   }
 

@@ -1,23 +1,24 @@
 {
-  "name": "jekyll-theme-chirpy",
-  "version": "7.4.1",
-  "description": "A minimal, responsive, and feature-rich Jekyll theme for technical writing.",
+  "name": "fredko-blog",
+  "version": "0.1.0",
+  "description": "Fredko's Markdown-first engineering blog with a serverless interaction layer.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cotes2020/jekyll-theme-chirpy.git"
+    "url": "git+https://github.com/Fred-Ko/Fred-Ko.github.io.git"
   },
-  "author": "Cotes Chung",
+  "author": "Junho Ko",
   "license": "MIT",
-  "since": 2019,
+  "since": 2026,
   "bugs": {
-    "url": "https://github.com/cotes2020/jekyll-theme-chirpy/issues"
+    "url": "https://github.com/Fred-Ko/Fred-Ko.github.io/issues"
   },
-  "homepage": "https://github.com/cotes2020/jekyll-theme-chirpy/",
+  "homepage": "https://fredko.kr",
   "type": "module",
   "scripts": {
     "build": "concurrently npm:build:*",
     "build:css": "node purgecss.js",
     "build:js": "rollup -c --bundleConfigAsCjs --environment BUILD:production",
+    "highlight:code": "node scripts/shiki-highlight.js _site",
     "watch:js": "rollup -c --bundleConfigAsCjs -w",
     "lint:js": "eslint",
     "lint:scss": "stylelint _sass/**/*.scss",
@@ -42,6 +43,7 @@
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/exec": "^7.1.0",
     "@semantic-release/git": "^10.0.1",
+    "cheerio": "^1.2.0",
     "concurrently": "^9.2.1",
     "conventional-changelog-conventionalcommits": "^9.1.0",
     "eslint": "^9.38.0",
@@ -50,6 +52,7 @@
     "purgecss": "^7.0.2",
     "rollup": "^4.52.5",
     "semantic-release": "^25.0.1",
+    "shiki": "^4.3.1",
     "stylelint": "^16.25.0",
     "stylelint-config-standard-scss": "^16.0.0"
   },

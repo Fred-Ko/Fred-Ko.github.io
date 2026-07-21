@@ -1,13 +1,5 @@
 # Security Policy
 
-## Supported Versions
+보안 문제는 공개 이슈에 자격 증명이나 재현용 비밀값을 포함하지 말고 저장소 관리자에게 비공개로 전달합니다.
 
-| Version    | Supported |
-| :--------- | :-------: |
-| >= `7.0.0` |     ✓     |
-| <= `6.0.0` |     ✗     |
-
-## Reporting a Vulnerability
-
-If you find a vulnerability, please report it to `cotes.chung@gmail.com`.
-We will try our best to respond within a week. Thank you for your time!
+GitHub OAuth client secret, Cloudflare API token, Worker secret은 저장소에 커밋하지 않습니다.

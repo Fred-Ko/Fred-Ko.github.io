@@ -1,7 +1,7 @@
 # The Site Configuration
 
-# Import the theme
-theme: jekyll-theme-chirpy
+# Local Fredko blog theme
+theme: fredko-blog
 
 # The language of the webpage › http://www.lingoes.net/en/translator/langcode.htm
 # If it has the same name as one of the files in folder `_data/locales`, the layout language will also be changed,
@@ -41,6 +41,7 @@ social:
     # The first element serves as the copyright owner's link
     # - https://twitter.com/username # change to your Twitter homepage
     - https://github.com/fred-ko # change to your GitHub homepage
+    - https://www.linkedin.com/in/junho-ko-30b2a3287/
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
@@ -89,7 +90,7 @@ analytics:
 #     light — Use the light color scheme
 #     dark — Use the dark color scheme
 #
-theme_mode: # [light | dark]
+theme_mode: dark # [light | dark]
 
 # The CDN endpoint for media resources.
 # Notice that once it is assigned, the CDN url
@@ -114,7 +115,7 @@ dynamic_blog:
   api_base: /api
   view_delay_ms: 8000
 
-# Self-hosted static assets, optional › https://github.com/cotes2020/chirpy-static-assets
+# Optional origin for externally hosted static assets
 assets:
   self_host:
     enabled: # boolean, keep empty means false
@@ -132,7 +133,7 @@ pwa:
     deny_paths:
       # - "/example"  # URLs match `<SITE_URL>/example/*` will not be cached by the PWA
 
-paginate: 8
+paginate: 20
 
 # The base URL of your site
 # baseurl: "fredko.kr"

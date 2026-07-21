@@ -33,3 +33,7 @@ cloudflare/blog-api/.dev.vars
 cloudflare/blog-api/.wrangler/
 
 블로그/.DS_Store
+
+# This repository is an application as well as a local theme. Keep builds reproducible.
+!Gemfile.lock
+!package-lock.json
