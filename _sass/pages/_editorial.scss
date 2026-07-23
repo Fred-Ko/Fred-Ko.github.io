@@ -1428,8 +1428,7 @@ body:not(.layout-home):not(.layout-post) {
     height: max(38rem, calc(100svh - 4rem));
   }
 
-  .home-hero-inner,
-  .home-section {
+  .home-hero-inner {
     width: min(100% - 2rem, 90rem);
   }
 
@@ -1479,12 +1478,22 @@ body:not(.layout-home):not(.layout-post) {
   .writing-row > a {
     min-height: 9rem;
     padding: 1.5rem 0;
-    grid-template-columns: 2.5rem minmax(0, 1fr) 1.5rem;
+    grid-template-columns: minmax(0, 1fr);
 
     &:hover {
-      padding-right: 0.5rem;
-      padding-left: 0.5rem;
+      padding-right: 0;
+      padding-left: 0;
     }
+  }
+
+  .writing-index,
+  .writing-arrow {
+    display: none;
+  }
+
+  .writing-info h3 {
+    font-size: 1.125rem;
+    line-height: 1.35;
   }
 
   .writing-meta {
