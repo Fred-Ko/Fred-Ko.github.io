@@ -62,7 +62,7 @@ html[data-mode='dark'] {
   --fredko-switch-bg: rgb(101 117 133 / 16%);
   --fredko-switch-thumb: #000000;
   --fredko-switch-icon: rgb(255 255 245 / 86%);
-  --fredko-switch-offset: 18px;
+  --fredko-switch-offset: 100%;
   --fredko-switch-sun-opacity: 0;
   --fredko-switch-moon-opacity: 1;
   --fredko-body-background:
@@ -1314,6 +1314,73 @@ body:not(.layout-home):not(.layout-post) {
   a {
     color: var(--heading-color);
     font-family: 'Space Grotesk', 'Noto Sans KR', sans-serif;
+  }
+}
+
+@media (min-width: 1200px) {
+  #topbar-wrapper {
+    height: 5.4rem;
+  }
+
+  #topbar.editorial-nav {
+    padding: 0 2.7rem;
+  }
+
+  .editorial-brand {
+    font-size: 1.416rem;
+
+    small {
+      margin-left: 0.78rem;
+      font-size: 0.696rem;
+    }
+  }
+
+  .editorial-nav-links {
+    gap: 2.4rem;
+
+    a {
+      font-size: 0.96rem;
+
+      &::after {
+        bottom: -0.78rem;
+      }
+    }
+  }
+
+  .editorial-nav-actions {
+    gap: 0.6rem;
+    margin-left: 2.4rem;
+  }
+
+  .editorial-theme-toggle {
+    width: 48px;
+    height: 26px;
+    border-radius: 13px;
+  }
+
+  .editorial-theme-check,
+  .editorial-theme-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .editorial-theme-sun,
+  .editorial-theme-moon {
+    top: 4px;
+    left: 4px;
+    width: 14px;
+    height: 14px;
+  }
+
+  #topbar {
+    #search {
+      width: 12.6rem;
+      padding: 0.24rem 0.84rem;
+    }
+
+    #search-input {
+      font-size: 0.9rem;
+    }
   }
 }
 
