@@ -152,7 +152,8 @@ body {
 
 body.layout-post {
   background: var(--fredko-post-bg);
-  -webkit-font-smoothing: auto;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 500;
 }
 
 code,
