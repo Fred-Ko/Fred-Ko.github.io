@@ -1,14 +1,13 @@
 ---
 post_id: 250a5b1f-cf36-593d-a54b-90d0410f0add
 title: GraphQL과 DDD (1) - GraphQL을 REST처럼 쓰고 있지는 않나요?
+description: "GraphQL을 REST처럼 쓰고 있지는 않은지 돌아보고, 그래프 탐색 관점과 Relay Cursor Connection이 왜 설득력 있는지 정리한 GraphQL과 DDD 시리즈 첫 번째 글입니다."
 datetime: 2026-02-22T09:44:55.698Z
 tags:
   - graphql
-  - relay
   - domain-driven-design
+  - relay
   - cursor-pagination
-  - graph-traversal
-  - graphql-schema
 nanoId: BmN8lVtxWOZeJWa8JtA7R9GWx
 permalink: /BmN8lVtxWOZeJWa8JtA7R9GWx/
 ---

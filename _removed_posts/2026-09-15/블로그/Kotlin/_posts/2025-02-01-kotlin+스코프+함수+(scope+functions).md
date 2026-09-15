@@ -1,18 +1,12 @@
 ---
 post_id: c14c4a18-51f0-56bf-8bf4-fd94da448561
 title: Kotlin - 스코프 함수 (Scope Functions)
+description: "Kotlin의 let, apply, run, with, also 스코프 함수의 차이점과 실무 활용 패턴, 자주 발생하는 실수를 예제로 정리했습니다."
 datetime: 2025-01-30T15:33:45.799Z
 tags:
   - kotlin
   - scope-functions
-  - let
-  - apply
-  - run
-  - with
-  - also
   - null-safety
-  - code-readability
-  - maintenance
 nanoId: pVaWbnmfol21w8O7F9vd9orSg
 permalink: /pVaWbnmfol21w8O7F9vd9orSg/
 ---

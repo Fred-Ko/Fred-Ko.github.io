@@ -1,20 +1,15 @@
 ---
 post_id: 949b2b34-a4d0-5ff2-a7d8-a55f8f17aabe
 title: Obsidian Publish에서 GitHub 블로그로
+description: "Obsidian Publish의 비용과 디자인 아쉬움에서 출발해 GitHub Pages 기반 블로그로 이전하기로 결정한 이유와 과정을 정리했습니다."
 datetime: 2024-12-17T09:28:59.738Z
 nanoId: EjFgOk9UuO29kS92H7gf4aKET
 permalink: /EjFgOk9UuO29kS92H7gf4aKET/
 tags:
-  - obsidian-publish
-  - github-blog
+  - obsidian
+  - github-pages
   - jekyll
-  - markdown
   - blogging
-  - plugin-development
-  - automation
-  - efficiency
-  - blog-design
-  - content-management
 ---
 ### Obsidian Publish에서 GitHub 블로그로
 

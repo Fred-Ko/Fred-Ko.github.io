@@ -1,20 +1,15 @@
 ---
 post_id: 74e0bf35-4322-574f-8c4b-7263334f4a3d
 title: OpenTelemetry - OpenTelemetry란?
+description: "마이크로서비스 시대의 Observability 개념과 로그·메트릭·트레이싱을 통합하는 OpenTelemetry의 구성 요소와 동작 방식을 설명합니다."
 datetime: 2024-12-17T14:51:20.749Z
 nanoId: 1n1RxDQUaGnJt7dvoGJOOBaHi
 permalink: /1n1RxDQUaGnJt7dvoGJOOBaHi/
 tags:
-  - observability
   - opentelemetry
-  - microservices-architecture
+  - observability
   - distributed-tracing
-  - logs
-  - metrics
-  - cloud-native
-  - instrumentation
-  - context-propagation
-  - resource
+  - microservices
 ---
 ## Intro
 

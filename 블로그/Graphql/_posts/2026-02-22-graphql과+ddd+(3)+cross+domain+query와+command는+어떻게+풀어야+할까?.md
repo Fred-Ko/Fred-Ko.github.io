@@ -1,15 +1,14 @@
 ---
 post_id: 35c399ee-1118-569f-8c2b-b93ca95b6dc3
 title: GraphQL과 DDD (3) - Cross-domain Query와 Command는 어떻게 풀어야 할까?
+description: "GraphQL과 DDD를 함께 쓸 때 남는 질문인 cross-domain Query와 Command를 Federation과 도메인 경계 관점에서 풀어보는 시리즈 세 번째 글입니다."
 datetime: 2026-02-22T09:45:27.497Z
 tags:
+  - graphql
+  - domain-driven-design
   - graphql-federation
-  - ddd
   - cqrs
   - saga-pattern
-  - domain-events
-  - outbox-pattern
-  - bounded-context
 nanoId: IDB5lqdeRfdEZAP3aXEBjPrvG
 permalink: /IDB5lqdeRfdEZAP3aXEBjPrvG/
 ---

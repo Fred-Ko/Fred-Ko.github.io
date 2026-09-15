@@ -1,18 +1,13 @@
 ---
 post_id: 21c8cf67-262b-5442-abe1-62344d4d9a48
 title: Opentelemetry - AutoInstrumentation ( Nodejs )
+description: "OpenTelemetry Zero-Code Instrumentation으로 Node.js 애플리케이션을 코드 수정 없이 계측하는 방법을 정리했습니다."
 datetime: 2024-12-21T21:02:25.950Z
 tags:
   - opentelemetry
   - nodejs
-  - automatic-instrumentation
+  - zero-code-instrumentation
   - distributed-tracing
-  - monitoring
-  - performance
-  - observability
-  - docker-compose
-  - env-variables
-  - nodejs-development
 nanoId: yjCxVy1uMGz5CUzypKY9rP4Mw
 permalink: /yjCxVy1uMGz5CUzypKY9rP4Mw/
 ---

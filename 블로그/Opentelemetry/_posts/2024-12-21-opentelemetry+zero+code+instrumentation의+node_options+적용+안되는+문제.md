@@ -1,17 +1,12 @@
 ---
 post_id: ca496374-6551-5aad-a8ed-9b84d6cf7fce
 title: Opentelemetry - Zero-code instrumentation의 NODE_OPTIONS 적용 안되는 문제
+description: "NestJS에 OpenTelemetry Zero-Code Instrumentation을 적용할 때 NODE_OPTIONS가 반영되지 않는 문제의 원인과 해결 방법을 다룹니다."
 datetime: 2024-12-21T15:32:21.590Z
 tags:
-  - nestjs
   - opentelemetry
+  - nestjs
   - zero-code-instrumentation
-  - node-options
-  - environment-variables
-  - config-module
-  - auto-instrumentations-node
-  - env-cmd
-  - nodejs
   - troubleshooting
 nanoId: WQRsDo1cgUM3bnp8yzIRUgTSn
 permalink: /WQRsDo1cgUM3bnp8yzIRUgTSn/

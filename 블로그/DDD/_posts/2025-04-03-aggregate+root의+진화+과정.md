@@ -1,18 +1,13 @@
 ---
 post_id: cc31893d-dfad-575a-b245-d85f0732d0df
 title: Aggregate Root의 진화 과정
+description: "DDD의 Aggregate Root 개념을 Account와 Transaction 도메인 예시로 설명하고, Transaction을 하위 엔티티에서 Aggregate Root로 승격시킨 진화 과정을 다룹니다."
 datetime: 2025-04-03T17:20:42.145Z
 tags:
   - domain-driven-design
-  - ddd
   - aggregate-root
-  - transaction
-  - account
-  - microservices-architecture
-  - msa
   - bounded-context
-  - eventual-consistency
-  - distributed-transaction
+  - distributed-transactions
 nanoId: KXrThLdEZX7eKudh2qU19jY4N
 permalink: /KXrThLdEZX7eKudh2qU19jY4N/
 ---

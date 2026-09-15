@@ -1,18 +1,13 @@
 ---
 post_id: 7cf792cf-e53b-564a-8418-078216555b22
 title: Opentelemetry - Zero-Code Instrumentation MSA 환경에서 Context 전파 문제와 해결 경험 공유
+description: "GraphQL Federation 환경에서 Zero-Code Instrumentation 전환 후 발생한 trace context 전파 문제를 해결한 경험을 공유합니다."
 datetime: 2025-01-15T10:08:53.430Z
 tags:
-  - graphql
+  - opentelemetry
+  - graphql-federation
   - zero-code-instrumentation
   - context-propagation
-  - opentelemetry
-  - instrumentation
-  - tracing
-  - distributed-tracing
-  - http-instrumentation
-  - graphql-federation
-  - kafkajs
 nanoId: LlkFX4sjBORTiJzZlamVN2CSB
 permalink: /LlkFX4sjBORTiJzZlamVN2CSB/
 ---

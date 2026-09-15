@@ -1,18 +1,13 @@
 ---
 post_id: cf97c8b2-cf0d-53f0-8a72-da2fe81e2d76
 title: SDKMAN 으로 JDK,Gradle 관리하기
+description: "SDKMAN으로 JVM 기반 언어와 프레임워크, JDK와 Gradle 버전을 쉽게 설치하고 관리하는 방법을 정리했습니다."
 datetime: 2024-12-22T16:02:47.978Z
 tags:
   - sdkman
-  - jvm
   - java
   - gradle
-  - openjdk
-  - terminal
-  - bash
-  - shell
-  - programming
-  - development-tools
+  - version-management
 nanoId: MnDXcl4Q8Fj3KCHUkBcrnOStY
 permalink: /MnDXcl4Q8Fj3KCHUkBcrnOStY/
 ---

@@ -1,17 +1,13 @@
 ---
 post_id: d159b017-37f5-5c97-b55d-27d6d2e96611
 title: 이기종 트랜잭션과 Best-Effort Atomicity
+description: "여러 이기종 시스템에 걸린 트랜잭션의 원자성 보장 문제와 Best-Effort Atomicity 등 현실적인 해법을 정리합니다."
 datetime: 2025-01-24T21:45:35.137Z
 tags:
-  - distributed-systems
-  - transaction-management
+  - distributed-transactions
   - best-effort-atomicity
   - outbox-pattern
-  - heterogeneous-transaction
-  - event-driven-systems
-  - message-queue
   - kafka
-  - database-consistency
 nanoId: sQTxfZtVQb7ctSUNMawPSVMPN
 permalink: /sQTxfZtVQb7ctSUNMawPSVMPN/
 ---

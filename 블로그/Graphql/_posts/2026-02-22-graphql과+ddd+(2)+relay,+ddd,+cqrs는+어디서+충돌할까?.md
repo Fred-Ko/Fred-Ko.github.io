@@ -1,15 +1,14 @@
 ---
 post_id: 12497aa7-c968-5b9c-b810-855abf04e688
 title: GraphQL과 DDD (2) - Relay, DDD, CQRS는 어디서 충돌할까?
+description: "GraphQL, Relay, DDD, CQRS를 함께 사용할 때 도메인 경계, 통합 그래프, command 설계에서 실제로 충돌이 발생하는 지점을 짚어보는 시리즈 두 번째 글입니다."
 datetime: 2026-02-22T09:45:20.743Z
 tags:
   - graphql
+  - domain-driven-design
   - relay
-  - ddd
   - cqrs
-  - bounded-contexts
-  - modular-monolith
-  - graphql-federation
+  - bounded-context
 nanoId: zz7x9WMHUg4YYfPKfVVhYqWc3
 permalink: /zz7x9WMHUg4YYfPKfVVhYqWc3/
 ---

@@ -1,17 +1,12 @@
 ---
 post_id: dc1c133b-7711-5892-a690-5f885ed28595
 title: Kotlin - when
+description: "Kotlin when 표현식의 특징과 활용법을 if-else와 비교해 설명하고, Spring 코틀린 실무에서 유용한 예제를 소개합니다."
 datetime: 2025-02-01T21:29:51.530Z
 tags:
   - kotlin
   - when-expression
-  - spring-kotlin
-  - spring-framework
-  - java-switch-case
-  - if-else-statement
-  - code-readability
-  - maintenance
-  - programming-concepts
+  - spring
 nanoId: DPOrbXV8bZcz2WMtrIoN3Yd8o
 permalink: /DPOrbXV8bZcz2WMtrIoN3Yd8o/
 ---

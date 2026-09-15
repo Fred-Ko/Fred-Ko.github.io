@@ -1,18 +1,13 @@
 ---
 post_id: a4d2b394-dc2e-5f0d-8b0a-8853ab37eab1
 title: Vault 이전을 위한 HashiCorp Vault MCP 서버 개발
+description: "쿠버네티스 클러스터 이전 중 가장 까다로웠던 HashiCorp Vault 시크릿 마이그레이션을 위해 Vault MCP 서버를 직접 개발한 배경, 핵심 기능, 시행착오를 공유합니다."
 datetime: 2025-08-03T19:53:07.569Z
 tags:
-  - kubernetes
   - hashicorp-vault
+  - mcp
+  - kubernetes
   - secret-management
-  - mcp-server
-  - crud-operations
-  - bulk-operations
-  - transaction-management
-  - dry-run-functionality
-  - yaml-dump-import
-  - devops-tools
 nanoId: VdstsXHwadn7TgXzGkhxdVLrk
 permalink: /VdstsXHwadn7TgXzGkhxdVLrk/
 ---

@@ -1,18 +1,13 @@
 ---
 post_id: 850c4ee0-8a04-585b-9d9c-515b898c8865
 title: Opentelemetry - Zero-Code Instrumentation을 활용한 NestJS 계측 패키지 개발
+description: "Zero-Code Instrumentation만으로는 계측되지 않는 NestJS Controller와 Resolver 하위 호출을 개선한 계측 패키지 개발 과정을 공유합니다."
 datetime: 2024-12-21T17:26:12.878Z
 tags:
-  - zero-code-instrumentation
   - opentelemetry
   - nestjs
-  - typescript
-  - compiler-api
-  - ast
-  - regex
-  - filtering
-  - decorator
-  - metadata
+  - zero-code-instrumentation
+  - instrumentation
 nanoId: vhIHDEqcHAMQz1kQnub9xjd3f
 permalink: /vhIHDEqcHAMQz1kQnub9xjd3f/
 ---

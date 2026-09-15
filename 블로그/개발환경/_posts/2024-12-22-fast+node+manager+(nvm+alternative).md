@@ -1,18 +1,12 @@
 ---
 post_id: a89664a8-5bad-5c65-a6e1-10ce76ecc9c5
 title: Fast Node Manager (Nvm Alternative)
+description: "nvm 대안 후보를 직접 비교한 끝에 정착한 fnm(Fast Node Manager)의 특징과 사용법을 소개합니다."
 datetime: 2024-12-22T17:11:52.266Z
 tags:
-  - node-js
-  - fast-node-manager
-  - nvm
-  - volta
-  - node-js-version-management
-  - rust-based-tools
-  - shell-based-tools
-  - linux-environment
-  - macos-environment
-  - windows-support
+  - nodejs
+  - fnm
+  - version-management
 nanoId: ewIpCLwxS9u7f6iptneNLTbiF
 permalink: /ewIpCLwxS9u7f6iptneNLTbiF/
 ---

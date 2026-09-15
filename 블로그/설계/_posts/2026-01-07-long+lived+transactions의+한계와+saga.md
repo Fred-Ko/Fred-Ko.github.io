@@ -1,14 +1,11 @@
 ---
 post_id: 617aa0d1-05fb-5747-9175-80f2ebc40b5e
 title: Long-Lived Transactions의 한계와 Saga
+description: "길어지는 ACID 트랜잭션이 만드는 락 경합과 확장성 한계를 Long-Lived Transactions 관점으로 분석하고 Saga 패턴으로 풀어내는 방법을 다룹니다."
 datetime: 2026-01-07T11:59:48.038Z
 tags:
   - saga-pattern
-  - long-lived-transactions
-  - compensating-transactions
-  - pivot-transaction
-  - forward-recovery
-  - backward-recovery
+  - distributed-transactions
   - database-concurrency
 nanoId: jUbARn1TyHjM47AzUKWO4EZeQ
 permalink: /jUbARn1TyHjM47AzUKWO4EZeQ/

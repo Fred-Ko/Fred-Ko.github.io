@@ -1,18 +1,13 @@
 ---
 post_id: 4e624586-6b13-5db7-9d61-14ff0f737dc6
 title: Kotlin Spring Clean Architecture에서의 익셉션 처리 전략
+description: "Kotlin과 Spring 기반 Clean Architecture에서 계층별 책임에 맞는 익셉션 처리와 에러 전파·복구 전략을 설계하는 방법을 다룹니다."
 datetime: 2025-02-01T20:42:33.324Z
 tags:
-  - clean-architecture
   - kotlin
   - spring
+  - clean-architecture
   - exception-handling
-  - domain-logic
-  - application-services
-  - interface-adapters
-  - infrastructure
-  - single-responsibility-principle
-  - error-propagation
 nanoId: GmvTJLsoKBbUd1OHPFasYES2l
 permalink: /GmvTJLsoKBbUd1OHPFasYES2l/
 ---

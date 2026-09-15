@@ -1,18 +1,14 @@
 ---
 post_id: 92a46271-1b07-5c8d-9dcc-cf0aa3c1b22a
 title: Write Forwarding - 코드 변경 없이 Read - Write 부하분산하기
+description: "AWS Aurora 환경에서 코드 변경 없이 Write Forwarding으로 DB Read/Write 부하를 분산해 단일 인스턴스의 한계를 해결한 실제 도입 경험을 정리했습니다."
 datetime: 2025-09-03T11:44:40.914Z
 tags:
   - database-scaling
-  - write-forwarding
   - aws-aurora
-  - read-replica
-  - proxysql
-  - mysql
-  - gtid
+  - write-forwarding
   - read-after-write
-  - database-consistency
-  - aurora-write-forwarding
+  - mysql
 nanoId: cmceo3miwnU457IcI9LiPDZkY
 permalink: /cmceo3miwnU457IcI9LiPDZkY/
 ---

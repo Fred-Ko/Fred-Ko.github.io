@@ -1,18 +1,12 @@
 ---
 post_id: 7a434d04-a99a-5cc9-87eb-9947604d6856
 title: Volta (NVM Alternative)
+description: "nvm의 설치 버그를 계기로 갈아탄 Volta의 동작 방식, 프로젝트별 Node 버전 고정 기능과 사용법을 소개합니다."
 datetime: 2024-12-19T01:38:37.743Z
 tags:
-  - node-js
+  - nodejs
   - volta
-  - nvm
-  - package-json
-  - yarn
-  - npm
-  - cross-platform
   - version-management
-  - node-version-manager
-  - volta-shim
 nanoId: YGBY1KdZ7ykvFQ7qxrQXPy7Zm
 permalink: /YGBY1KdZ7ykvFQ7qxrQXPy7Zm/
 ---

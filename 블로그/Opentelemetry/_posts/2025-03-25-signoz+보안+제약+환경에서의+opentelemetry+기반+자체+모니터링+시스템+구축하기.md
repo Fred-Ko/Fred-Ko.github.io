@@ -1,17 +1,13 @@
 ---
 post_id: 06a27fc6-782e-522e-b676-8f041b97a1b5
 title: SIGNOZ - 보안 제약 환경에서의 OpenTelemetry 기반 자체 모니터링 시스템 구축하기
+description: "보안 제약 환경의 CSP에서 OpenTelemetry와 SigNoz 기반으로 자체 모니터링 시스템을 구축한 문제 상황, 솔루션 선택, 운영까지의 과정을 정리했습니다."
 datetime: 2025-03-25T10:59:41.193Z
 tags:
   - opentelemetry
   - signoz
-  - datadog
+  - observability
   - kubernetes
-  - docker-compose
-  - cloud-service-provider
-  - logging
-  - metrics
-  - tracing
   - monitoring
 nanoId: pnCF97Gk5Py7lXukcucbpAAPm
 permalink: /pnCF97Gk5Py7lXukcucbpAAPm/

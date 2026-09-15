@@ -1,20 +1,15 @@
 ---
 post_id: 56445099-ee1f-59d4-a9e1-8dae36512da2
 title: Jekyll Exporter Obsidian에서 Jekyll 블로그로의 자동화
+description: "Obsidian에서 작성한 노트를 Jekyll 블로그로 자동 변환·발행하는 Jekyll Exporter 파이프라인 구축 과정을 소개합니다."
 datetime: 2024-12-17T09:28:56.253Z
 nanoId: 6crS1GYctcBpj1m9HPZck9mLg
 permalink: /6crS1GYctcBpj1m9HPZck9mLg/
 tags:
-  - jekyll
   - obsidian
-  - markdown
-  - front-matter
-  - plugin
-  - openai
-  - automation
+  - jekyll
   - blogging
-  - note-taking
-  - productivity
+  - automation
 ---
 ## 들어가며
 

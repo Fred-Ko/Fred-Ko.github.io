@@ -1,19 +1,14 @@
 ---
 post_id: 29a73168-f2d0-5515-b369-50b597d3e899
 title: Obsidian - Cursor(LLM)을 활용에 대한 팁
+description: "Obsidian과 Cursor(LLM)를 함께 활용해 블로그 글쓰기를 효율화하는 방법과 Open With 플러그인, 컨텍스트 관리 팁을 공유합니다."
 datetime: 2024-12-19T13:58:37.030Z
 nanoId: w1fGIy5OgbcqoYV4nvqRsHJZS
 tags:
-  - large-language-model
   - obsidian
   - cursor
-  - artificial-intelligence
-  - productivity
-  - blog-writing
-  - context-management
-  - open-with-plugin
-  - chat-function
-  - composer-function
+  - llm
+  - blogging
 permalink: /w1fGIy5OgbcqoYV4nvqRsHJZS/
 ---
 ### Obsidian - Cursor(LLM)을 활용에 대한 팁

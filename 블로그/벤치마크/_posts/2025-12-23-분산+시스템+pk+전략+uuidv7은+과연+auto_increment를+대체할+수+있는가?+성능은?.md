@@ -1,15 +1,13 @@
 ---
 post_id: b85ea6a3-8458-5be6-9897-acc13a1b44c0
 title: 분산 시스템 PK 전략 - UUIDv7은 과연 AUTO_INCREMENT를 대체할 수 있는가? 성능은?
+description: "분산 시스템에서 AUTO_INCREMENT 대신 UUIDv7을 PK로 쓸 때의 인덱스 성능과 저장 효율을 실제 벤치마크로 비교한 글입니다."
 datetime: 2025-12-23T10:39:58.350Z
 tags:
   - uuidv7
-  - auto-increment
   - mysql
-  - innodb
-  - microservices
-  - b-tree-indexes
-  - performance-benchmarking
+  - database-performance
+  - benchmarking
 nanoId: HmVhyrhAOJoChFINt2TXf1Gwh
 permalink: /HmVhyrhAOJoChFINt2TXf1Gwh/
 ---

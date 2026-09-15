@@ -1,15 +1,12 @@
 ---
 post_id: 332c951f-ef7b-5e5b-926e-cac9a9669202
 title: 파편화된 개발 환경을 통합하자 - mise로 구축하는 No-Shim 통합 환경
+description: "Node는 fnm·Volta, Java는 SDKMAN처럼 파편화된 버전 관리 도구를 mise 하나로 통합해 No-Shim 개발 환경을 구축하는 방법을 정리했습니다."
 datetime: 2025-12-24T05:51:07.910Z
 tags:
   - mise
-  - version-managers
-  - no-shim
-  - path-manipulation
-  - rust
-  - cli-tools
-  - devops
+  - version-management
+  - development-environment
 nanoId: seLNccQ9CzXgim9FfSXZeqYFj
 permalink: /seLNccQ9CzXgim9FfSXZeqYFj/
 ---
