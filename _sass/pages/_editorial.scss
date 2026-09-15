@@ -45,6 +45,7 @@ html[data-mode='dark'] {
   --fredko-surface: #101216;
   --fredko-surface-raised: #15181d;
   --fredko-grid: #292c32;
+  --fredko-divider: #474b53;
   --fredko-post-bg: #08090b;
   --fredko-reading-tint: rgb(255 255 255 / 1%);
   --fredko-post-text: #d7d9de;
@@ -104,6 +105,7 @@ html[data-mode='light'] {
   --fredko-surface: #faf7f5;
   --fredko-surface-raised: #ffffff;
   --fredko-grid: #000000;
+  --fredko-divider: #a9a9ad;
   --fredko-post-bg: #faf7f5;
   --fredko-reading-tint: transparent;
   --fredko-post-text: #333333;
@@ -1110,7 +1112,8 @@ footer {
 
   hr {
     margin: 3rem 0 1.75rem;
-    border-color: var(--fredko-grid);
+    border: 0;
+    border-top: 2px solid var(--fredko-divider);
   }
 
   hr + h2,
