@@ -204,6 +204,15 @@ exclude:
   - "package*.json"
   - cloudflare
   - _removed_posts
+  - direct-html-test.html
+  - check-before-load.js
+  - check-browser-extensions.md
+  - compare-html.js
+  - debug-syntax-highlighting.js
+  - final-check.js
+  - find-transformer.js
+  - test-extensions.md
+  - test-specific-extension.js
 
 jekyll-archives:
   enabled: [categories, tags]
