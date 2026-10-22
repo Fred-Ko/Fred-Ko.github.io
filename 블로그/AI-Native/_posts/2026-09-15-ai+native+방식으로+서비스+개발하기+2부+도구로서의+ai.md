@@ -1,5 +1,6 @@
 ---
 title: AI Native 방식으로 서비스 개발하기 - 2부 - 도구로서의 AI
+description: "AI 에이전트와 일하면 개발자는 무엇을 하게 될까. 결정 트리로 요구사항의 갈림길을 펼치고 그 결정을 문서로 남기며 겪은 일들을 이야기합니다."
 datetime: 2026-09-15T16:40:24.005Z
 post_id: bffdd6a8-abe7-42bc-9e05-891847833381
 nanoId: sf3SlrsJR9ymrzfQxKnUyjoMS

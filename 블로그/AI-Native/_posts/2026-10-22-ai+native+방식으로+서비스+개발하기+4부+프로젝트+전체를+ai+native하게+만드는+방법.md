@@ -1,5 +1,6 @@
 ---
 title: AI Native 방식으로 서비스 개발하기 - 4부 - 프로젝트 전체를 AI Native하게 만드는 방법
+description: "BE에서 잘 돌던 AI Native 흐름이 PD, FE까지 포함한 프로젝트 전체에서는 왜 달랐는지, AI가 더 잘해져도 협업이 필요한 이유를 정리했습니다."
 datetime: 2026-10-22T07:18:46.423Z
 post_id: c103ef1b-9a7d-47da-b952-de681360d1a7
 nanoId: dYSMTzahZjBns8DTJXHhTIFHI
