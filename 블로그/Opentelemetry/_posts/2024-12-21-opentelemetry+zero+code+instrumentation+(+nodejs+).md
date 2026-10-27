@@ -115,12 +115,13 @@ OTEL_NODE_ENABLED_INSTRUMENTATIONS="http,express"
 OTEL_NODE_DISABLED_INSTRUMENTATIONS="fs,grpc"
 
 # OTEL_TRACES_SAMPLER: 샘플링 전략을 설정합니다.
-# 가능한 값 예: "always_on", "always_off", "traceidratio", "parentbased_always_on"
+# 가능한 값 예: "always_on", "always_off", "traceidratio", "parentbased_traceidratio"
 # 기본값: "parentbased_always_on"
-OTEL_TRACES_SAMPLER="always_on"
+# 아래 예제는 부모 스팬의 결정을 따르고, 부모가 없는 경우 비율 샘플링을 적용합니다.
+OTEL_TRACES_SAMPLER="parentbased_traceidratio"
 
-# OTEL_TRACES_SAMPLER_ARG: 샘플링 전략에 대한 추가 매개변수를 설정합니다.
-# 예: 샘플링 비율 (0.0 ~ 1.0, 예: "0.1"은 10% 샘플링)
+# OTEL_TRACES_SAMPLER_ARG: 비율 샘플러의 샘플링 비율을 설정합니다.
+# 아래 예제에서는 부모가 없는 새 트레이스의 약 10%를 샘플링합니다.
 # 기본값: 없음
 OTEL_TRACES_SAMPLER_ARG="0.1"
 
