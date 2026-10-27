@@ -82,7 +82,7 @@ import * as path from 'path';
 export const before = (): ts.TransformerFactory<ts.SourceFile> => {
   return (context: ts.TransformationContext): ts.Transformer<ts.SourceFile> => {
     return (sourceFile: ts.SourceFile): ts.SourceFile => {
-      const process: ts.Visitor = (node) => {
+      const visit: ts.Visitor = (node) => {
         if (ts.isClassDeclaration(node) && node.name) {
           const filePath = path.relative(process.cwd(), sourceFile.fileName);
 
@@ -102,11 +102,11 @@ export const before = (): ts.TransformerFactory<ts.SourceFile> => {
           return [node, decoratorStatement];
         }
 
-        return ts.visitEachChild(node, process, context);
+        return ts.visitEachChild(node, visit, context);
       };
 
       const updatedStatements = sourceFile.statements.flatMap((stmt) =>
-        ts.isClassDeclaration(stmt) ? process(stmt) : stmt
+        ts.isClassDeclaration(stmt) ? visit(stmt) : stmt
       ) as ts.Statement[];
 
       return ts.factory.updateSourceFile(

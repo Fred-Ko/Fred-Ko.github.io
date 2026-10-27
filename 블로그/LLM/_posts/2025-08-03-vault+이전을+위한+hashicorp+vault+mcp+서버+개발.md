@@ -83,7 +83,7 @@ npm install -g @fredko/vault-mcp-server
 
 ### Cursor AI IDE에서 사용하기
 
-MCP 설정 파일(`~/.config/Cursor/User/globalStorage/cursor.mcp/config.json`)에 다음을 추가:
+MCP 설정 파일(`~/.cursor/mcp.json`)에 다음을 추가:
 
 ```json
 {

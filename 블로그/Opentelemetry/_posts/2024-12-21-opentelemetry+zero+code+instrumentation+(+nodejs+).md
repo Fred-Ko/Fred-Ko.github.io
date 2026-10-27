@@ -106,7 +106,7 @@ OTEL_NODE_RESOURCE_DETECTORS="all"
 
 # OTEL_NODE_ENABLED_INSTRUMENTATIONS: 활성화할 계측 라이브러리를 쉼표로 구분하여 지정합니다.
 # 예: "http", "express", "mysql", "pg", "redis", "fs", "grpc"
-# 기본값: 모든 지원되는 계측 활성화
+# 기본값: 기본 비활성화 항목을 제외한 지원 계측 활성화
 OTEL_NODE_ENABLED_INSTRUMENTATIONS="http,express"
 
 # OTEL_NODE_DISABLED_INSTRUMENTATIONS: 비활성화할 계측 라이브러리를 쉼표로 구분하여 지정합니다.
@@ -115,8 +115,8 @@ OTEL_NODE_ENABLED_INSTRUMENTATIONS="http,express"
 OTEL_NODE_DISABLED_INSTRUMENTATIONS="fs,grpc"
 
 # OTEL_TRACES_SAMPLER: 샘플링 전략을 설정합니다.
-# 가능한 값: "always_on", "always_off", "traceidratio"
-# 기본값: "always_on"
+# 가능한 값 예: "always_on", "always_off", "traceidratio", "parentbased_always_on"
+# 기본값: "parentbased_always_on"
 OTEL_TRACES_SAMPLER="always_on"
 
 # OTEL_TRACES_SAMPLER_ARG: 샘플링 전략에 대한 추가 매개변수를 설정합니다.
@@ -147,8 +147,8 @@ NODE_OPTIONS="--require @opentelemetry/auto-instrumentations-node/register"
 | **OTEL_SERVICE_NAME**                   | 모니터링 시스템에서 애플리케이션을 식별하는 데 사용될 서비스 이름입니다.                                 |
 | **OTEL_LOG_LEVEL**                      | OpenTelemetry 라이브러리의 로그 출력 수준을 설정합니다. 디버깅 시 유용합니다.                       |
 | **OTEL_NODE_RESOURCE_DETECTORS**        | 애플리케이션이 실행되는 환경에 대한 정보를 자동으로 감지하는 기능을 설정합니다.                             |
-| **OTEL_NODE_ENABLED_INSTRUMENTATIONS**  | 활성화할 특정 라이브러리 계측을 설정합니다. <br>예를 들어, 특정 데이터베이스 드라이버의 모니터링을 제외할 수 있습니다.    |
-| **OTEL_NODE_DISABLED_INSTRUMENTATIONS** | 비활성화할 특정 라이브러리 계측을 설정합니다.                                                |
+| **OTEL_NODE_ENABLED_INSTRUMENTATIONS**  | 활성화할 라이브러리 계측만 지정합니다. <br>목록에 없는 계측은 활성화되지 않습니다.    |
+| **OTEL_NODE_DISABLED_INSTRUMENTATIONS** | 비활성화할 특정 라이브러리 계측을 지정합니다.                                                |
 | **OTEL_TRACES_SAMPLER**                 | 트레이스 샘플링 전략을 설정합니다. 모든 트레이스를 수집하는 대신 <br>특정 비율로 샘플링하여 시스템 부하를 줄일 수 있습니다. |
 | **OTEL_TRACES_SAMPLER_ARG**             | 샘플링 전략에 대한 추가 매개변수를 설정합니다.                                               |
 | **OTEL_PROPAGATORS**                    | 분산 트레이싱 환경에서 요청의 컨텍스트를 전파하는 방식을 정의합니다.                                   |

@@ -16,14 +16,13 @@ permalink: /WQRsDo1cgUM3bnp8yzIRUgTSn/
 
 ### 문제 상황: `npm run start` 시 `NODE_OPTIONS` 무시
 
-OpenTelemetry Zero-Code Instrumentation을 활성화하기 위해서는 일반적으로 `NODE_OPTIONS` 환경 변수를 사용하여 `@opentelemetry/auto-instrumentations-node/register` 모듈을 로드해야 합니다. 다음과 같이 말이죠.
+OpenTelemetry Zero-Code Instrumentation을 활성화하기 위해서는 일반적으로 `NODE_OPTIONS` 환경 변수를 사용하여 `@opentelemetry/auto-instrumentations-node/register` 모듈을 로드해야 합니다. 예를 들어 `.env` 파일에 다음 설정을 두고 NestJS의 `ConfigModule`로 읽는 경우를 생각해볼 수 있습니다.
 
 ```bash
-export NODE_OPTIONS="--require @opentelemetry/auto-instrumentations-node/register"
-npm run start
+NODE_OPTIONS="--require @opentelemetry/auto-instrumentations-node/register"
 ```
 
-하지만 NestJS 프로젝트에서 `package.json`의 `scripts`에 정의된 `start` 명령어를 통해 실행하면 위와 같이 `NODE_OPTIONS`를 설정해도 적용되지 않는 현상이 발생했습니다.
+이 경우 `package.json`의 `scripts`에 정의된 `start` 명령어로 실행하면 계측이 적용되지 않을 수 있습니다.
 
 ```typescript
 @Module({
@@ -44,11 +43,11 @@ export class AppModule {}
 }
 ```
 
-반면, 터미널에서 직접 `export NODE_OPTIONS="--require @opentelemetry/auto-instrumentations-node/register" && npm run start` 명령어를 실행하면 정상적으로 OpenTelemetry가 작동하는 것을 확인할 수 있었습니다.
+터미널에서 `export NODE_OPTIONS="--require @opentelemetry/auto-instrumentations-node/register" && npm run start`로 실행하면 Node.js 시작 전에 환경 변수가 전달됩니다. `export`와 `npm run start`를 같은 셸에서 두 줄로 실행해도 동일합니다.
 
 ### 문제 원인 분석: 환경 변수 적용 시점
 
-이러한 현상의 원인을 분석해 본 결과, 환경 변수 적용 시점의 문제라는 결론에 도달했습니다. NestJS는 일반적으로 `@nestjs/config`와 같은 모듈을 사용하여 `.env` 파일을 로드하고 환경 변수를 주입 받습니다. 하지만 이 과정은 애플리케이션 시작 시점에 이루어지기 때문에, `NODE_OPTIONS`가 필요한 시점보다 늦어 적용되지 않는 것입니다. 즉, OpenTelemetry 자동 계측은 Node.js 프로세스가 시작될 때부터 활성화되어야 하는데, NestJS의 환경 변수 로딩 시점이 이보다 늦어 문제가 발생하는 것입니다.
+이러한 현상의 가능한 원인 중 하나는 환경 변수 적용 시점입니다. NestJS는 일반적으로 `@nestjs/config`와 같은 모듈을 사용하여 `.env` 파일을 로드하고 환경 변수를 주입 받습니다. 하지만 이 과정은 애플리케이션 시작 시점에 이루어지기 때문에, `NODE_OPTIONS`가 필요한 시점보다 늦어 적용되지 않는 것입니다. 즉, `.env`를 `ConfigModule`로만 읽는 경우에는 Node.js가 `NODE_OPTIONS`를 적용할 시점보다 늦게 로드됩니다. 실제 원인은 실행 환경을 확인해야 합니다.
 
 ### 해결 방법 1: `scripts` 명령어 직접 수정
 

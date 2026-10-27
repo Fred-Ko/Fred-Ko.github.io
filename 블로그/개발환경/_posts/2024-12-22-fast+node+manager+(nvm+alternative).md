@@ -60,7 +60,7 @@ fnm install 16
 fnm use 16
 ```
 
-현재 디렉토리의 `.nvmrc` 파일을 참조하여 버전을 자동으로 설정합니다.
+위 명령어는 Node.js v16을 사용합니다. 버전 인자 없이 `fnm use`를 실행하면 현재 디렉토리의 `.nvmrc` 등 버전 파일을 참조합니다.
 
 
 * **설치된 Node.js 버전 목록 확인:**
@@ -88,10 +88,10 @@ fnm uninstall 16
 * **전역 Node.js 버전 설정 (기본 버전 설정):**
 
 ```bash
-fnm use --default 18
+fnm default 18
 ```
 
-위 명령어는 기본적으로 사용할 Node.js 버전을 v18로 설정합니다.  `fnm default 18` 과 같이 사용할 수도 있습니다.
+위 명령어는 기본적으로 사용할 Node.js 버전을 v18로 설정합니다.
 
 * **현재 Node.js 버전 확인:**
 
