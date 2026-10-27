@@ -25,6 +25,7 @@ function main() {
     })
     .catch((err) => {
       console.error('Error during PurgeCSS process:', err);
+      process.exitCode = 1;
     });
 }
 

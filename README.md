@@ -12,13 +12,16 @@
 - Cloudflare Workers + D1 기반 동적 기능
 - GitHub OAuth 댓글
 - GitHub Actions + GitHub Pages 배포
+- 외부 서브모듈 없이 저장소에서 직접 관리하는 정적 라이브러리
 
 ## 로컬 실행
 
 ```bash
-bundle install
-npm ci
-bundle exec jekyll serve --config _config.yml,_config.development.yml
+mise install
+mise exec -- bundle install
+mise exec -- npm ci
+mise exec -- npm run build
+mise exec -- bundle exec jekyll serve --config _config.yml,_config.development.yml
 ```
 
 블로그 API를 함께 실행하려면 별도 터미널에서 다음 명령을 실행합니다.

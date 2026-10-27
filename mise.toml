@@ -1,10 +1,10 @@
 [tools]
-node = "22"
+node = "24"
 ruby = "3.3.11"
 
 [tasks.setup]
 description = "Install Node and Ruby dependencies"
-run = "npm install && bundle install"
+run = "npm ci && bundle install"
 
 [tasks.build]
 description = "Build frontend assets and the Jekyll site"
