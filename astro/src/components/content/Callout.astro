@@ -1,0 +1,17 @@
+---
+/**
+ * Callout — 본문 알림 박스. 스타일은 styles/components.css(.callout)에 있다.
+ * .md 글의 `> [!warning] 제목` 문법도 같은 마크업으로 변환된다.
+ */
+interface Props {
+  type?: 'note' | 'tip' | 'warning' | 'danger';
+  title?: string;
+}
+const { type = 'note', title } = Astro.props;
+const label = { note: 'Note', tip: 'Tip', warning: 'Warning', danger: 'Danger' }[type];
+---
+
+<aside class="callout" data-type={type} role="note">
+  <p class="callout-title">{title ?? label}</p>
+  <div class="callout-body"><slot /></div>
+</aside>

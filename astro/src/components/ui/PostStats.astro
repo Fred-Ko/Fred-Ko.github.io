@@ -1,0 +1,145 @@
+---
+/**
+ * PostStats — 조회수·좋아요·댓글 수. 기존 Cloudflare Worker API(/api/posts/:id/…)를 그대로 쓴다.
+ *  GET  /posts/:id/stats → { views, likes, comments, liked }
+ *  POST /posts/:id/view  (viewDelayMs 뒤 1회)
+ *  PUT|DELETE /posts/:id/like (로그인 필요, 401이면 안내)
+ * API가 없는 환경(로컬 개발, 쇼케이스)에서는 '—'로 남고 오류를 드러내지 않는다.
+ */
+interface Props {
+  postId: string;
+  apiBase?: string;
+  viewDelayMs?: number;
+}
+const { postId, apiBase = '/api', viewDelayMs = 8000 } = Astro.props;
+---
+
+<div class="post-stats" data-post-stats data-post-id={postId} data-api={apiBase} data-view-delay={viewDelayMs}>
+  <span class="stat"><span class="label">Views</span><b data-stat="views">—</b></span>
+  <span class="stat"><span class="label">Comments</span><b data-stat="comments">—</b></span>
+  <button type="button" class="like" aria-pressed="false" data-like disabled>
+    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+      <path d="M12 21s-7.5-4.6-9.5-9.3C1 8 3.4 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.6 0 6 3.5 4.5 7.2C19.5 16.4 12 21 12 21z" />
+    </svg>
+    <b data-stat="likes">—</b>
+    <span class="sr-only">좋아요</span>
+  </button>
+  <p class="notice" role="status" hidden></p>
+</div>
+
+<script>
+  type Stats = { views: number; likes: number; comments: number; liked?: boolean };
+
+  document.querySelectorAll<HTMLElement>('[data-post-stats]').forEach(async (root) => {
+    const { postId, api, viewDelay } = root.dataset;
+    if (!postId || !api) return;
+    const base = `${api.replace(/\/$/, '')}/posts/${encodeURIComponent(postId)}`;
+    const like = root.querySelector<HTMLButtonElement>('[data-like]')!;
+    const notice = root.querySelector<HTMLElement>('.notice')!;
+    const fmt = new Intl.NumberFormat('ko-KR', { notation: 'compact' });
+
+    const render = (s: Stats) => {
+      for (const key of ['views', 'likes', 'comments'] as const) {
+        const el = root.querySelector(`[data-stat="${key}"]`);
+        if (el) el.textContent = fmt.format(Number(s[key] ?? 0));
+      }
+      like.setAttribute('aria-pressed', String(Boolean(s.liked)));
+      like.disabled = false;
+    };
+
+    const request = async (path: string, init?: RequestInit) => {
+      const res = await fetch(`${base}${path}`, { credentials: 'include', ...init });
+      if (!res.ok) throw Object.assign(new Error(String(res.status)), { status: res.status });
+      return (await res.json()) as Stats;
+    };
+
+    try {
+      render(await request('/stats'));
+    } catch {
+      return; // API 없음 — 조용히 '—' 유지
+    }
+
+    setTimeout(() => {
+      request('/view', { method: 'POST' }).then(render).catch(() => {});
+    }, Number(viewDelay ?? 8000));
+
+    like.addEventListener('click', async () => {
+      const liked = like.getAttribute('aria-pressed') === 'true';
+      like.disabled = true;
+      try {
+        render(await request('/like', { method: liked ? 'DELETE' : 'PUT' }));
+        notice.hidden = true;
+      } catch (e) {
+        like.disabled = false;
+        notice.textContent =
+          (e as { status?: number }).status === 401 ? '좋아요는 GitHub 로그인 후 누를 수 있습니다.' : '잠시 후 다시 시도해 주세요.';
+        notice.hidden = false;
+      }
+    });
+  });
+</script>
+
+<style>
+  .post-stats {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2) var(--space-6);
+    font-family: var(--font-display);
+  }
+
+  .stat {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--space-2);
+    color: var(--fg-subtle);
+  }
+
+  b {
+    color: var(--fg-strong);
+    font-size: var(--text-sm);
+    font-variant-numeric: tabular-nums;
+    font-weight: var(--weight-semibold);
+  }
+
+  .like {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: var(--tap-target);
+    padding: 0 var(--space-4);
+    border: var(--border-thin) solid var(--line-control);
+    color: var(--fg-muted);
+  }
+
+  .like svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+  }
+
+  .like:hover:not(:disabled) {
+    border-color: var(--hover-border);
+    color: var(--fg-strong);
+  }
+
+  .like[aria-pressed='true'] {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .like[aria-pressed='true'] svg {
+    fill: currentColor;
+  }
+
+  .like:disabled {
+    cursor: default;
+    opacity: 0.6;
+  }
+
+  .notice {
+    flex-basis: 100%;
+    color: var(--fg-muted);
+    font-size: var(--text-xs);
+  }
+</style>

@@ -1,7 +1,14 @@
+/*
+ * 레이어 순서: 뒤에 올수록 우선한다.
+ * Astro 컴포넌트의 scoped <style>은 레이어 밖(unlayered)이라 항상 이 레이어들보다 우선한다.
+ */
+@layer reset, tokens, base, prose, components, utilities;
+
 @import '@fontsource-variable/space-grotesk';
-@import '@fontsource-variable/noto-sans-kr';
+@import 'pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css';
 @import './tokens.css';
 @import './prose.css';
+@import './components.css';
 
 @font-face {
   font-family: 'D2Coding Web';
@@ -11,159 +18,228 @@
   src: url('/fonts/D2Coding-Regular.woff2') format('woff2');
 }
 
-/* ───────── Reset ───────── */
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+/* 페이지 간 이동 시 View Transitions (지원 브라우저만, 나머지는 일반 이동) */
+@view-transition {
+  navigation: auto;
 }
 
-* {
-  margin: 0;
-}
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-html {
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-  scroll-padding-top: var(--space-24);
-}
+  * {
+    margin: 0;
+  }
 
-@media (prefers-reduced-motion: no-preference) {
   html {
-    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-padding-top: calc(var(--topbar-height) + var(--space-6));
+    interpolate-size: allow-keywords; /* height: auto 애니메이션(details 등) */
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  img,
+  picture,
+  video,
+  svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+    color: inherit;
+  }
+
+  button {
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+  }
+
+  dialog {
+    padding: 0;
+    border: 0;
   }
 }
 
-body {
-  min-height: 100svh;
-  overflow-x: clip;
-  background: var(--bg-body);
-  color: var(--fg);
-  font-family: var(--font-body);
-  font-size: var(--text-base);
-  line-height: var(--leading-normal);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  transition:
-    background-color var(--duration-base) var(--ease-standard),
-    color var(--duration-base) var(--ease-standard);
+@layer base {
+  body {
+    min-height: 100svh;
+    overflow-x: clip;
+    background:
+      radial-gradient(circle at 15% -10%, var(--bg-glow), transparent 28rem),
+      var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    letter-spacing: var(--tracking-body);
+    line-height: var(--leading-normal);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* 한국어: 어절 단위 줄바꿈, 넘치는 긴 토큰(URL 등)만 강제 분리 */
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+    line-break: strict;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--fg-strong);
+    font-family: var(--font-display);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-heading);
+    line-height: var(--leading-heading);
+    text-wrap: balance;
+  }
+
+  p,
+  li,
+  dd {
+    text-wrap: pretty;
+  }
+
+  a {
+    color: inherit;
+    transition:
+      color var(--duration-fast) var(--ease-standard),
+      border-color var(--duration-fast) var(--ease-standard),
+      background-color var(--duration-fast) var(--ease-standard),
+      transform var(--duration-fast) var(--ease-standard);
+  }
+
+  code,
+  kbd,
+  pre,
+  samp {
+    font-family: var(--font-mono);
+    font-variant-ligatures: none;
+    letter-spacing: 0;
+    word-break: normal;
+  }
+
+  ::selection {
+    background: var(--selection-bg);
+  }
+
+  :focus-visible {
+    outline: var(--border-thick) solid var(--focus-ring);
+    outline-offset: 3px;
+  }
 }
 
-img,
-picture,
-video,
-svg {
-  display: block;
-  max-width: 100%;
-  height: auto;
+@layer utilities {
+  .container {
+    width: min(100% - 2 * var(--gutter), var(--width-wide));
+    margin-inline: auto;
+  }
+
+  .container-prose {
+    width: min(100% - 2 * var(--gutter), var(--width-prose));
+    margin-inline: auto;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .skip-link {
+    position: absolute;
+    top: var(--space-2);
+    left: var(--space-2);
+    z-index: var(--z-overlay);
+    padding: var(--space-2) var(--space-4);
+    background: var(--accent);
+    color: var(--accent-fg);
+    font-family: var(--font-display);
+    font-size: var(--text-xs);
+    transform: translateY(-200%);
+  }
+
+  .skip-link:focus {
+    transform: none;
+  }
+
+  /* 대문자 라벨 — Kicker, 메타, 패널 헤딩 공통 */
+  .label {
+    font-family: var(--font-display);
+    font-size: var(--text-2xs);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-label);
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
 }
 
-input,
-button,
-textarea,
-select {
-  font: inherit;
-  color: inherit;
-}
+/* ───────── Print ───────── */
+@media print {
+  :root {
+    color-scheme: light;
+  }
 
-button {
-  cursor: pointer;
-  background: none;
-  border: 0;
-  padding: 0;
-}
+  body {
+    background: none;
+  }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: var(--fg-strong);
-  font-family: var(--font-display);
-  font-weight: var(--weight-semibold);
-  letter-spacing: var(--tracking-heading);
-  line-height: var(--leading-heading);
-  text-wrap: balance;
-}
+  .site-header,
+  .reading-progress,
+  .toc,
+  .post-aside,
+  .post-stats,
+  .post-nav,
+  .code-copy,
+  .heading-anchor,
+  [data-no-print] {
+    display: none !important;
+  }
 
-p {
-  text-wrap: pretty;
-}
+  .prose {
+    font-size: 11pt;
+  }
 
-a {
-  color: inherit;
-  transition:
-    color var(--duration-fast) var(--ease-standard),
-    border-color var(--duration-fast) var(--ease-standard),
-    background-color var(--duration-fast) var(--ease-standard),
-    transform var(--duration-fast) var(--ease-standard);
-}
+  .prose a[href^='http']::after {
+    content: ' (' attr(href) ')';
+    color: #555;
+    font-size: 0.85em;
+  }
 
-code,
-kbd,
-pre,
-samp {
-  font-family: var(--font-mono);
-  font-variant-ligatures: none;
-}
+  .prose pre,
+  .prose .table-wrapper,
+  .prose figure {
+    break-inside: avoid;
+  }
 
-::selection {
-  background: var(--selection-bg);
-}
+  .prose :is(h2, h3) {
+    break-after: avoid;
+  }
 
-:focus-visible {
-  outline: var(--border-thick) solid var(--focus-ring);
-  outline-offset: 3px;
-}
-
-/* ───────── Utilities ───────── */
-
-.container {
-  width: min(100% - 2 * var(--gutter), var(--width-wide));
-  margin-inline: auto;
-}
-
-.container-prose {
-  width: min(100% - 2 * var(--gutter), var(--width-prose));
-  margin-inline: auto;
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-.skip-link {
-  position: absolute;
-  top: var(--space-2);
-  left: var(--space-2);
-  z-index: var(--z-overlay);
-  padding: var(--space-2) var(--space-4);
-  background: var(--accent);
-  color: var(--accent-fg);
-  font-family: var(--font-display);
-  font-size: var(--text-xs);
-  transform: translateY(-200%);
-}
-
-.skip-link:focus {
-  transform: none;
-}
-
-/* 영문 대문자 라벨 — Kicker, 메타, 패널 헤딩의 공통 서체 규칙 */
-.label {
-  font-family: var(--font-display);
-  font-size: var(--text-2xs);
-  font-weight: var(--weight-semibold);
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
+  .code-block[data-collapsed] pre {
+    max-height: none !important;
+  }
 }

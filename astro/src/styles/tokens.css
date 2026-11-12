@@ -1,264 +1,237 @@
 /*
- * Fredko Design Tokens
+ * Fredko Design Tokens (v0.2)
  *
- * 2계층 구조:
- *   1) Primitive  — 원시 값(팔레트, 스케일). 컴포넌트에서 직접 참조하지 않는다.
- *   2) Semantic   — 역할 이름(--bg, --fg, --accent …). 컴포넌트는 이것만 쓴다.
+ * 구조
+ *   1) Primitive — OKLCH 원시 팔레트와 스케일. 컴포넌트에서 직접 참조하지 않는다.
+ *   2) Semantic  — 역할 이름. light-dark()로 두 테마 값을 한 줄에 정의한다.
  *
- * 테마: 기본은 다크(현재 블로그의 theme_mode: dark).
- *       html[data-theme='light']가 시맨틱 토큰만 다시 매핑한다.
- * 출처: Jekyll 테마 _sass/pages/_editorial.scss의 --fredko-* 변수를 정리한 것.
+ * 테마 결정
+ *   - 기본: 시스템 설정(color-scheme: light dark)
+ *   - html[data-theme='light' | 'dark']: 사용자가 고른 테마로 고정
+ *   light-dark()는 요소의 color-scheme을 따르므로 [data-theme] 셀렉터 분기가 필요 없다.
+ *
+ * 대비(WCAG, 본문 배경 기준): 본문 14.1/11.9, 메타 5.4/5.0 — 모두 AA 이상.
  */
 
-/* ───────────────────────── 1. Primitive ───────────────────────── */
+@layer tokens {
+  /* ───────────────────────── 1. Primitive ───────────────────────── */
 
-:root {
-  /* Ink — 다크 표면과 텍스트 */
-  --ink-1000: #050607;
-  --ink-950: #08090b;
-  --ink-925: #0b0d10;
-  --ink-900: #0c0e11;
-  --ink-875: #101216;
-  --ink-850: #111318;
-  --ink-825: #15181d;
-  --ink-800: #181b20;
-  --ink-700: #292c32;
-  --ink-650: #30343b;
-  --ink-600: #474b53;
-  --ink-500: #69707a;
-  --ink-450: #7f858f;
-  --ink-300: #aeb3bc;
-  --ink-250: #bfc3ca;
-  --ink-200: #c9ccd2;
-  --ink-150: #d7d9de;
-  --ink-100: #f1f2ee;
-
-  /* Paper — 라이트 표면 */
-  --paper-0: #ffffff;
-  --paper-50: #faf7f5;
-  --paper-100: #f3f0ee;
-
-  /* Graphite — 라이트 텍스트·선 */
-  --graphite-1000: #000000;
-  --graphite-800: #333333;
-  --graphite-600: #666666;
-  --graphite-500: #999999;
-  --graphite-400: #a9a9ad;
-  --graphite-300: #c2c2c4;
-
-  /* Signal — 포인트 컬러 */
-  --lime-400: #d8ff3e;
-  --lime-300: #ddff63;
-  --ember-500: #ff6b35;
-  --sky-950: #121820;
-  --rust-950: #261213;
-  --amber-950: #221b0d;
-
-  /* Typography */
-  --font-display: 'Space Grotesk Variable', 'Noto Sans KR Variable', system-ui, sans-serif;
-  --font-body: 'Noto Sans KR Variable', 'Apple SD Gothic Neo', system-ui, sans-serif;
-  --font-mono: 'D2Coding Web', ui-monospace, 'SFMono-Regular', Menlo, monospace;
-
-  --text-micro: 0.64rem;   /* 패널 헤딩, 인덱스 번호 */
-  --text-2xs: 0.7rem;      /* 메타 라벨 */
-  --text-xs: 0.78rem;      /* 태그, 캡션 */
-  --text-sm: 0.875rem;     /* 코드, 표 */
-  --text-base: 1rem;
-  --text-prose: 1.0625rem; /* 본문 */
-  --text-lg: 1.1rem;       /* 리드 문단, h4 */
-  --text-xl: clamp(1.2rem, 2vw, 1.35rem);      /* h3 */
-  --text-2xl: clamp(1.55rem, 2.5vw, 1.8rem);   /* h2 */
-  --text-3xl: clamp(1.25rem, 2.5vw, 2.15rem);  /* 목록 제목 */
-  --text-4xl: clamp(2.4rem, 4.4vw, 3.35rem);   /* 포스트 제목 */
-  --text-5xl: clamp(3rem, 6vw, 6rem);          /* 섹션 제목 */
-  --text-hero: clamp(5rem, 10.8vw, 10.8rem);   /* 홈 히어로 */
-
-  --weight-regular: 400;
-  --weight-medium: 500;
-  --weight-semibold: 600;
-  --weight-bold: 700;
-
-  --leading-hero: 0.76;
-  --leading-display: 0.95;
-  --leading-heading: 1.16;
-  --leading-snug: 1.4;
-  --leading-normal: 1.65;
-  --leading-body: 1.85;
-
-  --tracking-hero: -0.085em;
-  --tracking-display: -0.045em;
-  --tracking-heading: -0.035em;
-  --tracking-normal: 0;
-  --tracking-label: 0.12em;
-  --tracking-label-wide: 0.17em;
-
-  /* Spacing — 4px(0.25rem) 기반 */
-  --space-0: 0;
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-5: 1.25rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
-  --space-10: 2.5rem;
-  --space-12: 3rem;
-  --space-16: 4rem;
-  --space-20: 5rem;
-  --space-24: 6rem;
-  --space-30: 7.5rem;
-
-  /* Layout */
-  --width-prose: 48rem;
-  --width-wide: 90rem;
-  --gutter: 1.5rem;
-  --topbar-height: 4.5rem;
-
-  /* Shape — 에디토리얼 스타일은 직각이 원칙 */
-  --radius-none: 0;
-  --radius-pill: 999px; /* 토글 스위치 등 예외 전용 */
-  --border-thin: 1px;
-  --border-thick: 2px;
-
-  /* Motion */
-  --duration-fast: 180ms;
-  --duration-base: 240ms;
-  --ease-standard: ease;
-  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
-
-  /* Z-index */
-  --z-topbar: 100;
-  --z-overlay: 200;
-}
-
-/* ───────────────────────── 2. Semantic: Dark (기본) ───────────────────────── */
-
-:root,
-:root[data-theme='dark'] {
-  color-scheme: dark;
-
-  /* 표면 */
-  --bg: var(--ink-950);
-  --bg-subtle: var(--ink-900);       /* 사이드바, 상단바 바탕 */
-  --bg-raised: var(--ink-875);       /* 카드 */
-  --bg-raised-2: var(--ink-825);     /* 표 헤더, 강조 카드 */
-  --bg-hover: var(--ink-800);
-  --bg-sunken: var(--ink-1000);      /* 입력창, 깊은 영역 */
-  --bg-overlay: rgb(8 9 11 / 88%);   /* 블러 상단바 */
-  --bg-body:
-    radial-gradient(circle at 15% -10%, rgb(216 255 62 / 5%), transparent 28rem),
-    var(--ink-950);
-  --reading-tint: rgb(255 255 255 / 1%);
-
-  /* 텍스트 */
-  --fg-strong: var(--ink-100);       /* 제목 */
-  --fg: var(--ink-200);              /* 일반 텍스트 */
-  --fg-prose: var(--ink-150);        /* 본문 — 장문 가독성용으로 한 단계 밝게 */
-  --fg-muted: var(--ink-300);        /* 보조 텍스트 */
-  --fg-subtle: var(--ink-450);       /* 메타, 캡션 */
-  --fg-faint: var(--ink-500);        /* 줄 번호 */
-
-  /* 선 */
-  --line: var(--ink-700);            /* 그리드 라인(기본 1px) */
-  --line-strong: var(--ink-600);     /* hr 등 강조 구분선 */
-  --line-control: var(--ink-650);    /* 버튼·입력 테두리 */
-
-  /* 포인트 */
-  --accent: var(--lime-400);
-  --accent-fg: var(--ink-950);       /* 포인트 배경 위 텍스트 */
-  --accent-fg-muted: rgb(8 9 11 / 65%);
-  --accent-soft: rgb(216 255 62 / 12%);
-  --warm: var(--ember-500);
-
-  --link: var(--lime-400);
-  --link-underline: rgb(216 255 62 / 38%);
-  --focus-ring: var(--lime-400);
-  --selection-bg: rgb(216 255 62 / 28%);
-
-  /* 코드 */
-  --code-inline: var(--lime-300);
-  --code-frame: #121212;
-  --code-header: #181818;
-
-  /* 표 */
-  --table-bg: var(--ink-925);
-  --table-head: var(--ink-825);
-  --table-hover-bg: #101318;
-  --table-fg: var(--ink-250);
-  --table-hover-fg: var(--ink-100);
-
-  /* 상태(콜아웃) */
-  --note-bg: var(--sky-950);
-  --note-line: var(--lime-400);
-  --tip-bg: rgb(216 255 62 / 6%);
-  --tip-line: var(--lime-400);
-  --warning-bg: var(--amber-950);
-  --warning-line: var(--ember-500);
-  --danger-bg: var(--rust-950);
-  --danger-line: #ff4d4f;
-}
-
-/* ───────────────────────── 3. Semantic: Light ───────────────────────── */
-
-:root[data-theme='light'] {
-  color-scheme: light;
-
-  /* 라이트는 '종이 + 검정 잉크'의 하이 콘트라스트. 포인트 컬러도 검정이다. */
-  --bg: var(--paper-50);
-  --bg-subtle: var(--paper-50);
-  --bg-raised: var(--paper-50);
-  --bg-raised-2: var(--paper-0);
-  --bg-hover: var(--graphite-1000);
-  --bg-sunken: var(--paper-0);
-  --bg-overlay: rgb(250 247 245 / 94%);
-  --bg-body: var(--paper-50);
-  --reading-tint: transparent;
-
-  --fg-strong: var(--graphite-1000);
-  --fg: var(--graphite-800);
-  --fg-prose: var(--graphite-800);
-  --fg-muted: var(--graphite-600);
-  --fg-subtle: var(--graphite-500);
-  --fg-faint: var(--graphite-500);
-
-  --line: var(--graphite-1000);
-  --line-strong: var(--graphite-400);
-  --line-control: var(--graphite-1000);
-
-  --accent: var(--graphite-1000);
-  --accent-fg: var(--paper-0);
-  --accent-fg-muted: rgb(255 255 255 / 62%);
-  --accent-soft: rgb(0 0 0 / 6%);
-  --warm: var(--graphite-1000);
-
-  --link: var(--graphite-1000);
-  --link-underline: rgb(0 0 0 / 28%);
-  --focus-ring: var(--graphite-1000);
-  --selection-bg: rgb(0 0 0 / 14%);
-
-  --code-inline: var(--graphite-1000);
-  --code-frame: var(--paper-0);
-  --code-header: var(--paper-100);
-
-  --table-bg: var(--paper-50);
-  --table-head: var(--paper-50);
-  --table-hover-bg: var(--graphite-1000);
-  --table-fg: var(--graphite-800);
-  --table-hover-fg: var(--paper-0);
-
-  --note-bg: var(--paper-0);
-  --note-line: var(--graphite-1000);
-  --tip-bg: var(--paper-0);
-  --tip-line: var(--graphite-1000);
-  --warning-bg: var(--paper-0);
-  --warning-line: var(--graphite-1000);
-  --danger-bg: var(--paper-0);
-  --danger-line: var(--graphite-1000);
-}
-
-@media (prefers-reduced-motion: reduce) {
   :root {
-    --duration-fast: 0ms;
-    --duration-base: 0ms;
+    /* Ink — 다크 표면과 텍스트 (기존 hex 값을 OKLCH로 변환) */
+    --ink-1000: oklch(12.1% 0.004 245.5);
+    --ink-950: oklch(13.9% 0.005 262.8);
+    --ink-925: oklch(15.8% 0.007 258.4);
+    --ink-900: oklch(16.3% 0.007 258.4);
+    --ink-875: oklch(18.2% 0.009 264.3);
+    --ink-825: oklch(20.8% 0.011 260.7);
+    --ink-800: oklch(22.1% 0.011 260.7);
+    --ink-700: oklch(29.3% 0.012 264.4);
+    --ink-650: oklch(32.4% 0.014 261.7);
+    --ink-600: oklch(41.2% 0.014 264.4);
+    --ink-500: oklch(54.3% 0.018 257.2);
+    --ink-450: oklch(61.5% 0.017 260.7);
+    --ink-300: oklch(76.6% 0.014 262.4);
+    --ink-250: oklch(81.6% 0.011 261.8);
+    --ink-200: oklch(84.5% 0.009 264.5);
+    --ink-150: oklch(88.5% 0.007 268.5);
+    --ink-100: oklch(95.9% 0.005 117.9);
+
+    /* Paper — 라이트 표면 */
+    --paper-0: oklch(100% 0 0);
+    --paper-50: oklch(97.8% 0.004 56.4);
+    --paper-100: oklch(95.7% 0.004 56.4);
+    --paper-150: oklch(93.3% 0.006 59.6);
+
+    /* Graphite — 라이트 텍스트·선 */
+    --graphite-1000: oklch(0% 0 0);
+    --graphite-800: oklch(32.1% 0 0);
+    --graphite-650: oklch(46.4% 0 0);
+    --graphite-550: oklch(52.5% 0 0); /* #6b6b6b — 메타 텍스트 5.0:1 */
+    --graphite-400: oklch(73.6% 0.006 286.3);
+    --graphite-300: oklch(81% 0.004 286);
+
+    /* Signal */
+    --lime-400: oklch(94% 0.208 120.9);
+    --ember-500: oklch(70.5% 0.193 39.2);
+    --red-500: oklch(66% 0.2 25);
+
+    /* Code frame (vitesse-dark 배경과 맞춤) */
+    --code-ink: oklch(18.2% 0 0);
+    --code-ink-header: oklch(20.9% 0 0);
+
+    /* ── Typography ── */
+    --font-display: 'Space Grotesk Variable', 'Pretendard Variable', Pretendard, system-ui, sans-serif;
+    --font-body: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo',
+      system-ui, sans-serif;
+    --font-mono: 'D2Coding Web', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+    /* 최소 크기는 12px(0.75rem). 그 아래 크기는 쓰지 않는다. */
+    --text-2xs: 0.75rem;     /* 라벨, 메타, 인덱스 */
+    --text-xs: 0.8125rem;    /* 태그, 캡션, 줄 번호 */
+    --text-sm: 0.875rem;     /* 코드, 표, 목차 */
+    --text-base: 1rem;
+    --text-prose: clamp(1.0625rem, 1rem + 0.2vw, 1.125rem); /* 본문 17→18px */
+    --text-lg: 1.125rem;     /* 리드 문단, h4 */
+    --text-xl: clamp(1.25rem, 1.1rem + 0.6vw, 1.4rem);    /* h3 */
+    --text-2xl: clamp(1.5rem, 1.25rem + 1vw, 1.875rem);   /* h2 */
+    --text-3xl: clamp(1.25rem, 0.9rem + 1.6vw, 2.125rem); /* 목록 제목 */
+    --text-4xl: clamp(2.25rem, 1.5rem + 3vw, 3.35rem);    /* 포스트 제목 */
+    --text-5xl: clamp(3rem, 1.5rem + 6vw, 6rem);          /* 섹션 제목 */
+    --text-hero: clamp(4.5rem, 1rem + 10.8vw, 10.8rem);   /* 홈 히어로 */
+
+    --weight-regular: 400;
+    --weight-medium: 500;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+
+    --leading-hero: 0.78;
+    --leading-display: 0.95;
+    --leading-heading: 1.2;
+    --leading-snug: 1.45;
+    --leading-normal: 1.65;
+    --leading-body: 1.8;
+
+    --tracking-hero: -0.08em;
+    --tracking-display: -0.04em;
+    --tracking-heading: -0.03em;
+    --tracking-body: -0.011em; /* Pretendard 본문 권장 자간 */
+    --tracking-normal: 0;
+    --tracking-label: 0.1em;
+
+    /* ── Spacing (4px 기반) ── */
+    --space-0: 0;
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-10: 2.5rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-20: 5rem;
+    --space-24: 6rem;
+    --space-30: 7.5rem;
+
+    /* ── Layout ── */
+    --width-prose: 42rem; /* 한국어 한 줄 40자 안팎 */
+    --width-wide: 90rem;
+    --gutter: clamp(1rem, 0.5rem + 2vw, 1.5rem);
+    --topbar-height: 4.5rem;
+    --tap-target: 2.75rem; /* 44px */
+
+    /* ── Shape ── */
+    --radius-none: 0;
+    --radius-pill: 999px; /* 토글 스위치 전용 예외 */
+    --border-thin: 1px;
+    --border-thick: 2px;
+
+    /* ── Motion ── */
+    --duration-fast: 180ms;
+    --duration-base: 240ms;
+    --ease-standard: ease;
+    --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+    --z-topbar: 100;
+    --z-progress: 110;
+    --z-overlay: 200;
+  }
+
+  /* ───────────────────────── 2. Semantic ───────────────────────── */
+
+  :root {
+    color-scheme: light dark;
+
+    /* 표면 */
+    --bg: light-dark(var(--paper-50), var(--ink-950));
+    --bg-subtle: light-dark(var(--paper-100), var(--ink-900));
+    --bg-raised: light-dark(var(--paper-0), var(--ink-875));
+    --bg-raised-2: light-dark(var(--paper-0), var(--ink-825));
+    --bg-hover: light-dark(var(--paper-150), var(--ink-800));
+    --bg-sunken: light-dark(var(--paper-0), var(--ink-1000));
+    --bg-overlay: light-dark(oklch(97.8% 0.004 56.4 / 92%), oklch(13.9% 0.005 262.8 / 88%));
+    --bg-scrim: light-dark(oklch(0% 0 0 / 30%), oklch(0% 0 0 / 60%));
+    --bg-glow: light-dark(transparent, oklch(94% 0.208 120.9 / 5%));
+
+    /* 텍스트 */
+    --fg-strong: light-dark(var(--graphite-1000), var(--ink-100));
+    --fg-prose: light-dark(var(--graphite-800), var(--ink-150));
+    --fg: light-dark(var(--graphite-800), var(--ink-200));
+    --fg-muted: light-dark(var(--graphite-650), var(--ink-300));
+    --fg-subtle: light-dark(var(--graphite-550), var(--ink-450));
+    --fg-faint: light-dark(var(--graphite-400), var(--ink-500)); /* 장식 전용(줄 번호) */
+
+    /* 선 */
+    --line: light-dark(var(--graphite-1000), var(--ink-700));
+    --line-soft: light-dark(var(--graphite-300), var(--ink-700)); /* 본문 내부 구분선 */
+    --line-strong: light-dark(var(--graphite-400), var(--ink-600));
+    --line-control: light-dark(var(--graphite-1000), var(--ink-650));
+
+    /* 포인트 — 라이트는 검정 잉크, 다크는 라임 */
+    --accent: light-dark(var(--graphite-1000), var(--lime-400));
+    --accent-fg: light-dark(var(--paper-0), var(--ink-950));
+    --accent-fg-muted: light-dark(oklch(100% 0 0 / 62%), oklch(13.9% 0.005 262.8 / 65%));
+    --accent-soft: light-dark(oklch(0% 0 0 / 5%), oklch(94% 0.208 120.9 / 10%));
+    --warm: light-dark(var(--graphite-1000), var(--ember-500));
+
+    /* 인터랙션 — 다크는 테두리 강조, 라이트는 검정 반전 */
+    --hover-bg: light-dark(var(--graphite-1000), transparent);
+    --hover-fg: light-dark(var(--paper-0), var(--ink-100));
+    --hover-fg-muted: light-dark(oklch(100% 0 0 / 62%), var(--ink-300));
+    --hover-border: var(--accent);
+
+    /* 링크 / 포커스 */
+    --link: light-dark(var(--graphite-1000), var(--lime-400));
+    --link-underline: light-dark(oklch(0% 0 0 / 30%), oklch(94% 0.208 120.9 / 40%));
+    --focus-ring: var(--accent);
+    --selection-bg: light-dark(oklch(0% 0 0 / 14%), oklch(94% 0.208 120.9 / 28%));
+
+    /* 코드 — 인라인 코드는 링크와 구분되도록 중립색 + 옅은 바탕 */
+    --code-inline-fg: var(--fg-strong);
+    --code-inline-bg: light-dark(oklch(0% 0 0 / 6%), oklch(100% 0 0 / 8%));
+    --code-frame: light-dark(var(--paper-0), var(--code-ink));
+    --code-header: light-dark(var(--paper-100), var(--code-ink-header));
+    --code-highlight: light-dark(oklch(0% 0 0 / 5%), oklch(100% 0 0 / 6%));
+    --code-add: light-dark(oklch(60% 0.15 145 / 14%), oklch(70% 0.17 145 / 14%));
+    --code-remove: light-dark(oklch(60% 0.2 25 / 12%), oklch(66% 0.2 25 / 14%));
+
+    /* 표 */
+    --table-bg: light-dark(var(--paper-50), oklch(15.8% 0.007 258.4));
+    --table-head: light-dark(var(--paper-100), var(--ink-825));
+    --table-hover-bg: light-dark(var(--graphite-1000), oklch(17.6% 0.01 258));
+    --table-fg: light-dark(var(--graphite-800), var(--ink-250));
+    --table-hover-fg: light-dark(var(--paper-0), var(--ink-100));
+
+    /* 상태(콜아웃) */
+    --note-bg: light-dark(var(--paper-0), oklch(19.5% 0.015 250));
+    --note-line: var(--accent);
+    --tip-bg: light-dark(var(--paper-0), oklch(94% 0.208 120.9 / 6%));
+    --tip-line: var(--accent);
+    --warning-bg: light-dark(var(--paper-0), oklch(21% 0.03 80));
+    --warning-line: light-dark(var(--graphite-1000), var(--ember-500));
+    --danger-bg: light-dark(var(--paper-0), oklch(20% 0.04 20));
+    --danger-line: light-dark(var(--graphite-1000), var(--red-500));
+
+    /* 테마 토글 */
+    --toggle-bg: light-dark(oklch(65% 0.02 270 / 14%), oklch(55% 0.03 250 / 16%));
+    --toggle-border: light-dark(var(--graphite-300), oklch(35% 0.005 260));
+    --toggle-active-bg: light-dark(var(--paper-0), var(--ink-950));
+    --toggle-icon: light-dark(oklch(50% 0.01 280), oklch(100% 0.01 100 / 86%));
+  }
+
+  :root[data-theme='light'] {
+    color-scheme: light;
+  }
+
+  :root[data-theme='dark'] {
+    color-scheme: dark;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --duration-fast: 0ms;
+      --duration-base: 0ms;
+    }
   }
 }

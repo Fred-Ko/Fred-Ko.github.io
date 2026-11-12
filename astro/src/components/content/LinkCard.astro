@@ -1,0 +1,77 @@
+---
+/** LinkCard — 카드형 링크. 외부 링크는 도메인을 표시하고 새 탭 아이콘(↗)을 쓴다. */
+interface Props {
+  href: string;
+  title: string;
+  description?: string;
+}
+const { href, title, description } = Astro.props;
+const external = /^https?:\/\//.test(href);
+const domain = external ? new URL(href).hostname.replace(/^www\./, '') : 'fredko.kr';
+---
+
+<a class="link-card" href={href} {...external ? { rel: 'noopener', target: '_blank' } : {}}>
+  <span class="domain label">{domain}</span>
+  <span class="title">{title}</span>
+  {description && <span class="desc">{description}</span>}
+  <span class="arrow" aria-hidden="true">{external ? '↗' : '→'}</span>
+  {external && <span class="sr-only">(새 탭에서 열림)</span>}
+</a>
+
+<style>
+  .link-card {
+    position: relative;
+    display: grid;
+    gap: var(--space-1);
+    margin: var(--space-6) 0;
+    padding: var(--space-5) var(--space-12) var(--space-5) var(--space-5);
+    border: var(--border-thin) solid var(--line);
+    background: var(--bg-raised);
+    text-decoration: none;
+  }
+
+  .domain {
+    color: var(--fg-subtle);
+  }
+
+  .title {
+    color: var(--fg-strong);
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-heading);
+    line-height: var(--leading-snug);
+  }
+
+  .desc {
+    color: var(--fg-muted);
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+  }
+
+  .arrow {
+    position: absolute;
+    top: var(--space-5);
+    right: var(--space-5);
+    color: var(--accent);
+    font-size: 1.25rem;
+    transition: transform var(--duration-fast) var(--ease-standard);
+  }
+
+  .link-card:hover {
+    border-color: var(--hover-border);
+    background: var(--hover-bg);
+  }
+
+  .link-card:hover :is(.title, .arrow) {
+    color: var(--hover-fg);
+  }
+
+  .link-card:hover :is(.domain, .desc) {
+    color: var(--hover-fg-muted);
+  }
+
+  .link-card:hover .arrow {
+    transform: translate(0.2rem, -0.2rem);
+  }
+</style>

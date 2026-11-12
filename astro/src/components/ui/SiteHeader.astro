@@ -1,5 +1,5 @@
 ---
-/** SiteHeader — 상단 고정 바. 브랜드, 주요 탭, 테마 토글. */
+/** SiteHeader — 상단 고정 바. 브랜드, 주요 탭, 검색(⌘K), 테마 선택. */
 import ThemeToggle from './ThemeToggle.astro';
 
 const nav = [
@@ -28,6 +28,12 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
         }
       </ul>
     </nav>
+    <button type="button" class="search-trigger" data-search-open aria-label="검색 (⌘K)">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path>
+      </svg>
+      <kbd class="label">⌘K</kbd>
+    </button>
     <ThemeToggle />
   </div>
 </header>
@@ -40,12 +46,13 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
     border-bottom: var(--border-thin) solid var(--line);
     background: var(--bg-overlay);
     backdrop-filter: blur(12px);
+    view-transition-name: site-header; /* 페이지 이동 중 헤더 고정 */
   }
 
   .inner {
     display: flex;
     align-items: center;
-    gap: var(--space-8);
+    gap: var(--space-6);
     height: var(--topbar-height);
   }
 
@@ -65,6 +72,7 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
   nav {
     margin-left: auto;
     overflow-x: auto;
+    scrollbar-width: none;
   }
 
   ul {
@@ -75,8 +83,9 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
   }
 
   nav a {
+    display: inline-block;
+    padding-block: var(--space-2);
     color: var(--fg-subtle);
-    font-weight: var(--weight-medium);
     text-decoration: none;
     white-space: nowrap;
   }
@@ -93,13 +102,46 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
     text-underline-offset: 0.5em;
   }
 
-  @media (width < 640px) {
+  .search-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    height: 2rem;
+    padding: 0 var(--space-2);
+    border: var(--border-thin) solid var(--line-control);
+    color: var(--fg-subtle);
+  }
+
+  .search-trigger:hover {
+    border-color: var(--hover-border);
+    color: var(--fg-strong);
+  }
+
+  kbd {
+    font-family: var(--font-display);
+  }
+
+  @media (width < 720px) {
     .inner {
-      gap: var(--space-4);
+      gap: var(--space-3);
     }
 
     ul {
       gap: var(--space-4);
+    }
+
+    kbd {
+      display: none;
+    }
+  }
+
+  @media (width < 480px) {
+    nav {
+      display: none; /* 모바일: 탭은 페이지 하단/홈에서 제공 */
+    }
+
+    .search-trigger {
+      margin-left: auto;
     }
   }
 </style>

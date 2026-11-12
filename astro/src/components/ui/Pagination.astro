@@ -52,12 +52,8 @@ const pages = Array.from({ length: last }, (_, i) => i + 1);
   }
 
   a:hover {
-    background: var(--bg-hover);
-    color: var(--fg-strong);
-  }
-
-  :global(:root[data-theme='light']) a:hover {
-    color: var(--accent-fg);
+    background: light-dark(var(--hover-bg), var(--bg-hover));
+    color: var(--hover-fg);
   }
 
   [aria-current='page'] {

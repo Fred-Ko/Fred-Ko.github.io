@@ -1,0 +1,12 @@
+---
+/** Tab — <Tabs> 안의 한 패널. JS가 없으면 라벨과 함께 순서대로 모두 보인다. */
+interface Props {
+  label: string;
+}
+const { label } = Astro.props;
+---
+
+<section class="tab-panel" data-tab-label={label} role="tabpanel">
+  <p class="tab-fallback-label label">{label}</p>
+  <slot />
+</section>

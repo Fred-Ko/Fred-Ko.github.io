@@ -10,7 +10,8 @@ interface Props {
   maxDepth?: 2 | 3 | 4;
 }
 const { headings, maxDepth = 3 } = Astro.props;
-const items = headings.filter((h) => h.depth >= 2 && h.depth <= maxDepth);
+// 각주 제목(GFM이 sr-only로 만드는 footnote-label)은 목차에서 뺀다
+const items = headings.filter((h) => h.depth >= 2 && h.depth <= maxDepth && !h.slug.startsWith('footnote'));
 ---
 
 {
@@ -63,14 +64,14 @@ const items = headings.filter((h) => h.depth >= 2 && h.depth <= maxDepth);
   .toc-heading {
     margin-bottom: var(--space-5);
     color: var(--fg-strong);
-    font-size: var(--text-micro);
-    letter-spacing: 0.15em;
+    font-size: var(--text-2xs);
   }
 
   ul {
     padding: 0;
     list-style: none;
-    font-size: 0.75rem;
+    font-size: var(--text-sm);
+    letter-spacing: var(--tracking-body);
   }
 
   a {

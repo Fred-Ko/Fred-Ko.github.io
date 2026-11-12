@@ -1,0 +1,35 @@
+---
+/**
+ * ReadingProgress — 상단 읽기 진행 바. JS 없이 CSS scroll-driven animation으로만 동작.
+ * 미지원 브라우저에서는 표시하지 않는다.
+ */
+---
+
+<div class="reading-progress" aria-hidden="true"></div>
+
+<style>
+  .reading-progress {
+    display: none;
+  }
+
+  @supports (animation-timeline: scroll()) {
+    .reading-progress {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: var(--z-progress);
+      display: block;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: 0 50%;
+      animation: fredko-reading-progress linear both;
+      animation-timeline: scroll(root block);
+    }
+  }
+
+  @keyframes fredko-reading-progress {
+    to {
+      transform: scaleX(1);
+    }
+  }
+</style>

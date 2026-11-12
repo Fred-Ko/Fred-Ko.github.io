@@ -1,8 +1,9 @@
 ---
 /**
- * WritingRow — 홈/아카이브의 글 목록 한 줄.
- * 호버 시 행 전체가 포인트 컬러로 반전된다(기존 블로그의 시그니처 인터랙션).
- * 반드시 <WritingList>로 감싸서 사용한다.
+ * WritingRow — 글 목록 한 줄. <WritingList> 안에서만 쓴다.
+ * - 호버 시 행 전체가 포인트 컬러로 반전(시그니처 인터랙션)
+ * - 레이아웃은 뷰포트가 아니라 WritingList 컨테이너 폭에 반응(container query)
+ * - transitionName을 주면 포스트 제목과 View Transition으로 이어진다(PostHero에도 같은 값)
  */
 interface Props {
   href: string;
@@ -11,8 +12,9 @@ interface Props {
   date: Date;
   category?: string;
   readingMinutes?: number;
+  transitionName?: string;
 }
-const { href, index, title, date, category, readingMinutes } = Astro.props;
+const { href, index, title, date, category, readingMinutes, transitionName } = Astro.props;
 const dateLabel = date.toLocaleDateString('ko-KR', {
   year: 'numeric',
   month: '2-digit',
@@ -25,11 +27,11 @@ const dateLabel = date.toLocaleDateString('ko-KR', {
   <a href={href}>
     <span class="index">{String(index).padStart(2, '0')}</span>
     <span class="info">
-      <h3>{title}</h3>
+      <h3 style={transitionName ? `view-transition-name: ${transitionName}` : undefined}>{title}</h3>
       <span class="meta">
         <time datetime={date.toISOString()}>{dateLabel}</time>
         {category && <span>{category}</span>}
-        {readingMinutes && <span>{readingMinutes} min read</span>}
+        {readingMinutes && <span>{readingMinutes}분</span>}
       </span>
     </span>
     <span class="arrow" aria-hidden="true">→</span>
@@ -72,9 +74,10 @@ const dateLabel = date.toLocaleDateString('ko-KR', {
 
   .index {
     align-self: start;
+    padding-top: 0.35rem;
     color: var(--fg-subtle);
     font-size: var(--text-2xs);
-    letter-spacing: 0.08em;
+    letter-spacing: var(--tracking-label);
   }
 
   h3 {
@@ -89,9 +92,8 @@ const dateLabel = date.toLocaleDateString('ko-KR', {
     gap: var(--space-4);
     margin-top: var(--space-3);
     color: var(--fg-subtle);
-    font-size: 0.67rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+    font-size: var(--text-2xs);
+    letter-spacing: 0.04em;
   }
 
   a:hover :is(.index, .meta),
@@ -109,7 +111,7 @@ const dateLabel = date.toLocaleDateString('ko-KR', {
     transform: translateX(0.4rem);
   }
 
-  @media (width < 640px) {
+  @container writing (width < 40rem) {
     a {
       grid-template-columns: 2.5rem minmax(0, 1fr);
       min-height: auto;

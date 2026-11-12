@@ -13,20 +13,23 @@ interface Props {
   updated?: Date;
   readingMinutes?: number;
   tags?: string[];
+  /** WritingRow와 같은 값이면 목록 → 포스트 이동 시 제목이 이어진다 */
+  transitionName?: string;
 }
-const { title, description, category, date, updated, readingMinutes, tags = [] } = Astro.props;
+const { title, description, category, date, updated, readingMinutes, tags = [], transitionName } = Astro.props;
 const fmt = (d: Date) =>
   d.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'Asia/Seoul' });
 ---
 
 <header class="post-hero">
   <Kicker align="center" items={[category ?? 'Post', String(date.getFullYear())]} />
-  <h1>{title}</h1>
+  <h1 data-pagefind-meta="title" style={transitionName ? `view-transition-name: ${transitionName}` : undefined}>{title}</h1>
   {description && <p class="desc">{description}</p>}
   <p class="meta">
     <span><time datetime={date.toISOString()}>{fmt(date)}</time></span>
     {updated && <span>수정 <time datetime={updated.toISOString()}>{fmt(updated)}</time></span>}
     {readingMinutes && <span>{readingMinutes}분 분량</span>}
+    <slot name="meta" />
   </p>
   {
     tags.length > 0 && (

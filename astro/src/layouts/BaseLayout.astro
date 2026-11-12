@@ -1,26 +1,60 @@
 ---
 import '../styles/global.css';
 import SiteHeader from '../components/ui/SiteHeader.astro';
+import SearchDialog from '../components/ui/SearchDialog.astro';
+import ReadingProgress from '../components/ui/ReadingProgress.astro';
+import ProseEnhancer from '../components/ui/ProseEnhancer.astro';
 
 interface Props {
   title: string;
   description?: string;
+  /** OG 이미지 경로. 기본은 /og/default.png */
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  /** 긴 글 페이지에서 상단 읽기 진행 바 표시 */
+  progress?: boolean;
 }
-const { title, description = '백엔드 개발자 Fredko의 기술 블로그.' } = Astro.props;
-const fullTitle = title === 'Fredko Dev Log' ? title : `${title} | Fredko Dev Log`;
+const {
+  title,
+  description = '백엔드 개발자 Fredko의 기술 블로그.',
+  ogImage = '/og/default.png',
+  ogType = 'website',
+  progress = false,
+} = Astro.props;
+const siteName = 'Fredko Dev Log';
+const fullTitle = title === siteName ? title : `${title} | ${siteName}`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogUrl = new URL(ogImage, Astro.site);
 ---
 
 <!doctype html>
-<html lang="ko" data-theme="dark">
+<html lang="ko">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#08090b" />
-    <link rel="icon" href="/favicons/favicon.ico" />
+    <link rel="canonical" href={canonical} />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#faf7f5" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#08090b" />
+
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="/favicons/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicons/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" />
     <link rel="preload" href="/fonts/D2Coding-Regular.woff2" as="font" type="font/woff2" crossorigin />
-    <!-- 깜빡임 방지: 첫 페인트 전에 저장된 테마 적용. 기본값은 다크 -->
+
+    <!-- 깜빡임 방지: 첫 페인트 전에 저장된 테마 적용. 저장값이 없으면 시스템 설정을 따른다 -->
     <script is:inline>
       try {
         const saved = localStorage.getItem('theme');
@@ -30,9 +64,12 @@ const fullTitle = title === 'Fredko Dev Log' ? title : `${title} | Fredko Dev Lo
   </head>
   <body>
     <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+    {progress && <ReadingProgress />}
     <SiteHeader />
     <main id="main">
       <slot />
     </main>
+    <SearchDialog />
+    <ProseEnhancer />
   </body>
 </html>

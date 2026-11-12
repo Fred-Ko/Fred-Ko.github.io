@@ -1,0 +1,56 @@
+---
+/**
+ * ProseEnhancer — 빌드 때 만들어진 코드 블록 마크업에 동작을 붙인다(점진적 향상).
+ *  - 복사 버튼 표시 + 클립보드 복사
+ *  - data-collapsible 블록 접기/펼치기
+ * JS가 없으면 복사 버튼은 숨겨진 채, 긴 코드는 전부 펼쳐진 채로 남는다.
+ */
+---
+
+<script>
+  document.querySelectorAll<HTMLElement>('.code-block').forEach((block) => {
+    const pre = block.querySelector('pre');
+    if (!pre) return;
+
+    const copy = block.querySelector<HTMLButtonElement>('.code-copy');
+    if (copy && navigator.clipboard) {
+      copy.hidden = false;
+      copy.addEventListener('click', async () => {
+        const text = [...pre.querySelectorAll('.line')]
+          .filter((l) => !l.classList.contains('remove')) // diff에서 삭제 줄은 복사하지 않음
+          .map((l) => l.textContent)
+          .join('\n');
+        try {
+          await navigator.clipboard.writeText(text);
+          copy.textContent = 'Copied';
+          copy.dataset.copied = '';
+        } catch {
+          copy.textContent = 'Failed';
+        }
+        setTimeout(() => {
+          copy.textContent = 'Copy';
+          delete copy.dataset.copied;
+        }, 1600);
+      });
+    }
+
+    if (block.hasAttribute('data-collapsible')) {
+      block.dataset.collapsed = '';
+      const total = pre.querySelectorAll('.line').length;
+      const toggle = document.createElement('button');
+      toggle.type = 'button';
+      toggle.className = 'code-expand';
+      toggle.setAttribute('aria-expanded', 'false');
+      const label = () =>
+        (toggle.textContent = block.hasAttribute('data-collapsed') ? `펼치기 · ${total}줄` : '접기');
+      label();
+      toggle.addEventListener('click', () => {
+        const collapsed = block.toggleAttribute('data-collapsed');
+        toggle.setAttribute('aria-expanded', String(!collapsed));
+        label();
+        if (collapsed) block.scrollIntoView({ block: 'nearest' });
+      });
+      block.append(toggle);
+    }
+  });
+</script>

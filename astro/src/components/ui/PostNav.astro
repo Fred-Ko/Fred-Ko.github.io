@@ -72,11 +72,20 @@ const { prev, next } = Astro.props;
   }
 
   a.cell:hover {
-    background: var(--bg-hover);
+    background: light-dark(var(--hover-bg), var(--bg-hover));
   }
 
-  :global(:root[data-theme='light']) a.cell:hover :is(.title, .label) {
-    color: var(--accent-fg);
+  a.cell:hover .title {
+    color: var(--hover-fg);
+  }
+
+  a.cell:hover .label {
+    color: light-dark(var(--hover-fg), var(--accent));
+  }
+
+  /* 좁은 공간(사이드바 등)에서도 한 줄 1칸 */
+  .post-nav {
+    container-type: inline-size;
   }
 
   .is-empty {

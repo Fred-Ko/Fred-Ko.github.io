@@ -48,16 +48,12 @@ const Element = href ? 'a' : 'span';
   }
 
   .tag--link:hover {
-    border-color: var(--accent);
-    color: var(--fg-strong);
+    border-color: var(--hover-border);
+    background: var(--hover-bg);
+    color: var(--hover-fg);
   }
 
-  :global(:root[data-theme='light']) .tag--link:hover {
-    background: var(--accent);
-    color: var(--accent-fg);
-  }
-
-  :global(:root[data-theme='light']) .tag--link:hover .tag-count {
-    color: var(--accent-fg-muted);
+  .tag--link:hover .tag-count {
+    color: var(--hover-fg-muted);
   }
 </style>

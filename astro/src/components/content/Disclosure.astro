@@ -1,0 +1,76 @@
+---
+/** Disclosure — 접고 펼치는 부가 내용. 네이티브 <details>라 JS가 필요 없다. */
+interface Props {
+  summary: string;
+  open?: boolean;
+}
+const { summary, open = false } = Astro.props;
+---
+
+<details class="disclosure" open={open}>
+  <summary>{summary}</summary>
+  <div class="disclosure-body"><slot /></div>
+</details>
+
+<style>
+  .disclosure {
+    margin: var(--space-6) 0;
+    border: var(--border-thin) solid var(--line-soft);
+    background: var(--bg-raised);
+  }
+
+  summary {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-height: var(--tap-target);
+    padding: var(--space-2) var(--space-4);
+    color: var(--fg-strong);
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-semibold);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary::before {
+    color: var(--accent);
+    content: '+';
+    font-size: 1.1em;
+    transition: transform var(--duration-fast) var(--ease-standard);
+  }
+
+  .disclosure[open] summary::before {
+    transform: rotate(45deg);
+  }
+
+  summary:hover {
+    background: var(--bg-hover);
+  }
+
+  /* 열고 닫기 애니메이션 (interpolate-size 지원 브라우저) */
+  .disclosure::details-content {
+    block-size: 0;
+    overflow: clip;
+    transition:
+      block-size var(--duration-base) var(--ease-out),
+      content-visibility var(--duration-base) allow-discrete;
+  }
+
+  .disclosure[open]::details-content {
+    block-size: auto;
+  }
+
+  .disclosure-body {
+    padding: var(--space-2) var(--space-4) var(--space-4);
+    border-top: var(--border-thin) solid var(--line-soft);
+  }
+
+  .disclosure-body > :global(:last-child) {
+    margin-bottom: 0;
+  }
+</style>

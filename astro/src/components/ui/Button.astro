@@ -71,12 +71,9 @@ const Element = href ? 'a' : 'button';
   }
 
   .btn--outline:hover {
-    border-color: var(--accent);
-  }
-
-  :global(:root[data-theme='light']) .btn--outline:hover {
-    background: var(--accent);
-    color: var(--accent-fg);
+    border-color: var(--hover-border);
+    background: var(--hover-bg);
+    color: var(--hover-fg);
   }
 
   .btn--ghost {

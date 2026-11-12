@@ -1,5 +1,5 @@
 ---
-/** WritingList — WritingRow를 담는 목록. 상단 그리드 라인을 그린다. */
+/** WritingList — WritingRow 목록. 자식 행이 반응할 컨테이너(container: writing)를 만든다. */
 ---
 
 <ol class="writing-list" role="list">
@@ -10,5 +10,6 @@
   .writing-list {
     padding: 0;
     border-top: var(--border-thin) solid var(--line);
+    container: writing / inline-size;
   }
 </style>
