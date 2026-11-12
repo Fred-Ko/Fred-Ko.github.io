@@ -1,0 +1,63 @@
+---
+/**
+ * Tag — 직각 테두리 태그. href가 있으면 링크, 없으면 정적 라벨.
+ * 호버 시 다크는 포인트(라임) 테두리, 라이트는 검정 반전.
+ */
+interface Props {
+  href?: string;
+  count?: number;
+  size?: 'sm' | 'md';
+}
+const { href, count, size = 'md' } = Astro.props;
+const Element = href ? 'a' : 'span';
+---
+
+<Element href={href} class:list={['tag', `tag--${size}`, { 'tag--link': !!href }]}>
+  <slot />
+  {typeof count === 'number' && <span class="tag-count">{count}</span>}
+</Element>
+
+<style>
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    border: var(--border-thin) solid var(--line);
+    border-radius: var(--radius-none);
+    color: var(--fg-muted);
+    font-family: var(--font-display);
+    line-height: 1.45;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .tag--sm {
+    padding: 0.3rem 0.6rem;
+    font-size: var(--text-xs);
+  }
+
+  .tag--md {
+    padding: 0.48rem 0.78rem;
+    font-size: var(--text-xs);
+  }
+
+  .tag-count {
+    color: var(--fg-subtle);
+    font-size: 0.9em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .tag--link:hover {
+    border-color: var(--accent);
+    color: var(--fg-strong);
+  }
+
+  :global(:root[data-theme='light']) .tag--link:hover {
+    background: var(--accent);
+    color: var(--accent-fg);
+  }
+
+  :global(:root[data-theme='light']) .tag--link:hover .tag-count {
+    color: var(--accent-fg-muted);
+  }
+</style>

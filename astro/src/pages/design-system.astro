@@ -1,0 +1,505 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import Callout from '../components/ui/Callout.astro';
+import Kicker from '../components/ui/Kicker.astro';
+import Pagination from '../components/ui/Pagination.astro';
+import PostHero from '../components/ui/PostHero.astro';
+import PostNav from '../components/ui/PostNav.astro';
+import SectionHeading from '../components/ui/SectionHeading.astro';
+import Tag from '../components/ui/Tag.astro';
+import ThemeToggle from '../components/ui/ThemeToggle.astro';
+import Toc from '../components/ui/Toc.astro';
+import WritingList from '../components/ui/WritingList.astro';
+import WritingRow from '../components/ui/WritingRow.astro';
+import ProseSample, { getHeadings } from '../content/design/prose-sample.mdx';
+
+const colorGroups = [
+  {
+    name: 'Surface',
+    tokens: ['--bg', '--bg-subtle', '--bg-raised', '--bg-raised-2', '--bg-hover', '--bg-sunken', '--code-frame', '--code-header'],
+  },
+  {
+    name: 'Text',
+    tokens: ['--fg-strong', '--fg-prose', '--fg', '--fg-muted', '--fg-subtle', '--fg-faint'],
+  },
+  {
+    name: 'Line',
+    tokens: ['--line', '--line-strong', '--line-control'],
+  },
+  {
+    name: 'Signal',
+    tokens: ['--accent', '--accent-fg', '--warm', '--link', '--code-inline', '--focus-ring'],
+  },
+  {
+    name: 'Status',
+    tokens: ['--note-line', '--tip-line', '--warning-line', '--danger-line', '--note-bg', '--warning-bg', '--danger-bg'],
+  },
+];
+
+const typeScale = [
+  { token: '--text-hero', role: 'Home hero', family: 'display', sample: 'Fredko', tracking: '--tracking-hero', leading: '--leading-hero' },
+  { token: '--text-5xl', role: 'Section title', family: 'display', sample: 'Writing', tracking: '--tracking-display', leading: '--leading-display' },
+  { token: '--text-4xl', role: 'Post title', family: 'display', sample: 'Long-Lived Transactions의 한계와 Saga', tracking: '--tracking-display', leading: '--leading-heading' },
+  { token: '--text-3xl', role: 'List title', family: 'display', sample: '분산 시스템 PK 전략', tracking: '--tracking-heading', leading: '--leading-heading' },
+  { token: '--text-2xl', role: 'Prose h2', family: 'display', sample: '락 경합과 타임아웃', tracking: '--tracking-heading', leading: '--leading-snug' },
+  { token: '--text-xl', role: 'Prose h3', family: 'display', sample: 'Orchestration vs Choreography', tracking: '--tracking-heading', leading: '--leading-snug' },
+  { token: '--text-prose', role: 'Body', family: 'body', sample: '트랜잭션의 길이는 곧 락을 쥐고 있는 시간입니다.', tracking: '--tracking-normal', leading: '--leading-body' },
+  { token: '--text-sm', role: 'Code / Table', family: 'mono', sample: 'val order = Order.create(id)', tracking: '--tracking-normal', leading: '--leading-snug' },
+  { token: '--text-2xs', role: 'Label', family: 'label', sample: 'Database / 2026', tracking: '--tracking-label', leading: '--leading-normal' },
+];
+
+const spacing = ['--space-1', '--space-2', '--space-3', '--space-4', '--space-6', '--space-8', '--space-12', '--space-16', '--space-24', '--space-30'];
+
+const sampleDate = new Date('2026-01-07T11:59:48Z');
+---
+
+<BaseLayout title="Design System" description="Fredko Dev Log의 디자인 토큰과 UI 컴포넌트.">
+  <section class="container ds-hero">
+    <Kicker items={['Fredko', 'Design System', 'v0.1']} />
+    <h1>Editorial<br /><b>Grid.</b></h1>
+    <div class="ds-hero-foot">
+      <p>
+        다크는 잉크 위의 라임, 라이트는 종이 위의 검정.<br />
+        직각, 1px 그리드 라인, 대문자 라벨이 전부입니다.
+      </p>
+      <div class="ds-hero-actions">
+        <span class="label">Theme</span>
+        <ThemeToggle />
+      </div>
+    </div>
+  </section>
+
+  <nav class="container ds-index label" aria-label="섹션">
+    <a href="#color">01 Color</a>
+    <a href="#type">02 Type</a>
+    <a href="#space">03 Space</a>
+    <a href="#components">04 Components</a>
+    <a href="#patterns">05 Patterns</a>
+    <a href="#prose">06 Prose</a>
+  </nav>
+
+  <!-- 01 Color -->
+  <section id="color" class="container ds-section">
+    <SectionHeading title="Color" aside="Semantic tokens · 테마 전환 시 값이 바뀝니다" />
+    {
+      colorGroups.map((group) => (
+        <div class="ds-group">
+          <h3 class="label ds-group-title">{group.name}</h3>
+          <ul class="swatches" role="list">
+            {group.tokens.map((token) => (
+              <li class="swatch">
+                <span class="swatch-chip" style={`background: var(${token})`} />
+                <code class="swatch-name">{token}</code>
+                <code class="swatch-value" data-token={token} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </section>
+
+  <!-- 02 Type -->
+  <section id="type" class="container ds-section">
+    <SectionHeading title="Type" aside="Space Grotesk · Noto Sans KR · D2Coding" />
+    <ul class="type-list" role="list">
+      {
+        typeScale.map((t) => (
+          <li class="type-row">
+            <div class="type-meta">
+              <span class="label">{t.role}</span>
+              <code>{t.token}</code>
+            </div>
+            <p
+              class:list={['type-sample', `type-sample--${t.family}`]}
+              style={`font-size: var(${t.token}); letter-spacing: var(${t.tracking}); line-height: var(${t.leading});`}
+            >
+              {t.sample}
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <!-- 03 Space -->
+  <section id="space" class="container ds-section">
+    <SectionHeading title="Space" aside="4px base · radius 0 · border 1px" />
+    <ul class="space-list" role="list">
+      {
+        spacing.map((token) => (
+          <li>
+            <code>{token}</code>
+            <span class="space-bar" style={`width: var(${token})`} />
+            <code class="swatch-value" data-token={token} />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <!-- 04 Components -->
+  <section id="components" class="container ds-section">
+    <SectionHeading title="Components" aside="src/components/ui" />
+
+    <div class="ds-specimen">
+      <h3 class="label ds-group-title">Button</h3>
+      <div class="ds-row">
+        <Button variant="solid" arrow="→">Read post</Button>
+        <Button variant="outline">Outline</Button>
+        <Button variant="outline" disabled>Disabled</Button>
+        <Button variant="ghost" href="#components" arrow="↓">All writing</Button>
+      </div>
+    </div>
+
+    <div class="ds-specimen">
+      <h3 class="label ds-group-title">Tag</h3>
+      <div class="ds-row">
+        <Tag href="#components">saga-pattern</Tag>
+        <Tag href="#components" count={12}>database</Tag>
+        <Tag size="sm">static</Tag>
+        <Tag size="sm" href="#components">kotlin</Tag>
+      </div>
+    </div>
+
+    <div class="ds-specimen">
+      <h3 class="label ds-group-title">Kicker</h3>
+      <div class="ds-stack">
+        <Kicker items={['Database', '2026']} />
+        <Kicker items={['Archive', '28 posts']} tone="muted" />
+      </div>
+    </div>
+
+    <div class="ds-specimen">
+      <h3 class="label ds-group-title">Callout</h3>
+      <div class="ds-grid-2">
+        <Callout type="note">기본 알림. 맥락을 덧붙일 때 씁니다.</Callout>
+        <Callout type="tip">더 나은 방법을 제안할 때 씁니다.</Callout>
+        <Callout type="warning">실수하기 쉬운 지점을 경고합니다.</Callout>
+        <Callout type="danger">데이터 손실 등 되돌릴 수 없는 위험입니다.</Callout>
+      </div>
+    </div>
+
+    <div class="ds-specimen">
+      <h3 class="label ds-group-title">Pagination</h3>
+      <Pagination current={2} last={4} href={(n) => `#p${n}`} />
+    </div>
+
+    <div class="ds-specimen">
+      <h3 class="label ds-group-title">Post navigation</h3>
+      <PostNav
+        prev={{ href: '#components', title: '분산 시스템 PK 전략: UUIDv7은 auto_increment를 대체할 수 있는가?' }}
+      />
+    </div>
+  </section>
+
+  <!-- 05 Patterns -->
+  <section id="patterns" class="container ds-section">
+    <SectionHeading title="Writing" aside="Pattern · WritingList" />
+    <WritingList>
+      <WritingRow href="#patterns" index={1} title="Long-Lived Transactions의 한계와 Saga" date={sampleDate} category="설계" readingMinutes={12} />
+      <WritingRow href="#patterns" index={2} title="파편화된 개발 환경을 통합하자: mise로 구축하는 No-Shim 환경" date={new Date('2025-12-24')} category="개발환경" readingMinutes={8} />
+      <WritingRow href="#patterns" index={3} title="OpenTelemetry Zero-Code Instrumentation (Node.js)" date={new Date('2024-12-21')} category="Opentelemetry" readingMinutes={10} />
+    </WritingList>
+  </section>
+
+  <!-- 06 Prose -->
+  <section id="prose" class="ds-section">
+    <div class="container">
+      <SectionHeading title="Prose" aside="MDX · Shiki dual theme" />
+    </div>
+    <div class="post-shell">
+      <article class="post-main">
+        <PostHero
+          title="Long-Lived Transactions의 한계와 Saga"
+          description="길어지는 ACID 트랜잭션이 만드는 락 경합과 확장성 한계를 분석하고 Saga 패턴으로 풀어내는 방법을 다룹니다."
+          category="설계"
+          date={sampleDate}
+          readingMinutes={12}
+          tags={['saga-pattern', 'distributed-transactions', 'database-concurrency']}
+        />
+        <div class="prose post-body">
+          <ProseSample />
+        </div>
+      </article>
+      <aside class="post-aside">
+        <Toc headings={getHeadings()} />
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  function fillTokenValues() {
+    const styles = getComputedStyle(document.documentElement);
+    document.querySelectorAll<HTMLElement>('[data-token]').forEach((el) => {
+      el.textContent = styles.getPropertyValue(el.dataset.token!).trim();
+    });
+  }
+  fillTokenValues();
+  new MutationObserver(fillTokenValues).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-theme'],
+  });
+</script>
+
+<style>
+  /* Hero */
+  .ds-hero {
+    padding-block: var(--space-24) var(--space-12);
+  }
+
+  .ds-hero h1 {
+    margin-top: var(--space-6);
+    font-size: var(--text-hero);
+    letter-spacing: var(--tracking-hero);
+    line-height: var(--leading-hero);
+  }
+
+  .ds-hero h1 b {
+    display: inline-block;
+    margin-left: 12.5%;
+    color: var(--accent);
+    font-weight: inherit;
+  }
+
+  .ds-hero-foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: var(--space-8);
+    margin-top: var(--space-16);
+    padding-top: var(--space-6);
+    border-top: var(--border-thin) solid var(--line);
+  }
+
+  .ds-hero-foot p {
+    color: var(--fg-muted);
+    font-size: 0.86rem;
+    line-height: 1.8;
+  }
+
+  .ds-hero-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    color: var(--fg-subtle);
+  }
+
+  /* Section index */
+  .ds-index {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-6);
+    padding-block: var(--space-4);
+    border-bottom: var(--border-thin) solid var(--line);
+  }
+
+  .ds-index a {
+    color: var(--fg-subtle);
+    text-decoration: none;
+  }
+
+  .ds-index a:hover {
+    color: var(--accent);
+  }
+
+  .ds-section {
+    padding-block: var(--space-24);
+    border-bottom: var(--border-thin) solid var(--line);
+  }
+
+  .ds-group + .ds-group,
+  .ds-specimen + .ds-specimen {
+    margin-top: var(--space-12);
+  }
+
+  .ds-group-title {
+    margin-bottom: var(--space-4);
+    color: var(--fg-subtle);
+    font-size: var(--text-2xs);
+    font-weight: var(--weight-semibold);
+    letter-spacing: var(--tracking-label);
+  }
+
+  /* Swatches */
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+    padding: 0;
+    border-top: var(--border-thin) solid var(--line);
+    border-left: var(--border-thin) solid var(--line);
+    list-style: none;
+  }
+
+  .swatch {
+    display: grid;
+    gap: var(--space-1);
+    padding: var(--space-3);
+    border-right: var(--border-thin) solid var(--line);
+    border-bottom: var(--border-thin) solid var(--line);
+  }
+
+  .swatch-chip {
+    display: block;
+    height: 4rem;
+    margin-bottom: var(--space-2);
+    border: var(--border-thin) solid var(--line);
+  }
+
+  .swatch-name {
+    color: var(--fg-strong);
+    font-size: var(--text-xs);
+  }
+
+  .swatch-value {
+    color: var(--fg-subtle);
+    font-size: var(--text-2xs);
+    overflow-wrap: anywhere;
+  }
+
+  /* Type */
+  .type-list {
+    padding: 0;
+    border-top: var(--border-thin) solid var(--line);
+    list-style: none;
+  }
+
+  .type-row {
+    display: grid;
+    grid-template-columns: 11rem minmax(0, 1fr);
+    gap: var(--space-6);
+    align-items: baseline;
+    padding-block: var(--space-6);
+    border-bottom: var(--border-thin) solid var(--line);
+  }
+
+  .type-meta {
+    display: grid;
+    gap: var(--space-1);
+    color: var(--fg-subtle);
+  }
+
+  .type-meta code {
+    font-size: var(--text-xs);
+  }
+
+  .type-sample {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    color: var(--fg-strong);
+  }
+
+  .type-sample--display {
+    font-family: var(--font-display);
+    font-weight: var(--weight-semibold);
+  }
+
+  .type-sample--body {
+    font-family: var(--font-body);
+    font-weight: var(--weight-medium);
+    color: var(--fg-prose);
+  }
+
+  .type-sample--mono {
+    font-family: var(--font-mono);
+    color: var(--code-inline);
+  }
+
+  .type-sample--label {
+    font-family: var(--font-display);
+    font-weight: var(--weight-semibold);
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  @media (width < 640px) {
+    .type-row {
+      grid-template-columns: 1fr;
+      gap: var(--space-2);
+    }
+  }
+
+  /* Space */
+  .space-list {
+    display: grid;
+    gap: var(--space-3);
+    padding: 0;
+    list-style: none;
+  }
+
+  .space-list li {
+    display: grid;
+    grid-template-columns: 7rem 1fr 4rem;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .space-list code {
+    color: var(--fg-subtle);
+    font-size: var(--text-xs);
+  }
+
+  .space-bar {
+    height: 0.75rem;
+    background: var(--accent);
+  }
+
+  /* Specimens */
+  .ds-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .ds-stack {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .ds-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    gap: 0 var(--space-6);
+  }
+
+  .ds-grid-2 :global(.callout) {
+    margin: 0 0 var(--space-6);
+  }
+
+  /* Post shell (prose 데모) */
+  .post-shell {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) min(var(--width-prose), 100% - 2 * var(--gutter)) minmax(0, 1fr);
+  }
+
+  .post-main {
+    grid-column: 2;
+  }
+
+  .post-body {
+    padding-top: 3.75rem;
+    border-top: var(--border-thin) solid var(--line);
+  }
+
+  .post-aside {
+    grid-column: 3;
+    padding-left: var(--space-12);
+  }
+
+  .post-aside :global(.toc) {
+    position: sticky;
+    top: calc(var(--topbar-height) + var(--space-8));
+    max-width: 16rem;
+    margin-top: 28rem;
+  }
+
+  @media (width < 1200px) {
+    .post-aside {
+      display: none;
+    }
+  }
+</style>

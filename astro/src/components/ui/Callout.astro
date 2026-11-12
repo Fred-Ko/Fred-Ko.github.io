@@ -1,0 +1,59 @@
+---
+/**
+ * Callout — MDX 본문용 알림 박스.
+ * <Callout type="warning" title="주의">...</Callout>
+ */
+interface Props {
+  type?: 'note' | 'tip' | 'warning' | 'danger';
+  title?: string;
+}
+const { type = 'note', title } = Astro.props;
+const defaultTitle = { note: 'Note', tip: 'Tip', warning: 'Warning', danger: 'Danger' }[type];
+---
+
+<aside class:list={['callout', `callout--${type}`]} role="note">
+  <p class="callout-title label">{title ?? defaultTitle}</p>
+  <div class="callout-body"><slot /></div>
+</aside>
+
+<style>
+  .callout {
+    margin: var(--space-8) 0;
+    padding: var(--space-5) var(--space-6);
+    border: var(--border-thin) solid var(--line);
+    border-left-width: var(--border-thick);
+    background: var(--callout-bg);
+    border-left-color: var(--callout-line);
+    font-size: 0.98em;
+    line-height: 1.75;
+  }
+
+  .callout--note {
+    --callout-bg: var(--note-bg);
+    --callout-line: var(--note-line);
+  }
+
+  .callout--tip {
+    --callout-bg: var(--tip-bg);
+    --callout-line: var(--tip-line);
+  }
+
+  .callout--warning {
+    --callout-bg: var(--warning-bg);
+    --callout-line: var(--warning-line);
+  }
+
+  .callout--danger {
+    --callout-bg: var(--danger-bg);
+    --callout-line: var(--danger-line);
+  }
+
+  .callout-title {
+    margin-bottom: var(--space-2);
+    color: var(--callout-line);
+  }
+
+  .callout-body > :global(:last-child) {
+    margin-bottom: 0;
+  }
+</style>

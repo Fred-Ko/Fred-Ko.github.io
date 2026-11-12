@@ -1,0 +1,44 @@
+---
+/**
+ * Kicker — 제목 위의 작은 대문자 라벨. 여러 항목을 '/'로 구분한다.
+ * <Kicker items={['Database', '2026.01.07']} />
+ */
+interface Props {
+  items: string[];
+  align?: 'start' | 'center';
+  tone?: 'accent' | 'muted';
+}
+const { items, align = 'start', tone = 'accent' } = Astro.props;
+---
+
+<p class:list={['kicker', 'label', `kicker--${align}`, `kicker--${tone}`]}>
+  {items.map((item) => <span>{item}</span>)}
+</p>
+
+<style>
+  .kicker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    font-size: 0.69rem;
+    letter-spacing: 0.11em;
+  }
+
+  .kicker--center {
+    justify-content: center;
+  }
+
+  .kicker--accent {
+    color: var(--accent);
+  }
+
+  .kicker--muted {
+    color: var(--fg-subtle);
+  }
+
+  span + span::before {
+    margin-right: var(--space-4);
+    color: var(--fg-subtle);
+    content: '/';
+  }
+</style>

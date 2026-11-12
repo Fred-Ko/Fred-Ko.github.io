@@ -1,0 +1,105 @@
+---
+/** SiteHeader — 상단 고정 바. 브랜드, 주요 탭, 테마 토글. */
+import ThemeToggle from './ThemeToggle.astro';
+
+const nav = [
+  { href: '/', label: 'Writing' },
+  { href: '/categories/', label: 'Categories' },
+  { href: '/tags/', label: 'Tags' },
+  { href: '/about/', label: 'About' },
+];
+const path = Astro.url.pathname;
+const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
+---
+
+<header class="site-header">
+  <div class="container inner">
+    <a class="brand" href="/">Fredko<span>.</span></a>
+    <nav aria-label="주 메뉴">
+      <ul role="list">
+        {
+          nav.map((item) => (
+            <li>
+              <a class="label" href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <ThemeToggle />
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-topbar);
+    border-bottom: var(--border-thin) solid var(--line);
+    background: var(--bg-overlay);
+    backdrop-filter: blur(12px);
+  }
+
+  .inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+    height: var(--topbar-height);
+  }
+
+  .brand {
+    color: var(--fg-strong);
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: var(--weight-bold);
+    letter-spacing: -0.05em;
+    text-decoration: none;
+  }
+
+  .brand span {
+    color: var(--accent);
+  }
+
+  nav {
+    margin-left: auto;
+    overflow-x: auto;
+  }
+
+  ul {
+    display: flex;
+    gap: var(--space-6);
+    padding: 0;
+    list-style: none;
+  }
+
+  nav a {
+    color: var(--fg-subtle);
+    font-weight: var(--weight-medium);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  nav a:hover,
+  nav a[aria-current='page'] {
+    color: var(--fg-strong);
+  }
+
+  nav a[aria-current='page'] {
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.5em;
+  }
+
+  @media (width < 640px) {
+    .inner {
+      gap: var(--space-4);
+    }
+
+    ul {
+      gap: var(--space-4);
+    }
+  }
+</style>

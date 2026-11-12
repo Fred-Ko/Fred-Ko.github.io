@@ -1,0 +1,58 @@
+import Callout from '../../components/ui/Callout.astro';
+
+## Intro
+
+단일 DB에서 복잡한 다단계 비즈니스 흐름을 **ACID 트랜잭션**으로 구현하다 보면, 순수 DB 작업만으로도 트랜잭션이 길어지면서 [락 경합](#락-경합)과 타임아웃이 발생합니다. 인라인 코드는 `SELECT ... FOR UPDATE`처럼 문장의 일부로 읽힙니다.
+
+> 트랜잭션의 길이는 곧 락을 쥐고 있는 시간이다. 짧게 끝내는 것이 가장 강력한 동시성 전략이다.
+
+### 락 경합
+
+1. 트랜잭션 A가 `orders` 행에 쓰기 락을 획득합니다.
+2. 트랜잭션 B는 같은 행을 기다리며 블로킹됩니다.
+   - 대기 시간이 `innodb_lock_wait_timeout`을 넘으면 실패합니다.
+   - 재시도 로직이 없다면 사용자 요청이 그대로 실패합니다.
+3. A가 커밋해야 B가 진행됩니다.
+
+<Callout type="tip" title="Saga로 쪼개기">
+  긴 트랜잭션을 **로컬 트랜잭션의 연쇄**로 나누고, 실패 시 보상 트랜잭션으로 되돌립니다.
+</Callout>
+
+```kotlin
+@Transactional
+fun placeOrder(command: PlaceOrderCommand): OrderId {
+    val order = Order.create(command.customerId, command.items)
+    orderRepository.save(order)
+    // 외부 호출은 트랜잭션 밖으로 — 락 보유 시간을 줄인다
+    eventPublisher.publish(OrderPlaced(order.id))
+    return order.id
+}
+```
+
+```text
+┌──────────┐   T1    ┌──────────┐   T2    ┌──────────┐
+│  Order   │ ──────▶ │ Payment  │ ──────▶ │ Shipping │
+└──────────┘         └──────────┘         └──────────┘
+      ▲      C1            │      C2
+      └────────────────────┘
+```
+
+#### 비교
+
+| 방식 | 일관성 | 락 보유 시간 | 복잡도 |
+| --- | --- | --- | --- |
+| 단일 ACID 트랜잭션 | 강한 일관성 | 길다 | 낮음 |
+| Saga (Orchestration) | 최종 일관성 | 짧다 | 중간 |
+| Saga (Choreography) | 최종 일관성 | 짧다 | 높음 |
+
+<Callout type="warning">
+  보상 트랜잭션은 **멱등**해야 합니다. 같은 보상이 두 번 실행되어도 결과가 같아야 합니다.
+</Callout>
+
+---
+
+## 마무리
+
+<kbd>⌘</kbd> + <kbd>K</kbd>로 검색할 수 있습니다.[^1]
+
+[^1]: 각주는 본문 하단에 작은 글씨로 정리됩니다.

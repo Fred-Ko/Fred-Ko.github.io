@@ -1,0 +1,308 @@
+/*
+ * Prose — Markdown/MDX 본문 스타일.
+ * .prose 컨테이너 안의 순수 HTML 요소만 다룬다(클래스 없는 마크다운 출력 대상).
+ */
+
+.prose {
+  color: var(--fg-prose);
+  font-size: var(--text-prose);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-body);
+  overflow-wrap: break-word;
+}
+
+.prose > :first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* 제목 */
+
+.prose :is(h2, h3, h4) {
+  color: var(--fg-strong);
+  font-family: var(--font-display);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-heading);
+}
+
+.prose h2 {
+  padding-top: var(--space-5);
+  margin-top: var(--space-16);
+  margin-bottom: var(--space-5);
+  font-size: var(--text-2xl);
+  line-height: var(--leading-snug);
+}
+
+.prose h3 {
+  margin-top: 2.75rem;
+  margin-bottom: 0.85rem;
+  font-size: var(--text-xl);
+  line-height: 1.5;
+}
+
+.prose h4 {
+  margin-top: 2.25rem;
+  margin-bottom: var(--space-3);
+  font-size: var(--text-lg);
+  line-height: 1.55;
+}
+
+.prose :is(h2, h3, h4) a {
+  text-decoration: none;
+}
+
+/* 문단·목록 */
+
+.prose p {
+  margin-bottom: var(--space-5);
+}
+
+.prose :is(ul, ol) {
+  margin-bottom: var(--space-6);
+  padding-left: var(--space-6);
+}
+
+.prose li + li {
+  margin-top: 0.35rem;
+}
+
+.prose li > :is(ul, ol) {
+  margin-top: 0.35rem;
+  margin-bottom: 0;
+}
+
+.prose ul > li::marker {
+  color: var(--fg-subtle);
+}
+
+.prose ol > li::marker {
+  color: var(--fg-subtle);
+  font-family: var(--font-display);
+  font-size: 0.9em;
+}
+
+.prose strong {
+  color: var(--fg-strong);
+  font-weight: var(--weight-bold);
+}
+
+/* 링크 */
+
+.prose a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-color: var(--link-underline);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+}
+
+.prose a:hover {
+  text-decoration-color: currentcolor;
+}
+
+/* 인용 */
+
+.prose blockquote {
+  margin: var(--space-8) 0;
+  padding: var(--space-5) 0 var(--space-5) var(--space-6);
+  border-left: var(--border-thick) solid var(--accent);
+  color: var(--fg-muted);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.prose blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+/* 인라인 코드 — 배지처럼 떨어져 보이지 않고 문장의 일부로 읽히게 */
+
+.prose :not(pre) > code {
+  color: var(--code-inline);
+  font-size: 0.88em;
+  font-weight: var(--weight-medium);
+  overflow-wrap: anywhere;
+}
+
+.prose :is(h1, h2, h3, h4, h5, h6) code {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+}
+
+/* 코드 블록 (Shiki, defaultColor: false → --shiki-light / --shiki-dark 변수만 출력됨) */
+
+.prose pre.fredko-shiki {
+  margin: var(--space-8) 0;
+  padding: var(--space-4) 0 1.1rem;
+  border: var(--border-thin) solid var(--line);
+  border-radius: var(--radius-none);
+  background-color: var(--code-frame);
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+  overflow-x: auto;
+  tab-size: 2;
+}
+
+.prose pre.fredko-shiki code {
+  display: block;
+  min-width: max-content;
+  font: inherit;
+  white-space: normal; /* 줄 사이 개행 텍스트 노드 무시 — 각 .line이 블록으로 줄바꿈 담당 */
+}
+
+.prose pre.fredko-shiki .line {
+  position: relative;
+  display: block;
+  min-height: 1.22rem;
+  padding: 0 var(--space-5) 0 var(--space-16);
+  white-space: pre;
+}
+
+.prose pre.fredko-shiki .line::before {
+  position: absolute;
+  left: 0;
+  width: 2.85rem;
+  color: var(--fg-faint);
+  content: attr(data-line);
+  font-size: var(--text-xs);
+  text-align: right;
+  user-select: none;
+}
+
+:root[data-theme='light'] .prose pre.fredko-shiki,
+:root[data-theme='light'] .prose pre.fredko-shiki span {
+  color: var(--shiki-light);
+  font-style: var(--shiki-light-font-style);
+  font-weight: var(--shiki-light-font-weight);
+  text-decoration: var(--shiki-light-text-decoration);
+}
+
+:root:not([data-theme='light']) .prose pre.fredko-shiki,
+:root:not([data-theme='light']) .prose pre.fredko-shiki span {
+  color: var(--shiki-dark);
+  font-style: var(--shiki-dark-font-style);
+  font-weight: var(--shiki-dark-font-weight);
+  text-decoration: var(--shiki-dark-text-decoration);
+}
+
+/* 박스 드로잉 다이어그램(```text) — 줄 간격을 좁혀 정렬 유지 */
+.prose pre.fredko-shiki:is([data-language='text'], [data-language='plaintext']) {
+  line-height: 1.15rem;
+}
+
+.prose pre.fredko-shiki:is([data-language='text'], [data-language='plaintext']) .line {
+  min-height: 1.15rem;
+}
+
+/* 표 — .table-wrapper(rehype 플러그인이 생성)가 테두리와 가로 스크롤 담당 */
+
+.prose .table-wrapper {
+  margin: 1.75rem 0 2.25rem;
+  overflow-x: auto;
+  border: var(--border-thin) solid var(--line);
+  background: var(--table-bg);
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.prose thead {
+  background: var(--table-head);
+}
+
+.prose th {
+  padding: 0.7rem 0.85rem;
+  border-bottom: var(--border-thin) solid var(--line);
+  color: var(--fg-strong);
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.prose td {
+  padding: var(--space-3) 0.85rem;
+  border-bottom: var(--border-thin) solid var(--line);
+  color: var(--table-fg);
+  line-height: var(--leading-normal);
+  vertical-align: top;
+}
+
+.prose tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.prose td:first-child {
+  color: var(--fg-strong);
+  font-weight: var(--weight-medium);
+}
+
+.prose tbody tr {
+  transition: background-color var(--duration-fast) var(--ease-standard);
+}
+
+.prose tbody tr:hover {
+  background: var(--table-hover-bg);
+}
+
+.prose tbody tr:hover :is(td, td:first-child, strong, a, code) {
+  color: var(--table-hover-fg);
+}
+
+/* 미디어 */
+
+.prose img {
+  margin: var(--space-8) auto;
+  border-radius: var(--radius-none);
+}
+
+.prose figure {
+  margin: var(--space-8) 0;
+}
+
+.prose figcaption {
+  margin-top: var(--space-3);
+  color: var(--fg-subtle);
+  font-size: var(--text-xs);
+  text-align: center;
+}
+
+/* 구분선 */
+
+.prose hr {
+  margin: var(--space-12) 0 1.75rem;
+  border: 0;
+  border-top: var(--border-thick) solid var(--line-strong);
+}
+
+.prose hr + :is(h2, h3) {
+  padding-top: 0;
+  margin-top: 1.75rem;
+}
+
+/* 각주 (remark-gfm 출력) */
+
+.prose .footnotes {
+  margin-top: var(--space-16);
+  padding-top: var(--space-6);
+  border-top: var(--border-thin) solid var(--line);
+  color: var(--fg-subtle);
+  font-size: var(--text-sm);
+}
+
+.prose kbd {
+  padding: 0.1em 0.4em;
+  border: var(--border-thin) solid var(--line-control);
+  border-bottom-width: var(--border-thick);
+  font-size: 0.85em;
+}

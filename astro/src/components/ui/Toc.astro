@@ -1,0 +1,99 @@
+---
+/**
+ * Toc — 포스트 목차. Astro의 render() 결과 headings를 그대로 받는다.
+ * 현재 읽는 섹션은 IntersectionObserver로 aria-current를 붙여 강조한다.
+ */
+import type { MarkdownHeading } from 'astro';
+
+interface Props {
+  headings: MarkdownHeading[];
+  maxDepth?: 2 | 3 | 4;
+}
+const { headings, maxDepth = 3 } = Astro.props;
+const items = headings.filter((h) => h.depth >= 2 && h.depth <= maxDepth);
+---
+
+{
+  items.length > 0 && (
+    <nav class="toc" aria-labelledby="toc-heading" data-toc>
+      <p id="toc-heading" class="label toc-heading">
+        Contents
+      </p>
+      <ul role="list">
+        {items.map((h) => (
+          <li class={`depth-${h.depth}`}>
+            <a href={`#${h.slug}`}>{h.text}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+}
+
+<script>
+  const toc = document.querySelector<HTMLElement>('[data-toc]');
+  if (toc) {
+    const links = new Map<string, HTMLAnchorElement>();
+    toc.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach((a) => {
+      links.set(decodeURIComponent(a.hash.slice(1)), a);
+    });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          links.forEach((a) => a.removeAttribute('aria-current'));
+          links.get(entry.target.id)?.setAttribute('aria-current', 'location');
+        }
+      },
+      { rootMargin: '-15% 0px -70% 0px' },
+    );
+    links.forEach((_, id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+  }
+</script>
+
+<style>
+  .toc {
+    padding-left: var(--space-5);
+    border-left: var(--border-thin) solid var(--line);
+  }
+
+  .toc-heading {
+    margin-bottom: var(--space-5);
+    color: var(--fg-strong);
+    font-size: var(--text-micro);
+    letter-spacing: 0.15em;
+  }
+
+  ul {
+    padding: 0;
+    list-style: none;
+    font-size: 0.75rem;
+  }
+
+  a {
+    display: block;
+    padding: 0.4rem 0;
+    color: var(--fg-subtle);
+    line-height: 1.5;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--fg-strong);
+  }
+
+  a[aria-current] {
+    color: var(--accent);
+  }
+
+  .depth-3 a {
+    padding-left: var(--space-3);
+  }
+
+  .depth-4 a {
+    padding-left: var(--space-6);
+  }
+</style>

@@ -1,0 +1,39 @@
+---
+/**
+ * SectionHeading — 대형 섹션 제목. aside가 있으면 오른쪽에 대문자 보조 라벨을 둔다.
+ * <SectionHeading title="Writing" aside="28 posts" />
+ */
+interface Props {
+  title: string;
+  aside?: string;
+  as?: 'h1' | 'h2';
+}
+const { title, aside, as: Heading = 'h2' } = Astro.props;
+---
+
+<header class="section-heading">
+  <Heading>{title}</Heading>
+  {aside && <span class="label">{aside}</span>}
+</header>
+
+<style>
+  .section-heading {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: var(--space-8);
+    margin-bottom: var(--space-12);
+  }
+
+  :is(h1, h2) {
+    font-size: var(--text-5xl);
+    line-height: var(--leading-display);
+  }
+
+  .label {
+    color: var(--fg-subtle);
+    font-weight: var(--weight-regular);
+    letter-spacing: 0.08em;
+  }
+</style>
