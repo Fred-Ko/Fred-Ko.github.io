@@ -100,7 +100,10 @@ theme_mode: dark # [light | dark]
 # cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: assets/img/avatar.jpg
+avatar: assets/img/avatar.jpg?v=green-bear-1
+
+# 프로필과 모든 파비콘에 같은 초록색 곰 로고를 사용합니다.
+favicon_version: green-bear-1
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
