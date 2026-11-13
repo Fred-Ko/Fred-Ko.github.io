@@ -1,0 +1,9 @@
+---
+import type { Post } from '../../lib/posts';
+import { publishedAt } from '../../lib/posts';
+import WritingList from '../ui/WritingList.astro';
+import WritingRow from '../ui/WritingRow.astro';
+interface Props { posts: Post[]; offset?: number }
+const {posts,offset=0}=Astro.props;
+---
+<WritingList>{posts.map((post,index)=><WritingRow href={post.data.permalink} index={offset+index+1} title={post.data.title} date={publishedAt(post)} category={post.data.categories.join(' · ')} transitionName={`post-${post.id}`} />)}</WritingList>

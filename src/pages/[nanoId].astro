@@ -1,0 +1,48 @@
+---
+import {render} from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostHero from '../components/ui/PostHero.astro';
+import PostStats from '../components/ui/PostStats.astro';
+import Toc from '../components/ui/Toc.astro';
+import Comments from '../components/blog/Comments.astro';
+import {getPosts,readingMinutes,lastModified,publishedAt} from '../lib/posts';
+import {site} from '../lib/site';
+import PostTail from '../components/blog/PostTail.astro';
+export async function getStaticPaths(){return (await getPosts()).map(post=>({params:{nanoId:post.id},props:{post}}));}
+const {post}=Astro.props;
+const {Content,headings}=await render(post);
+const updated=lastModified(post);
+---
+<BaseLayout title={post.data.title} description={post.data.description} ogImage={`/og/${post.id}.png`} ogType="article" published={publishedAt(post)} modified={updated}>
+ <article data-pagefind-body>
+  <div class="container"><PostHero title={post.data.title} description={post.data.description} category={post.data.categories.join(' · ')} date={publishedAt(post)} updated={updated>publishedAt(post)?updated:undefined} tags={post.data.tags} readingMinutes={readingMinutes(post)} transitionName={`post-${post.id}`}></PostHero></div>
+  <div class="container reading-grid">
+   <aside aria-label="글 목차"><details class="toc-panel"><summary>Contents <span>{headings.filter(h=>h.depth>=2&&h.depth<=3).length} sections</span></summary><Toc headings={headings}/></details></aside>
+   <div class="body prose"><Content/></div>
+  </div>
+ </article>
+ <section class="container-prose after-post" data-pagefind-ignore>
+  <PostStats postId={post.data.post_id} apiBase={site.apiBase} viewDelayMs={site.viewDelay}/>
+  <PostTail post={post}/>
+  <Comments postId={post.data.post_id}/>
+ </section>
+</BaseLayout>
+<script>
+  const panel=document.querySelector<HTMLDetailsElement>('.toc-panel');
+  if(panel){const desktop=matchMedia('(min-width:1050px)');const update=()=>{panel.open=desktop.matches;};update();desktop.addEventListener('change',update);}
+</script>
+<style>.toc-panel summary{cursor:pointer;font-size:var(--text-sm);padding-block:.6rem;color:var(--fg-muted)}.toc-panel summary span{float:right;font-size:var(--text-xs);color:var(--fg-subtle)}.toc-panel :global(.toc){margin-top:var(--space-4)}@media(width>=1050px){.toc-panel[open]>summary{display:none}}.reading-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,var(--width-prose)) minmax(0,1fr);align-items:start}.body{grid-column:2;grid-row:1;min-width:0}aside{grid-column:3;margin-inline-start:clamp(1.5rem,3vw,4rem);max-width:16rem;grid-row:1;position:sticky;top:calc(var(--topbar-height) + 2rem);max-height:75vh;overflow:auto}.after-post{margin-top:var(--space-8)}@media(width<1050px){.reading-grid{width:min(100% - 2 * var(--gutter),var(--width-prose));display:flex;flex-direction:column;gap:var(--space-5)}aside{position:static;max-height:none;margin-inline-start:0;max-width:none;width:100%;border-block:1px solid var(--line);padding-block:.25rem}.toc-panel[open]{max-height:60vh;overflow:auto}.body{width:100%}}
+@media (width >= 768px) {
+  .body { position: relative; }
+  .body::before, .body::after {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    width: 1px;
+    background: light-dark(rgb(0 0 0 / 6%), rgb(255 255 255 / 7%));
+    pointer-events: none;
+  }
+  .body::before { inset-inline-start: -24px; }
+  .body::after { inset-inline-end: -24px; }
+}
+</style>

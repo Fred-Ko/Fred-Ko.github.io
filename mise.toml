@@ -1,19 +1,18 @@
 [tools]
 node = "24"
-ruby = "3.3.11"
 
 [tasks.setup]
-description = "Install Node and Ruby dependencies"
-run = "npm ci && bundle install"
+description = "Astro 의존성 설치"
+run = "npm ci"
 
 [tasks.build]
-description = "Build frontend assets and the Jekyll site"
-run = "npm run build && bundle exec jekyll build"
+description = "Astro 사이트와 검색 인덱스 빌드"
+run = "npm run build"
 
 [tasks.test]
-description = "Run JS/SCSS lint and build the Jekyll site"
-run = "npm test && bundle exec jekyll build"
+description = "컴포넌트 카탈로그와 색 대비 검사"
+run = "npm test"
 
 [tasks.serve]
-description = "Serve the Jekyll site locally"
-run = "bundle exec jekyll serve --livereload --host 127.0.0.1"
+description = "Astro 개발 서버 실행"
+run = "npm run dev"

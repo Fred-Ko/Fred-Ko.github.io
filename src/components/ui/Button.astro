@@ -1,0 +1,95 @@
+---
+/**
+ * Button — 링크(href) 또는 버튼으로 렌더링.
+ * variant
+ *   - solid   : 포인트 배경. 페이지당 1개 이하 권장
+ *   - outline : 기본 컨트롤
+ *   - ghost   : 텍스트 + 화살표. 섹션 하단 "더 보기"류
+ */
+import type { HTMLAttributes } from 'astro/types';
+
+type Props = {
+  variant?: 'solid' | 'outline' | 'ghost';
+  href?: string;
+  arrow?: '→' | '↓' | '←' | '↗' | false;
+} & Omit<HTMLAttributes<'button'>, 'type'> & { type?: 'button' | 'submit' };
+
+const { variant = 'outline', href, arrow = false, type = 'button', class: className, ...rest } = Astro.props;
+const Element = href ? 'a' : 'button';
+---
+
+<Element
+  href={href}
+  type={href ? undefined : type}
+  class:list={['btn', 'label', `btn--${variant}`, className]}
+  {...rest}
+>
+  <span><slot /></span>
+  {arrow && <span class="btn-arrow" aria-hidden="true">{arrow}</span>}
+</Element>
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    min-height: 2.75rem;
+    padding: 0 var(--space-5);
+    border: var(--border-thin) solid transparent;
+    border-radius: var(--radius-none);
+    font-size: var(--text-2xs);
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .btn-arrow {
+    font-size: 1rem;
+    letter-spacing: 0;
+    transition: transform var(--duration-fast) var(--ease-standard);
+  }
+
+  .btn:hover .btn-arrow {
+    transform: translateX(0.3rem);
+  }
+
+  .btn--solid {
+    background: var(--accent);
+    color: var(--accent-fg);
+  }
+
+  .btn--solid:hover {
+    background: light-dark(var(--hover-bg), var(--fg-strong));
+    color: light-dark(var(--hover-fg), var(--bg));
+    border-color: var(--hover-border);
+  }
+
+  .btn--outline {
+    border-color: var(--line-control);
+    background: var(--bg-raised);
+    color: var(--fg-strong);
+  }
+
+  .btn--outline:hover {
+    border-color: var(--hover-border);
+    background: var(--hover-bg);
+    color: var(--hover-fg);
+  }
+
+  .btn--ghost {
+    min-height: auto;
+    padding: 0;
+    color: var(--fg-strong);
+  }
+
+  .btn--ghost .btn-arrow {
+    color: var(--accent);
+  }
+
+  .btn:disabled,
+  .btn[aria-disabled='true'] {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+</style>

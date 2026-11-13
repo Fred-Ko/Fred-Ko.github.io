@@ -1,0 +1,6 @@
+<button class="back-to-top" type="button" aria-label="Scroll to Top" hidden data-back-to-top>↑</button>
+<script>
+ const button=document.querySelector<HTMLButtonElement>('[data-back-to-top]');
+ if(button){const update=()=>{button.hidden=scrollY<600;};addEventListener('scroll',update,{passive:true});update();button.addEventListener('click',()=>scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'}));}
+</script>
+<style>.back-to-top{position:fixed;right:var(--space-5);bottom:var(--space-5);z-index:20;display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--line);background:var(--bg);color:var(--fg-muted)}.back-to-top[hidden]{display:none}.back-to-top:hover{color:var(--hover-fg);background:var(--hover-bg);border-color:var(--hover-border)}</style>

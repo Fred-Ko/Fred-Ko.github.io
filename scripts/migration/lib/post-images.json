@@ -1,0 +1,132 @@
+{
+  "/assets/img/pasted-image-20241210200020.webp": {
+    "alt": "Obsidian에서 문서를 Jekyll로 내보내는 메뉴",
+    "width": 2558,
+    "height": 1415
+  },
+  "/assets/img/pasted-image-20241210210713.webp": {
+    "alt": "Jekyll Exporter의 대상 폴더와 프론트매터 및 이미지 경로 설정",
+    "width": 1007,
+    "height": 917
+  },
+  "/assets/img/pasted-image-20241211013304.png": {
+    "alt": "동일한 이름의 파일을 덮어쓸지 선택하는 확인 창",
+    "width": 567,
+    "height": 302
+  },
+  "/assets/img/pasted-image-20241211030549.png": {
+    "alt": "Jekyll Exporter의 OpenAI 연결과 자동 태그 생성 설정",
+    "width": 742,
+    "height": 450
+  },
+  "/assets/img/pasted-image-20241212024442.webp": {
+    "alt": "OpenTelemetry의 주요 구성 요소와 관계",
+    "width": 484,
+    "height": 373
+  },
+  "/assets/img/pasted-image-20241214214605.webp": {
+    "alt": "Obsidian Open With 플러그인에서 Cursor를 실행하도록 설정하는 화면",
+    "width": 795,
+    "height": 334
+  },
+  "/assets/img/pasted-image-20241214234112.webp": {
+    "alt": "Obsidian Open With 플러그인 설치 화면",
+    "width": 321,
+    "height": 719
+  },
+  "/assets/img/pasted-image-20241217222410.webp": {
+    "alt": "문서의 nanoId와 permalink가 포함된 프론트매터",
+    "width": 869,
+    "height": 29
+  },
+  "/assets/img/pasted-image-20241217222608.webp": {
+    "alt": "Jekyll Exporter의 자동 태그 생성 기능",
+    "width": 802,
+    "height": 53
+  },
+  "/assets/img/pasted-image-20241217222707.webp": {
+    "alt": "Jekyll Exporter의 이미지와 링크 변환 예시",
+    "width": 390,
+    "height": 32
+  },
+  "/assets/img/pasted-image-20241217232643-1.webp": {
+    "alt": "OpenTelemetry Collector를 통한 관측 데이터 수집 흐름",
+    "width": 1800,
+    "height": 98
+  },
+  "/assets/img/pasted-image-20241222013134.png": {
+    "alt": "NestJS CLI 플러그인으로 자동 계측을 적용하는 구조",
+    "width": 1304,
+    "height": 221
+  },
+  "/assets/img/pasted-image-20241222020208.png": {
+    "alt": "NestJS 계측 패키지 적용 후 추가로 수집된 트레이스",
+    "width": 1262,
+    "height": 539
+  },
+  "/assets/img/pasted-image-20241222055935.png": {
+    "alt": "Node.js 애플리케이션의 OpenTelemetry 자동 계측 테스트 결과",
+    "width": 2330,
+    "height": 922
+  },
+  "/assets/img/pasted-image-20250325174222.png": {
+    "alt": "SigNoz 0.76 버전의 단순화된 아키텍처",
+    "width": 10147,
+    "height": 7679
+  },
+  "/assets/img/pasted-image-20250325175433.png": {
+    "alt": "운영 환경의 SigNoz 모니터링 화면",
+    "width": 1217,
+    "height": 487
+  },
+  "/assets/img/pasted-image-20250325185056.png": {
+    "alt": "SigNoz의 서비스별 응답 지연과 오류율 및 초당 요청 수 목록",
+    "width": 2499,
+    "height": 448
+  },
+  "/assets/img/pasted-image-20250325185236.png": {
+    "alt": "SigNoz의 응답 지연과 처리량 및 Apdex를 보여 주는 APM 대시보드",
+    "width": 2509,
+    "height": 1913
+  },
+  "/assets/img/pasted-image-20250325185701.png": {
+    "alt": "SigNoz의 메시징 큐 모니터링 대시보드",
+    "width": 2509,
+    "height": 1290
+  },
+  "/assets/img/pasted-image-20250325190129.png": {
+    "alt": "SigNoz에서 서비스별 CPU와 메모리 및 네트워크 사용량을 비교하는 화면",
+    "width": 2466,
+    "height": 1104
+  },
+  "/assets/img/pasted-image-20251219152707.png": {
+    "alt": "멀티테넌시에서 테넌트 처리를 도메인 모델과 분리하는 구조",
+    "width": 1079,
+    "height": 467
+  },
+  "/assets/img/pasted-image-20251224144609.png": {
+    "alt": "Shim 방식과 PATH 조작 방식의 실행 경로 비교",
+    "width": 1024,
+    "height": 559
+  },
+  "/assets/img/pasted-image-20251224144912.png": {
+    "alt": "mise로 관리할 수 있는 개발 도구와 활용 범위",
+    "width": 1024,
+    "height": 559
+  },
+  "/assets/img/infographic-20251219-153612-1-shared-database-shared-schema.png": {
+    "alt": "테넌트 격리 수준 인포그래픽",
+    "width": 1408,
+    "height": 768
+  },
+  "/assets/img/infographic-20251223-194424-msamicroservices-architec.png": {
+    "alt": "마이크로서비스에서 데이터베이스별 ID를 생성할 때의 전역 식별자 문제",
+    "width": 1408,
+    "height": 768
+  },
+  "/assets/img/infographic-20260107-205047-5-backward-vs-forward-recover.jpeg": {
+    "alt": "Saga의 보상 트랜잭션을 통한 후방 복구와 재시도를 통한 전방 복구 비교",
+    "width": 1407,
+    "height": 574
+  }
+}

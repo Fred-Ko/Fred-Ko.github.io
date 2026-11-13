@@ -1,0 +1,6 @@
+---
+import TaxonomyPage from '../../components/blog/TaxonomyPage.astro';
+import {getPosts,taxonomy} from '../../lib/posts';
+export async function getStaticPaths(){return taxonomy(await getPosts(),'categories').map(group=>({params:{name:group.slug},props:{name:group.name,posts:group.posts}}));}
+---
+<TaxonomyPage kind="categories" name={Astro.props.name} posts={Astro.props.posts}/>

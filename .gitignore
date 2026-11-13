@@ -1,39 +1,27 @@
-# Bundler cache
-.bundle
-vendor
-Gemfile.lock
+# Astro 및 Node 빌드 산출물
+node_modules/
+dist/
+.astro/
 
-# Jekyll cache
-.jekyll-cache
-.jekyll-metadata
-_site
+# 로컬 설정과 자격 증명
+.env
+.env.*
+!.env.example
+cloudflare/blog-api/.dev.vars
+cloudflare/blog-api/.wrangler/
 
-# RubyGems
-*.gem
-
-# NPM dependencies
-node_modules
-package-lock.json
-!cloudflare/blog-api/package-lock.json
-
-# IDE configurations
-.idea
+# 편집기 및 운영체제
+.idea/
 .vscode/*
 !.vscode/settings.json
 !.vscode/extensions.json
 !.vscode/tasks.json
-
-# Misc
-
-Gemfile.lock
+.DS_Store
 .omx/
 
-# Cloudflare local state and secrets
-cloudflare/blog-api/.dev.vars
-cloudflare/blog-api/.wrangler/
+# 브라우저 검증 결과
+playwright-report/
+test-results/
 
-블로그/.DS_Store
-
-# This repository is an application as well as a local theme. Keep builds reproducible.
-!Gemfile.lock
-!package-lock.json
+# 기존 발행 이미지에서 자동 복사하는 Astro 공개 자산
+public/assets/img/

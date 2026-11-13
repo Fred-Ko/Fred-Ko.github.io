@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import {getPosts,publishedAt} from '../lib/posts';
+const groups=new Map<number,Awaited<ReturnType<typeof getPosts>>>();
+for(const post of await getPosts()){const year=Number(publishedAt(post).toLocaleDateString('en-CA',{year:'numeric',timeZone:'Asia/Seoul'}));groups.set(year,[...(groups.get(year)??[]),post]);}
+const date=(post:Awaited<ReturnType<typeof getPosts>>[number])=>publishedAt(post).toLocaleDateString('en-GB',{day:'2-digit',month:'2-digit',timeZone:'Asia/Seoul'}).replace('/',' / ');
+---
+<BaseLayout title="Archives"><section class="container-prose archives"><h1>Archives</h1>{[...groups].map(([year,posts])=><section><h2>{year}</h2><ul class="archive-list" role="list">{posts.map(post=><li><time datetime={publishedAt(post).toISOString()}>{date(post)}</time><a href={post.data.permalink}>{post.data.title}</a></li>)}</ul></section>)}</section></BaseLayout>
+<style>.archives{padding-block:var(--space-16)}h1{font-size:var(--text-4xl)}section section{margin-top:var(--space-10)}h2{font-size:var(--text-2xl);margin-bottom:var(--space-5)}ul{list-style:none;padding:0}li{display:grid;grid-template-columns:4rem minmax(0,1fr);gap:1rem;padding:.75rem 0;border-bottom:1px solid var(--line-soft)}time{color:var(--fg-subtle);font-size:var(--text-xs);font-variant-numeric:tabular-nums}a{color:var(--fg-strong);text-decoration:none}a:hover{color:var(--accent)}</style>

@@ -1,0 +1,506 @@
+[
+  {
+    "source": "블로그/Opentelemetry/_posts/2024-12-19-opentelemetry+opentelemetry란?.md",
+    "target": "src/content/posts/1n1RxDQUaGnJt7dvoGJOOBaHi.md",
+    "post_id": "74e0bf35-4322-574f-8c4b-7263334f4a3d",
+    "nanoId": "1n1RxDQUaGnJt7dvoGJOOBaHi",
+    "permalink": "/1n1RxDQUaGnJt7dvoGJOOBaHi/",
+    "categories": [
+      "블로그",
+      "Opentelemetry"
+    ],
+    "sourceSha256": "cc55e28c850a79b1d9759ee9149dd5317423995bcceef28fd97be449110e2313",
+    "targetSha256": "39418c270c8c1353003777a2d2ac5673b261fa7199176201a0f666bc6c73f749",
+    "images": 2,
+    "altAdded": 2,
+    "imageWidths": 1,
+    "widthExamples": 0,
+    "formulas": 0
+  },
+  {
+    "source": "블로그/Obsidian/_posts/2024-12-19-jekyll+exporter+obsidian에서+jekyll+블로그로의+자동화.md",
+    "target": "src/content/posts/6crS1GYctcBpj1m9HPZck9mLg.md",
+    "post_id": "56445099-ee1f-59d4-a9e1-8dae36512da2",
+    "nanoId": "6crS1GYctcBpj1m9HPZck9mLg",
+    "permalink": "/6crS1GYctcBpj1m9HPZck9mLg/",
+    "categories": [
+      "블로그",
+      "Obsidian"
+    ],
+    "sourceSha256": "ca2e30f43faff576d4d98b88cf66fe015fbe98ccc2a2365ac777fc8dd4622918",
+    "targetSha256": "5d6c2779fcc40ba677c0b366b04e254563e182352fe94e07fe052a00b0ca549b",
+    "images": 4,
+    "altAdded": 4,
+    "imageWidths": 2,
+    "widthExamples": 1,
+    "formulas": 0
+  },
+  {
+    "source": "블로그/Graphql/_posts/2026-02-22-graphql과+ddd+(1)+graphql을+rest처럼+쓰고+있지는+않나요?.md",
+    "target": "src/content/posts/BmN8lVtxWOZeJWa8JtA7R9GWx.md",
+    "post_id": "250a5b1f-cf36-593d-a54b-90d0410f0add",
+    "nanoId": "BmN8lVtxWOZeJWa8JtA7R9GWx",
+    "permalink": "/BmN8lVtxWOZeJWa8JtA7R9GWx/",
+    "categories": [
+      "블로그",
+      "Graphql"
+    ],
+    "sourceSha256": "6f4f30e511d04f802aa4e243cde5629034d904be916e5ad88d21bfd251529f09",
+    "targetSha256": "598a408adde12fb465380fed8f718861b8ee475f791c3970ead1b7e029661f66",
+    "images": 0,
+    "altAdded": 0,
+    "imageWidths": 0,
+    "widthExamples": 0,
+    "formulas": 0
+  },
+  {
+    "source": "블로그/DB/_posts/2025-09-03-write+forwarding+코드+변경+없이+read+write+부하분산하기.md",
+    "target": "src/content/posts/cmceo3miwnU457IcI9LiPDZkY.md",
+    "post_id": "92a46271-1b07-5c8d-9dcc-cf0aa3c1b22a",
+    "nanoId": "cmceo3miwnU457IcI9LiPDZkY",
+    "permalink": "/cmceo3miwnU457IcI9LiPDZkY/",
+    "categories": [
+      "블로그",
+      "DB"
+    ],
+    "sourceSha256": "f8f142a8778edc3d513f5bf4d5b4f9cc3861d25980c94a506375554c3058c854",
+    "targetSha256": "7c2e11ca273467eee155a32b84f613c2cc3241db83db9d0a0dcf94cfca79e9c6",
+    "images": 0,
+    "altAdded": 0,
+    "imageWidths": 0,
+    "widthExamples": 0,
+    "formulas": 0
+  },
+  {
+    "source": "블로그/AI-Native/_posts/2026-10-22-ai+native+방식으로+서비스+개발하기+4부+프로젝트+전체를+ai+native하게+만드는+방법.md",
+    "target": "src/content/posts/dYSMTzahZjBns8DTJXHhTIFHI.md",
+    "post_id": "c103ef1b-9a7d-47da-b952-de681360d1a7",
+    "nanoId": "dYSMTzahZjBns8DTJXHhTIFHI",
+    "permalink": "/dYSMTzahZjBns8DTJXHhTIFHI/",
+    "categories": [
+      "블로그",
+      "AI-Native"
+    ],
+    "sourceSha256": "614da5dd2c8f33d47e221561df5e537b24ff559b77f0f69acf27bf798549ecac",
+    "targetSha256": "36438610def4be2c18cc5d8cdcd7043eb2929c84f24fd9faf37d270483873bd8",
+    "images": 0,
+    "altAdded": 0,
+    "imageWidths": 0,
+    "widthExamples": 0,
+    "formulas": 0
+  },
+  {
+    "source": "블로그/Obsidian/_posts/2024-12-19-obsidian+publish에서+github+블로그로.md",
+    "target": "src/content/posts/EjFgOk9UuO29kS92H7gf4aKET.md",
+    "post_id": "949b2b34-a4d0-5ff2-a7d8-a55f8f17aabe",
+    "nanoId": "EjFgOk9UuO29kS92H7gf4aKET",
+    "permalink": "/EjFgOk9UuO29kS92H7gf4aKET/",
+    "categories": [
+      "블로그",
+      "Obsidian"
+    ],
+    "sourceSha256": "76717bb1df6477425e2cb44ffd28477af0cfc634389f87fbbdfbfe80d6ac4239",
+    "targetSha256": "8b4dfc4c3737808bfeb9ee1c84af033356a1ded5c286f32416839bef59d47008",
+    "images": 4,
+    "altAdded": 4,
+    "imageWidths": 0,
+    "widthExamples": 0,
+    "formulas": 0
+  },
+  {
+    "source": "블로그/개발환경/_posts/2024-12-22-fast+node+manager+(nvm+alternative).md",
+    "target": "src/content/posts/ewIpCLwxS9u7f6iptneNLTbiF.md",
+    "post_id": "a89664a8-5bad-5c65-a6e1-10ce76ecc9c5",
+    "nanoId": "ewIpCLwxS9u7f6iptneNLTbiF",
+    "permalink": "/ewIpCLwxS9u7f6iptneNLTbiF/",
+    "categories": [
+      "블로그",
+      "개발환경"
+    ],
+    "sourceSha256": "6786d515b43170f08ebe906aa8cc20da568d15fd4e2dfaebda011bc196a2810d",
+    "targetSha256": "39f3c053526fb2a24d286c0bae8bc14faf1e5a105736f1a31cb4dde9a370ebec",
+    "images": 0,
+    "altAdded": 0,
+    "imageWidths": 0,
+    "widthExamples": 0,
+    "formulas": 0
+  },
+  {
+    "source": "블로그/벤치마크/_posts/2025-12-23-분산+시스템+pk+전략+uuidv7은+과연+auto_increment를+대체할+수+있는가?+성능은?.md",
+    "target": "src/content/posts/HmVhyrhAOJoChFINt2TXf1Gwh.md",
+    "post_id": "b85ea6a3-8458-5be6-9897-acc13a1b44c0",
+    "nanoId": "HmVhyrhAOJoChFINt2TXf1Gwh",
+    "permalink": "/HmVhyrhAOJoChFINt2TXf1Gwh/",
+    "categories": [
+      "블로그",
+      "벤치마크"
+    ],
+    "sourceSha256": "78ba929efa917c552aeb56fae8965a26b723b983e6d6b0070827755ce7b99e65",
+    "targetSha256": "15599b54438a905c70b0e64f706d64fd8a633fe4b68e921aa2f510526dc9fb16",
+    "images": 1,
+    "altAdded": 1,
+    "imageWidths": 0,
+    "widthExamples": 0,
+    "formulas": 0
+  },
+  {
+    "source": "블로그/LLM/_posts/2026-06-11-ai가+코드를+빨리+쓸수록+더+중요해진+것.md",
+    "target": "src/content/posts/htkKSIurJ1rBmPfv4ELOMuS5I.md",
+    "post_id": "78d76c11-78a1-5489-b093-95f04c0a4fda",
+    "nanoId": "htkKSIurJ1rBmPfv4ELOMuS5I",
+    "permalink": "/htkKSIurJ1rBmPfv4ELOMuS5I/",
+    "categories": [
+      "블로그",
+      "LLM"
+    ],
+    "sourceSha256": "586fc8975dcf5a854a670834cbb31842285d3729e783ff04671ba677ccf0fc41",
+    "targetSha256": "fb5e489822fa9b43436062ecb4404eba40828dda15d540957274ecc47b4d1736",
+    "images": 0,
+    "altAdded": 0,
+    "imageWidths": 0,
+    "widthExamples": 0,
+    "formulas": 0
+  },
+  {
+    "source": "블로그/Graphql/_posts/2026-02-22-graphql과+ddd+(3)+cross+domain+query와+command는+어떻게+풀어야+할까?.md",
+    "target": "src/content/posts/IDB5lqdeRfdEZAP3aXEBjPrvG.md",
+    "post_id": "35c399ee-1118-569f-8c2b-b93ca95b6dc3",
+    "nanoId": "IDB5lqdeRfdEZAP3aXEBjPrvG",
+    "permalink": "/IDB5lqdeRfdEZAP3aXEBjPrvG/",
+    "categories": [
+      "블로그",
+      "Graphql"
+    ],
+    "sourceSha256": "68b68dd9a0d92aba330c35ab3004736680112aa1883da73bed713478cb337ecc",
+    "targetSha256": "70d31e9a0364aa0e930fdb7e47fb20f6ab8d19ef4af14aaf12d2dad2cac86524",
+    "images": 0,
+    "altAdded": 0,
+    "imageWidths": 0,
+    "widthExamples": 0,
+    "formulas": 0
+  },
+  {
+    "source": "블로그/설계/_posts/2026-01-07-long+lived+transactions의+한계와+saga.md",
+    "target": "src/content/posts/jUbARn1TyHjM47AzUKWO4EZeQ.md",
+    "post_id": "617aa0d1-05fb-5747-9175-80f2ebc40b5e",
+    "nanoId": "jUbARn1TyHjM47AzUKWO4EZeQ",
+    "permalink": "/jUbARn1TyHjM47AzUKWO4EZeQ/",
+    "categories": [
+      "블로그",
+      "설계"
+    ],
+    "sourceSha256": "df51c46b95003218e2fc0011d63bc7963bb855c14217ec8b8a3f76aefea1bafb",
+    "targetSha256": "f41fc58be98bad64beaac95fcbc2a1b55806e92ed9a68652db31f4181707bfda",
+    "images": 1,
+    "altAdded": 1,
+    "imageWidths": 0,
+    "widthExamples": 0,
+    "formulas": 2
+  },
+  {
+    "source": "블로그/AI-Native/_posts/2026-10-22-ai+native+방식으로+서비스+개발하기+3부+엔트로피를+통제하는+방법.md",
+    "target": "src/content/posts/K6lhBZ2uIgfHInDC81yde5OJl.md",
+    "post_id": "891e37e1-6d2e-4502-9f20-a9515b16534d",
+    "nanoId": "K6lhBZ2uIgfHInDC81yde5OJl",
+    "permalink": "/K6lhBZ2uIgfHInDC81yde5OJl/",
+    "categories": [
+      "블로그",
+      "AI-Native"
+    ],
+    "sourceSha256": "b027fcc23b13267382992f18eb2c5891b410c3a2215ad35b3be54ffa26261f8d",
+    "targetSha256": "1475b826d29f08bb6e7ff0f800a3ded67af8e4b8a6ed503ed451ee0174980021",
+    "images": 0,
+    "altAdded": 0,
+    "imageWidths": 0,
+    "widthExamples": 0,
+    "formulas": 0
+  },
+  {
+    "source": "블로그/개발/_posts/2025-03-11-이벤트를+통한+비동기+처리와+오류+사례.md",
+    "target": "src/content/posts/kTvRrhMPdtggfqSEdSr1LRN67.md",
+    "post_id": "9a23067c-8775-5f7f-bcd3-cb82a4849bf8",
+    "nanoId": "kTvRrhMPdtggfqSEdSr1LRN67",
+    "permalink": "/kTvRrhMPdtggfqSEdSr1LRN67/",
+    "categories": [
+      "블로그",
+      "개발"
+    ],
+    "sourceSha256": "38460857e92ad816931322b89f264d555014a7f528cda7b3a06bf56df0cd10c5",
+    "targetSha256": "748f29c2d1512cb835f642f34b39a6c8618cdaf2a4fd4420a1217ceb14b909d9",
+    "images": 0,
+    "altAdded": 0,
+    "imageWidths": 0,
+    "widthExamples": 0,
+    "formulas": 0
+  },
+  {
+    "source": "블로그/Opentelemetry/_posts/2025-01-15-opentelemetry+zero+code+instrumentation+msa+환경에서+context+전파+문제와+해결+경험+공유.md",
+    "target": "src/content/posts/LlkFX4sjBORTiJzZlamVN2CSB.md",
+    "post_id": "7cf792cf-e53b-564a-8418-078216555b22",
+    "nanoId": "LlkFX4sjBORTiJzZlamVN2CSB",
+    "permalink": "/LlkFX4sjBORTiJzZlamVN2CSB/",
+    "categories": [
+      "블로그",
+      "Opentelemetry"
+    ],
+    "sourceSha256": "0ee668ca1344db6850dd57f82d083baadb43ef65f4a42923f9a4cfc5c7de308e",
+    "targetSha256": "9f0003abd9c909cd518d88ec7e58418888ba047ee08fcb7b7370bdb807887273",
+    "images": 0,
+    "altAdded": 0,
+    "imageWidths": 0,
+    "widthExamples": 0,
+    "formulas": 0
+  },
+  {
+    "source": "블로그/개발환경/_posts/2024-12-22-sdkman+으로+jdk,gradle+관리하기.md",
+    "target": "src/content/posts/MnDXcl4Q8Fj3KCHUkBcrnOStY.md",
+    "post_id": "cf97c8b2-cf0d-53f0-8a72-da2fe81e2d76",
+    "nanoId": "MnDXcl4Q8Fj3KCHUkBcrnOStY",
+    "permalink": "/MnDXcl4Q8Fj3KCHUkBcrnOStY/",
+    "categories": [
+      "블로그",
+      "개발환경"
+    ],
+    "sourceSha256": "96560f21043ba81d2ca8c70d18bfece402ba244db81bf986cf65f15a6a4529f8",
+    "targetSha256": "e6b51bd747bec56d70720b51e5ba76212b7f0ba7df2a64d8b058b9f08776922d",
+    "images": 0,
+    "altAdded": 0,
+    "imageWidths": 0,
+    "widthExamples": 0,
+    "formulas": 0
+  },
+  {
+    "source": "블로그/Opentelemetry/_posts/2025-03-25-signoz+보안+제약+환경에서의+opentelemetry+기반+자체+모니터링+시스템+구축하기.md",
+    "target": "src/content/posts/pnCF97Gk5Py7lXukcucbpAAPm.md",
+    "post_id": "06a27fc6-782e-522e-b676-8f041b97a1b5",
+    "nanoId": "pnCF97Gk5Py7lXukcucbpAAPm",
+    "permalink": "/pnCF97Gk5Py7lXukcucbpAAPm/",
+    "categories": [
+      "블로그",
+      "Opentelemetry"
+    ],
+    "sourceSha256": "db28dd896977a5e3e4dce938eb949d08b515247a8ec2697052101e4a426dedf2",
+    "targetSha256": "cc6c92065a479ae2d85a1e27cac7284d83f0831c067de3a66b83778066798818",
+    "images": 6,
+    "altAdded": 6,
+    "imageWidths": 0,
+    "widthExamples": 0,
+    "formulas": 0
+  },
+  {
+    "source": "블로그/개발환경/_posts/2025-12-24-파편화된+개발+환경을+통합하자+mise로+구축하는+no+shim+통합+환경.md",
+    "target": "src/content/posts/seLNccQ9CzXgim9FfSXZeqYFj.md",
+    "post_id": "332c951f-ef7b-5e5b-926e-cac9a9669202",
+    "nanoId": "seLNccQ9CzXgim9FfSXZeqYFj",
+    "permalink": "/seLNccQ9CzXgim9FfSXZeqYFj/",
+    "categories": [
+      "블로그",
+      "개발환경"
+    ],
+    "sourceSha256": "efdf27658c174b14afe798c69e8a8eb42495c36f51f6b5c100231ee61153cee6",
+    "targetSha256": "8861b2e7b7891a318c9cc30cdb8343d9d039d08185de59aa76193dc1e8a14356",
+    "images": 2,
+    "altAdded": 2,
+    "imageWidths": 0,
+    "widthExamples": 0,
+    "formulas": 0
+  },
+  {
+    "source": "블로그/AI-Native/_posts/2026-09-15-ai+native+방식으로+서비스+개발하기+2부+도구로서의+ai.md",
+    "target": "src/content/posts/sf3SlrsJR9ymrzfQxKnUyjoMS.md",
+    "post_id": "bffdd6a8-abe7-42bc-9e05-891847833381",
+    "nanoId": "sf3SlrsJR9ymrzfQxKnUyjoMS",
+    "permalink": "/sf3SlrsJR9ymrzfQxKnUyjoMS/",
+    "categories": [
+      "블로그",
+      "AI-Native"
+    ],
+    "sourceSha256": "80618f189daf71ee0fa9b6e6951ab5efc9876a2b15d3f5ffb6e112c8bd5d53c8",
+    "targetSha256": "abf6c003ed7256c02261a5515a7d876361d9b514877a794e843797ddad7140ca",
+    "images": 0,
+    "altAdded": 0,
+    "imageWidths": 0,
+    "widthExamples": 0,
+    "formulas": 0
+  },
+  {
+    "source": "블로그/AI-Native/_posts/2026-09-15-ai+native+방식으로+서비스+개발하기+1부.md",
+    "target": "src/content/posts/sI3gN7kSmw4apJNMaYK57ljMd.md",
+    "post_id": "19cc4d93-4e44-4f15-bc84-17bfad6eef61",
+    "nanoId": "sI3gN7kSmw4apJNMaYK57ljMd",
+    "permalink": "/sI3gN7kSmw4apJNMaYK57ljMd/",
+    "categories": [
+      "블로그",
+      "AI-Native"
+    ],
+    "sourceSha256": "d7d42c6fc861c367547717eefd73058369ec512a3f164cca004d0b60729071c9",
+    "targetSha256": "d9059648ff98174fe63da4b9b847cdee3032469c297cb1dacf715f5a30902b34",
+    "images": 0,
+    "altAdded": 0,
+    "imageWidths": 0,
+    "widthExamples": 0,
+    "formulas": 0
+  },
+  {
+    "source": "블로그/이론/_posts/2025-01-24-이기종+트랜잭션과+best+effort+atomicity.md",
+    "target": "src/content/posts/sQTxfZtVQb7ctSUNMawPSVMPN.md",
+    "post_id": "d159b017-37f5-5c97-b55d-27d6d2e96611",
+    "nanoId": "sQTxfZtVQb7ctSUNMawPSVMPN",
+    "permalink": "/sQTxfZtVQb7ctSUNMawPSVMPN/",
+    "categories": [
+      "블로그",
+      "이론"
+    ],
+    "sourceSha256": "c4b812af809b17f80279b368fdc08e4b6ed9d70833d2a7806dfbf49dbbf92cc1",
+    "targetSha256": "6db9caf60f63fa2164a2b9992e03584b1c7d6dacda7688f9aa9c01ea9e282fec",
+    "images": 0,
+    "altAdded": 0,
+    "imageWidths": 0,
+    "widthExamples": 0,
+    "formulas": 0
+  },
+  {
+    "source": "블로그/LLM/_posts/2025-08-03-vault+이전을+위한+hashicorp+vault+mcp+서버+개발.md",
+    "target": "src/content/posts/VdstsXHwadn7TgXzGkhxdVLrk.md",
+    "post_id": "a4d2b394-dc2e-5f0d-8b0a-8853ab37eab1",
+    "nanoId": "VdstsXHwadn7TgXzGkhxdVLrk",
+    "permalink": "/VdstsXHwadn7TgXzGkhxdVLrk/",
+    "categories": [
+      "블로그",
+      "LLM"
+    ],
+    "sourceSha256": "242619e970cfe817405279be6a3a46de33290a756556790a0de86dc9e4935559",
+    "targetSha256": "69ef47f6df6ab17b641e764e658c3b60e838297accfaf4a73428c8801ec73f2d",
+    "images": 0,
+    "altAdded": 0,
+    "imageWidths": 0,
+    "widthExamples": 0,
+    "formulas": 0
+  },
+  {
+    "source": "블로그/Opentelemetry/_posts/2024-12-21-opentelemetry+zero+code+instrumentation을+활용한+nestjs+계측+패키지+개발.md",
+    "target": "src/content/posts/vhIHDEqcHAMQz1kQnub9xjd3f.md",
+    "post_id": "850c4ee0-8a04-585b-9d9c-515b898c8865",
+    "nanoId": "vhIHDEqcHAMQz1kQnub9xjd3f",
+    "permalink": "/vhIHDEqcHAMQz1kQnub9xjd3f/",
+    "categories": [
+      "블로그",
+      "Opentelemetry"
+    ],
+    "sourceSha256": "4fd5e68e248d65e3e4c269abc466c1d9624f1db94381f0cef1380ea77fd092de",
+    "targetSha256": "66e959f577c611697c31a5de1b4d47a79e82f5f6a43b8c48bf08994629a8cc73",
+    "images": 2,
+    "altAdded": 2,
+    "imageWidths": 0,
+    "widthExamples": 0,
+    "formulas": 0
+  },
+  {
+    "source": "블로그/설계/_posts/2025-12-19-멀티테넌시?+어떻게+설계하고+접근하지?.md",
+    "target": "src/content/posts/vYHJYnUa2kYDGEOSrxIWSvelP.md",
+    "post_id": "74909d58-c1f3-54eb-9523-4de491b0ba9c",
+    "nanoId": "vYHJYnUa2kYDGEOSrxIWSvelP",
+    "permalink": "/vYHJYnUa2kYDGEOSrxIWSvelP/",
+    "categories": [
+      "블로그",
+      "설계"
+    ],
+    "sourceSha256": "f3fe3be898728327af1fb1c797a7c9865b3f65766c340bc282466f107aac2054",
+    "targetSha256": "e369623771d0443a18b5e29542dfcbaa588bf83e8289999e990e4f5efc5792bc",
+    "images": 2,
+    "altAdded": 1,
+    "imageWidths": 0,
+    "widthExamples": 0,
+    "formulas": 0
+  },
+  {
+    "source": "블로그/Obsidian/_posts/2024-12-19-obsidian+cursor(llm)을+활용에+대한+팁.md",
+    "target": "src/content/posts/w1fGIy5OgbcqoYV4nvqRsHJZS.md",
+    "post_id": "29a73168-f2d0-5515-b369-50b597d3e899",
+    "nanoId": "w1fGIy5OgbcqoYV4nvqRsHJZS",
+    "permalink": "/w1fGIy5OgbcqoYV4nvqRsHJZS/",
+    "categories": [
+      "블로그",
+      "Obsidian"
+    ],
+    "sourceSha256": "baef998e8b03b75dcba37c323d223722e6017de06c15a45ad382e09914834be6",
+    "targetSha256": "d74e90c64c27f9814f0d1dabe6ea2c65bc014812e2ad4d0f880bcf1b1a4a561e",
+    "images": 2,
+    "altAdded": 2,
+    "imageWidths": 0,
+    "widthExamples": 0,
+    "formulas": 0
+  },
+  {
+    "source": "블로그/Opentelemetry/_posts/2024-12-21-opentelemetry+zero+code+instrumentation의+node_options+적용+안되는+문제.md",
+    "target": "src/content/posts/WQRsDo1cgUM3bnp8yzIRUgTSn.md",
+    "post_id": "ca496374-6551-5aad-a8ed-9b84d6cf7fce",
+    "nanoId": "WQRsDo1cgUM3bnp8yzIRUgTSn",
+    "permalink": "/WQRsDo1cgUM3bnp8yzIRUgTSn/",
+    "categories": [
+      "블로그",
+      "Opentelemetry"
+    ],
+    "sourceSha256": "5ab8360158058fde4d7a396834dbc7387b255cd8535db51745e65b4dcb321b2d",
+    "targetSha256": "ba2a2344d64d6a1b50de3b1bc3a9006e5c987413545d3b11cec43401c26d75ba",
+    "images": 0,
+    "altAdded": 0,
+    "imageWidths": 0,
+    "widthExamples": 0,
+    "formulas": 0
+  },
+  {
+    "source": "블로그/개발환경/_posts/2024-12-22-volta+(nvm+alternative).md",
+    "target": "src/content/posts/YGBY1KdZ7ykvFQ7qxrQXPy7Zm.md",
+    "post_id": "7a434d04-a99a-5cc9-87eb-9947604d6856",
+    "nanoId": "YGBY1KdZ7ykvFQ7qxrQXPy7Zm",
+    "permalink": "/YGBY1KdZ7ykvFQ7qxrQXPy7Zm/",
+    "categories": [
+      "블로그",
+      "개발환경"
+    ],
+    "sourceSha256": "6a9f8357c5fe8321baa81285eb23e979c06d3a4f7e51bb5278e0a38e4d11a76c",
+    "targetSha256": "2bf4e85b60067f16e74d3272c48a14d8db4910ef2a79482503897d70f07a8eaf",
+    "images": 0,
+    "altAdded": 0,
+    "imageWidths": 0,
+    "widthExamples": 0,
+    "formulas": 0
+  },
+  {
+    "source": "블로그/Opentelemetry/_posts/2024-12-21-opentelemetry+zero+code+instrumentation+(+nodejs+).md",
+    "target": "src/content/posts/yjCxVy1uMGz5CUzypKY9rP4Mw.md",
+    "post_id": "21c8cf67-262b-5442-abe1-62344d4d9a48",
+    "nanoId": "yjCxVy1uMGz5CUzypKY9rP4Mw",
+    "permalink": "/yjCxVy1uMGz5CUzypKY9rP4Mw/",
+    "categories": [
+      "블로그",
+      "Opentelemetry"
+    ],
+    "sourceSha256": "ddcb1fb05a5c64af2074a5bd7486af494b042ce88551ca5fd608096fc7237f7a",
+    "targetSha256": "c08ad344f37d3a0edb671148a4524a6292a08b8f1e6b8f70010e327c7e6da62b",
+    "images": 1,
+    "altAdded": 1,
+    "imageWidths": 0,
+    "widthExamples": 0,
+    "formulas": 0
+  },
+  {
+    "source": "블로그/Graphql/_posts/2026-02-22-graphql과+ddd+(2)+relay,+ddd,+cqrs는+어디서+충돌할까?.md",
+    "target": "src/content/posts/zz7x9WMHUg4YYfPKfVVhYqWc3.md",
+    "post_id": "12497aa7-c968-5b9c-b810-855abf04e688",
+    "nanoId": "zz7x9WMHUg4YYfPKfVVhYqWc3",
+    "permalink": "/zz7x9WMHUg4YYfPKfVVhYqWc3/",
+    "categories": [
+      "블로그",
+      "Graphql"
+    ],
+    "sourceSha256": "3cf139a37f0b6180a42af6dd7d5376acfa9b4a7c47444dbc9c0fa71e978156d6",
+    "targetSha256": "0d43442a0537fcfbcdfbd82c70228ef8da6bbf37c39322db22282c37486aa166",
+    "images": 0,
+    "altAdded": 0,
+    "imageWidths": 0,
+    "widthExamples": 0,
+    "formulas": 0
+  }
+]

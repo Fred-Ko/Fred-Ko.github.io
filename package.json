@@ -1,150 +1,51 @@
 {
-  "name": "fredko-blog",
-  "version": "0.1.0",
-  "description": "Fredko's Markdown-first engineering blog with a serverless interaction layer.",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Fred-Ko/Fred-Ko.github.io.git"
-  },
-  "author": "Junho Ko",
-  "license": "MIT",
-  "since": 2026,
-  "bugs": {
-    "url": "https://github.com/Fred-Ko/Fred-Ko.github.io/issues"
-  },
-  "homepage": "https://fredko.kr",
+  "name": "fredko-blog-astro",
+  "private": true,
   "type": "module",
+  "version": "0.0.0",
   "scripts": {
-    "build": "concurrently npm:build:*",
-    "build:css": "node purgecss.js",
-    "build:js": "rollup -c --bundleConfigAsCjs --environment BUILD:production",
-    "highlight:code": "node scripts/shiki-highlight.js _site",
-    "watch:js": "rollup -c --bundleConfigAsCjs -w",
-    "lint:js": "eslint",
-    "lint:scss": "stylelint _sass/**/*.scss",
-    "lint:fix:scss": "npm run lint:scss -- --fix",
-    "test": "npm run lint:js && npm run lint:scss",
-    "prepare": "husky"
+    "dev": "astro dev --host 127.0.0.1",
+    "build": "astro build && pagefind --site dist && node scripts/build-ready.ts",
+    "preview": "node scripts/preview.ts",
+    "check:catalog": "node scripts/check-catalog.mjs",
+    "check:contrast": "node scripts/check-contrast.mjs",
+    "test": "npm run check:catalog && npm run check:contrast && npm run test:posts && npm run test:publishing && npm run test:preview && npm run test:exports",
+    "test:posts": "node --test tests/posts.test.ts",
+    "migrate:posts": "node scripts/migration/migrate-posts.ts",
+    "check:migration": "node scripts/migration/migrate-posts.ts --check",
+    "test:migration": "node --test tests/migration/migration.test.ts",
+    "check:site": "node scripts/check-site.ts",
+    "test:browser": "playwright test",
+    "check:types": "astro check",
+    "check:baseline": "node scripts/migration/check-baseline.ts",
+    "test:publishing": "node --test tests/publishing.test.ts",
+    "test:preview": "node --test tests/preview.test.ts",
+    "prepare:content": "node scripts/prepare-content.ts",
+    "prebuild": "npm run prepare:content",
+    "predev": "npm run prepare:content",
+    "precheck:types": "npm run prepare:content",
+    "test:exports": "node --test tests/exports.test.ts"
   },
   "dependencies": {
-    "@popperjs/core": "^2.11.8",
-    "bootstrap": "^5.3.8"
+    "@astrojs/markdown-satteri": "0.4.9",
+    "@astrojs/mdx": "8.1.5",
+    "@fontsource-variable/space-grotesk": "5.3.0",
+    "@resvg/resvg-js": "2.6.2",
+    "@shikijs/transformers": "4.6.0",
+    "astro": "7.4.11",
+    "pretendard": "1.3.9",
+    "satori": "0.63.2",
+    "satteri": "0.11.7",
+    "tinyglobby": "0.2.17",
+    "yaml": "2.9.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.28.4",
-    "@babel/plugin-transform-class-properties": "^7.27.1",
-    "@babel/plugin-transform-private-methods": "^7.27.1",
-    "@babel/preset-env": "^7.28.3",
-    "@commitlint/cli": "^20.1.0",
-    "@commitlint/config-conventional": "^20.0.0",
-    "@rollup/plugin-babel": "^6.1.0",
-    "@rollup/plugin-node-resolve": "^16.0.3",
-    "@rollup/plugin-terser": "^1.0.2",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/exec": "^7.1.0",
-    "@semantic-release/git": "^10.0.1",
-    "cheerio": "^1.2.0",
-    "concurrently": "^9.2.1",
-    "conventional-changelog-conventionalcommits": "^9.1.0",
-    "eslint": "^9.38.0",
-    "globals": "^16.4.0",
-    "husky": "^9.1.7",
-    "purgecss": "^7.0.2",
-    "rollup": "^4.52.5",
-    "semantic-release": "^25.0.1",
-    "shiki": "^4.3.1",
-    "stylelint": "^16.25.0",
-    "stylelint-config-standard-scss": "^16.0.0"
-  },
-  "prettier": {
-    "trailingComma": "none"
-  },
-  "browserslist": [
-    "last 2 versions",
-    "> 0.2%",
-    "not dead"
-  ],
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ],
-    "rules": {
-      "body-max-line-length": [
-        0,
-        "always"
-      ]
-    }
-  },
-  "release": {
-    "branches": [
-      "production"
-    ],
-    "plugins": [
-      [
-        "@semantic-release/commit-analyzer",
-        {
-          "preset": "conventionalcommits"
-        }
-      ],
-      [
-        "@semantic-release/release-notes-generator",
-        {
-          "preset": "conventionalcommits",
-          "presetConfig": {
-            "types": [
-              {
-                "type": "feat",
-                "section": "Features"
-              },
-              {
-                "type": "fix",
-                "section": "Bug Fixes"
-              },
-              {
-                "type": "perf",
-                "section": "Improvements"
-              },
-              {
-                "type": "refactor",
-                "section": "Changes",
-                "hidden": true
-              }
-            ]
-          }
-        }
-      ],
-      [
-        "@semantic-release/changelog",
-        {
-          "changelogFile": "docs/CHANGELOG.md",
-          "changelogTitle": "# Changelog"
-        }
-      ],
-      [
-        "@semantic-release/npm",
-        {
-          "npmPublish": false
-        }
-      ],
-      [
-        "@semantic-release/exec",
-        {
-          "prepareCmd": "bash tools/release.sh --prepare",
-          "publishCmd": "bash tools/release.sh"
-        }
-      ],
-      [
-        "@semantic-release/git",
-        {
-          "assets": [
-            "docs",
-            "package.json",
-            "*.gemspec"
-          ],
-          "message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}"
-        }
-      ],
-      "@semantic-release/github"
-    ]
+    "@astrojs/check": "0.9.12",
+    "@axe-core/playwright": "4.14.0",
+    "@fontsource/space-grotesk": "5.3.0",
+    "@playwright/test": "1.65.0",
+    "@types/node": "24.19.2",
+    "pagefind": "1.6.0",
+    "typescript": "6.0.3"
   }
 }

@@ -1,0 +1,68 @@
+---
+/**
+ * Pagination — Astro paginate()의 page 객체 일부를 받는다.
+ * <Pagination current={page.currentPage} last={page.lastPage} href={(n) => n === 1 ? '/' : `/page/${n}/`} />
+ */
+interface Props {
+  current: number;
+  last: number;
+  href: (page: number) => string;
+}
+const { current, last, href } = Astro.props;
+const pages = Array.from({ length: last }, (_, i) => i + 1);
+---
+
+{
+  last > 1 && (
+    <nav class="pagination" aria-label="페이지">
+      {current > 1 ? <a href={href(current - 1)} rel="prev" aria-label="이전 페이지">←</a> : <span aria-hidden="true">←</span>}
+      {pages.map((n) =>
+        n === current ? (
+          <span aria-current="page">{n}</span>
+        ) : (
+          <a href={href(n)}>{n}</a>
+        ),
+      )}
+      {current < last ? <a href={href(current + 1)} rel="next" aria-label="다음 페이지">→</a> : <span aria-hidden="true">→</span>}
+    </nav>
+  )
+}
+
+<style>
+  .pagination {
+    display: flex;
+    flex-wrap: wrap;
+    border-top: var(--border-thin) solid var(--line);
+    border-left: var(--border-thin) solid var(--line);
+    width: fit-content;
+    margin-inline: auto;
+    font-family: var(--font-display);
+    font-size: var(--text-2xs);
+    letter-spacing: 0.08em;
+  }
+
+  .pagination > * {
+    display: grid;
+    place-items: center;
+    min-width: 2.75rem;
+    height: 2.75rem;
+    border-right: var(--border-thin) solid var(--line);
+    border-bottom: var(--border-thin) solid var(--line);
+    color: var(--fg-subtle);
+    text-decoration: none;
+  }
+
+  .pagination > a:hover {
+    background: light-dark(var(--hover-bg), var(--bg-hover));
+    color: var(--hover-fg);
+  }
+
+  .pagination > [aria-current='page'] {
+    background: var(--accent);
+    color: var(--accent-fg);
+  }
+
+  span[aria-hidden] {
+    opacity: 0.35;
+  }
+</style>

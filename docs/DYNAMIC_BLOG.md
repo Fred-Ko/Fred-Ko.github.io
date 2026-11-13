@@ -1,10 +1,10 @@
 # Fredko 동적 블로그 개발 가이드
 
-Jekyll은 Markdown 게시물을 정적 HTML로 만들고, `cloudflare/blog-api`의 Worker와 D1이 조회수, 순 방문자, 좋아요, GitHub 로그인, 댓글을 처리한다. 게시물 원본은 계속 Git 저장소만 사용하며 웹 작성 기능은 제공하지 않는다.
+Astro는 정적 사이트를 만들고, `cloudflare/blog-api`의 Worker와 D1이 조회수, 순 방문자, 좋아요, GitHub 로그인, 댓글을 처리한다. 게시물 원본은 계속 Git 저장소만 사용하며 웹 작성 기능은 제공하지 않는다.
 
 ## 구성
 
-- 정적 사이트: Jekyll + Fredko 로컬 테마
+- 정적 사이트: Astro + Fredko 디자인 시스템
 - API: Cloudflare Workers
 - 데이터베이스: Cloudflare D1
 - 인증: GitHub OAuth authorization-code flow + PKCE
@@ -24,7 +24,7 @@ title: 게시물 제목
 ---
 ```
 
-파일명, 제목, permalink를 변경해도 `post_id`는 변경하지 않는다. `_plugins/validate-post-id.rb`가 누락, 잘못된 UUID, 중복을 빌드 단계에서 차단한다.
+파일명, 제목, permalink를 변경해도 `post_id`는 변경하지 않는다. 기존 Jekyll 검증 플러그인은 Astro `posts` 컬렉션의 스키마와 로더로 대체했다. 누락, 잘못된 UUID, 중복은 빌드 단계에서 차단한다. 원고 28개와 기존 글 라우트를 이전했다. 공개 정책은 [글 컬렉션 규칙](CONTENT.md)을 참고한다.
 
 새 ID는 다음 명령으로 만들 수 있다.
 
@@ -56,21 +56,20 @@ Authorization callback URL: http://127.0.0.1:8787/api/auth/github/callback
 두 터미널에서 실행한다.
 
 ```bash
-# Terminal 1
-bundle exec jekyll serve \
-  --config _config.yml,_config.development.yml \
-  --livereload
+# 터미널 1
+npm run build
+npm run preview
 
-# Terminal 2
+# 터미널 2
 cd cloudflare/blog-api
-npm run dev
+npm run dev -- --port 8788 --var VISITOR_HASH_SALT:local-review-only --var SITE_URL:http://127.0.0.1:4400
 ```
 
 검증 명령은 다음과 같다.
 
 ```bash
-npm run build:js
-bundle exec jekyll build
+npm test
+npm run build
 
 cd cloudflare/blog-api
 npm run typecheck
@@ -134,14 +133,10 @@ DELETE /api/admin/comments/:commentId
 
 조회수도 같은 익명 브라우저 해시를 사용하며, 같은 게시물은 30분에 한 번만 증가한다. 새로고침 반복은 차단하지만 쿠키 삭제나 별도 브라우저까지 동일 사용자로 추적하지는 않는다.
 
-## 배포 순서
+## Astro 배포와 연결
 
-1. Worker와 D1을 먼저 배포한다.
-2. `/api/health`와 GitHub 로그인을 확인한다.
-3. 기존 GitHub Pages에서 API 연동을 검증한다.
-4. Cloudflare Pages에 `_site`를 배포한다.
-5. `fredko.kr`을 Pages에 연결한다.
-6. Worker route `fredko.kr/api/*`가 API를 우선 처리하는지 확인한다.
-7. 검증 후 기존 GitHub Pages 배포 workflow를 중단한다.
+GitHub Pages 워크플로는 Node 24에서 Astro를 빌드하고 `dist/`를 배포한다. `/api/posts/:postId/*`와 `/api/auth/*`, `/api/comments/*` 경로 및 Cloudflare D1은 기존 구성을 유지한다.
 
-현재 저장소의 GitHub Pages workflow는 안전한 이전을 위해 그대로 유지되어 있다.
+루트의 `npm run preview`는 빌드 결과와 로컬 Worker API를 같은 출처 `http://127.0.0.1:4400`로 제공한다. `/api`의 기본 대상은 `http://127.0.0.1:8788`이다. Astro 개발 서버도 같은 로컬 API로 프록시한다.
+
+실제 GitHub OAuth 승인을 완료하는 검증은 사용자의 GitHub 계정과 올바른 앱 자격 증명이 필요하다. 자동 브라우저 시험은 가상 로그인 세션으로 댓글 작성·수정·삭제·로그아웃을 확인하고, 익명 통계·좋아요·조회수는 실제 로컬 D1에 연결한다. 운영 로그인 시작 경로의 302 응답은 별도로 확인했다.

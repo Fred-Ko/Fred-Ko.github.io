@@ -1,0 +1,72 @@
+---
+/**
+ * ProseEnhancer — 빌드 때 만들어진 코드 블록 마크업에 동작을 붙인다(점진적 향상).
+ *  - 복사 버튼 표시 + 클립보드 복사
+ *  - data-collapsible 블록 접기/펼치기
+ * JS가 없으면 복사 버튼은 숨겨진 채, 긴 코드는 전부 펼쳐진 채로 남는다.
+ */
+---
+
+<script>
+  const pictures=[...document.querySelectorAll<HTMLImageElement>('.body.prose img')].filter(img=>!img.closest('a,button'));
+  if(pictures.length){
+    const viewer=document.createElement('dialog');viewer.className='image-viewer';viewer.setAttribute('aria-label','Image viewer');
+    const close=document.createElement('button');close.type='button';close.className='image-viewer-close';close.textContent='×';close.setAttribute('aria-label','Close');
+    const expanded=document.createElement('img');expanded.alt='';viewer.append(close,expanded);document.body.append(viewer);
+    close.addEventListener('click',()=>viewer.close());viewer.addEventListener('click',event=>{if(event.target===viewer)viewer.close();});
+    pictures.forEach(img=>{const button=document.createElement('button');button.type='button';button.className='image-zoom-trigger';button.setAttribute('aria-label',img.alt||'Open image');img.replaceWith(button);button.append(img);button.addEventListener('click',()=>{expanded.src=img.currentSrc||img.src;expanded.alt=img.alt;viewer.showModal();});});
+  }
+
+  document.querySelectorAll<HTMLElement>('.code-block').forEach((block) => {
+    const pre = block.querySelector('pre');
+    if (!pre) return;
+
+    const copy = block.querySelector<HTMLButtonElement>('.code-copy');
+    if (copy && navigator.clipboard) {
+      copy.hidden = false;
+      copy.addEventListener('click', async () => {
+        const text = [...pre.querySelectorAll('.line')]
+          .filter((l) => !l.classList.contains('remove')) // diff에서 삭제 줄은 복사하지 않음
+          .map((l) => l.textContent)
+          .join('\n');
+        try {
+          await navigator.clipboard.writeText(text);
+          copy.textContent = 'Copied!';
+          copy.dataset.copied = '';
+        } catch {
+          copy.textContent = 'Failed';
+        }
+        setTimeout(() => {
+          copy.textContent = 'Copy';
+          delete copy.dataset.copied;
+        }, 1600);
+      });
+    }
+
+    if (document.querySelector('[data-code-collapse]') && block.hasAttribute('data-collapsible')) {
+      block.dataset.collapsed = '';
+      const total = pre.querySelectorAll('.line').length;
+      const toggle = document.createElement('button');
+      toggle.type = 'button';
+      toggle.className = 'code-expand';
+      toggle.setAttribute('aria-expanded', 'false');
+      const label = () =>
+        (toggle.textContent = block.hasAttribute('data-collapsed') ? `펼치기 · ${total}줄` : '접기');
+      label();
+      toggle.addEventListener('click', () => {
+        const collapsed = block.toggleAttribute('data-collapsed');
+        toggle.setAttribute('aria-expanded', String(!collapsed));
+        label();
+        if (collapsed) block.scrollIntoView({ block: 'nearest' });
+      });
+      block.append(toggle);
+    }
+  });
+</script>
+
+<style is:global>
+.image-zoom-trigger{display:block;width:100%;cursor:zoom-in}
+.image-viewer{width:100vw;height:100dvh;max-width:none;max-height:none;inset:0;margin:0;padding:3rem 1.5rem;border:0;background:var(--bg-scrim);color:var(--fg);backdrop-filter:blur(6px)}
+.image-viewer[open]{display:grid;place-items:center}.image-viewer>img{max-width:100%;max-height:calc(100dvh - 6rem);object-fit:contain}
+.image-viewer-close{position:absolute;right:1rem;top:1rem;width:44px;height:44px;font-size:2rem;background:var(--bg);border:1px solid var(--line)}
+</style>

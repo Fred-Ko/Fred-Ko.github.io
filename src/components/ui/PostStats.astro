@@ -1,0 +1,161 @@
+---
+/**
+ * PostStats — 조회수·좋아요·댓글 수. 기존 Cloudflare Worker API(/api/posts/:id/…)를 그대로 쓴다.
+ *  GET  /posts/:id/stats → { views, likes, comments, liked }
+ *  POST /posts/:id/view  (viewDelayMs 뒤 1회)
+ *  PUT|DELETE /posts/:id/like (익명 브라우저 쿠키 기준)
+ * API가 없는 환경(로컬 개발, 쇼케이스)에서는 '—'로 남고 오류를 드러내지 않는다.
+ */
+interface Props {
+  postId: string;
+  apiBase?: string;
+  viewDelayMs?: number;
+}
+const { postId, apiBase = '/api', viewDelayMs = 8000 } = Astro.props;
+---
+
+<div class="post-stats" data-post-stats data-post-id={postId} data-api={apiBase} data-view-delay={viewDelayMs}>
+  <span class="stat" title="조회수"><span class="label sr-only">조회수</span><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6Z"/><circle cx="12" cy="12" r="3"/></svg><b data-stat="views">—</b></span>
+
+  <button type="button" class="like" aria-pressed="false" data-like disabled>
+    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+      <path d="M12 21s-7.5-4.6-9.5-9.3C1 8 3.4 4.5 7 4.5c2 0 3.6 1.1 5 3 1.4-1.9 3-3 5-3 3.6 0 6 3.5 4.5 7.2C19.5 16.4 12 21 12 21z" />
+    </svg>
+    <span class="label sr-only">좋아요</span>
+    <b data-stat="likes">—</b>
+  </button>
+  <span class="stat" title="댓글"><span class="label sr-only">댓글</span><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16v12H9l-5 4V4Z"/></svg><b data-stat="comments">—</b></span>
+  <p class="notice" role="status" hidden></p>
+</div>
+
+<script>
+  type Stats = { views: number; likes: number; comments: number; liked?: boolean };
+
+  document.querySelectorAll<HTMLElement>('[data-post-stats]').forEach(async (root) => {
+    const { postId, api, viewDelay } = root.dataset;
+    if (!postId || !api) return;
+    const base = `${api.replace(/\/$/, '')}/posts/${encodeURIComponent(postId)}`;
+    const like = root.querySelector<HTMLButtonElement>('[data-like]')!;
+    const notice = root.querySelector<HTMLElement>('.notice')!;
+    const fmt = new Intl.NumberFormat('ko-KR');
+
+    const render = (s: Stats) => {
+      for (const key of ['views', 'likes', 'comments'] as const) {
+        const el = root.querySelector(`[data-stat="${key}"]`);
+        if (el) el.textContent = fmt.format(Number(s[key] ?? 0));
+      }
+      like.setAttribute('aria-pressed', String(Boolean(s.liked)));
+      like.disabled = false;
+    };
+
+    const request = async (path: string, init?: RequestInit) => {
+      const res = await fetch(`${base}${path}`, { credentials: 'include', ...init });
+      if (!res.ok) throw Object.assign(new Error(String(res.status)), { status: res.status });
+      return (await res.json()) as Stats;
+    };
+
+    try {
+      render(await request('/stats'));
+    } catch {
+      return; // API 없음 — 조용히 '—' 유지
+    }
+
+    document.addEventListener('post-comments-changed', () => { request('/stats').then(render).catch(() => {}); });
+
+    setTimeout(() => {
+      if (document.visibilityState !== 'visible') return;
+      request('/view', { method: 'POST' }).then(render).catch(() => {});
+    }, Number(viewDelay ?? 8000));
+
+    like.addEventListener('click', async () => {
+      const liked = like.getAttribute('aria-pressed') === 'true';
+      like.disabled = true;
+      try {
+        render(await request('/like', { method: liked ? 'DELETE' : 'PUT' }));
+        notice.hidden = true;
+      } catch (e) {
+        like.disabled = false;
+        notice.textContent =
+          (e as { status?: number }).status === 401 ? '요청이 만료되었습니다. 새로고침해 주세요.' : '잠시 후 다시 시도해 주세요.';
+        notice.hidden = false;
+      }
+    });
+  });
+</script>
+
+<style>
+  .post-stats {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2) var(--space-6);
+    padding-block: var(--space-4);
+    font-size: var(--text-lg);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .stat {
+    display: inline-flex;
+    align-items: center;
+    min-height: 3rem;
+    gap: var(--space-3);
+    padding: var(--space-2) var(--space-3);
+    color: var(--fg-muted);
+  }
+
+  b {
+    color: var(--fg-strong);
+    font-size: var(--text-lg);
+    font-variant-numeric: tabular-nums;
+    font-weight: var(--weight-semibold);
+  }
+
+  .like {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-height: 3rem;
+    padding: var(--space-2) var(--space-3);
+    border: var(--border-thin) solid transparent;
+    color: var(--fg-muted);
+  }
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .like svg {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+  }
+
+  .like:hover:not(:disabled) {
+    border-color: var(--hover-border);
+    color: var(--fg-strong);
+  }
+
+  .like[aria-pressed='true'] {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .like[aria-pressed='true'] svg {
+    fill: currentColor;
+  }
+
+  .like:disabled {
+    cursor: default;
+    opacity: 0.6;
+  }
+
+  .notice {
+    flex-basis: 100%;
+    text-align: center;
+    color: var(--fg-muted);
+    font-size: var(--text-xs);
+  }
+</style>

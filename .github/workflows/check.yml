@@ -1,0 +1,23 @@
+name: Astro 검증
+on:
+  pull_request:
+  push:
+    branches-ignore: [main, master]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run check:types
+      - run: npm test
+      - run: npm run build
+      - run: npm run check:site

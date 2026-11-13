@@ -1,0 +1,217 @@
+---
+/**
+ * SearchDialog — ⌘K / Ctrl+K / '/' 로 여는 전문 검색. Pagefind(빌드 후 생성되는 정적 인덱스)를 쓴다.
+ * 인덱스는 처음 열 때만 불러오므로 일반 페이지 로딩 비용은 0.
+ * 열기 버튼: [data-search-open] 속성이 있는 아무 요소.
+ */
+---
+
+<dialog class="search" data-search aria-label="검색">
+  <form method="dialog" class="bar" role="search">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path>
+    </svg>
+    <input type="search" name="q" placeholder="Search..." autocomplete="off" spellcheck="false" aria-label="검색어" aria-controls="search-results" />
+    <button type="submit" class="esc label">Cancel</button>
+  </form>
+  <p class="status" role="status" aria-live="polite"></p>
+  <ul id="search-results" class="results" role="list"></ul>
+</dialog>
+
+<script>
+  type PagefindResult = { data: () => Promise<{ url: string; excerpt: string; meta: { title?: string } }> };
+  type Pagefind = { debouncedSearch: (q: string) => Promise<{ results: PagefindResult[] } | null> };
+
+  const dialog = document.querySelector<HTMLDialogElement>('[data-search]');
+  if (dialog) {
+    const input = dialog.querySelector('input')!;
+    const list = dialog.querySelector<HTMLUListElement>('.results')!;
+    const status = dialog.querySelector<HTMLElement>('.status')!;
+    let pagefind: Pagefind | null | undefined;
+
+    const load = async () => {
+      if (pagefind !== undefined) return pagefind;
+      try {
+        const path = '/pagefind/pagefind.js';
+        pagefind = (await import(/* @vite-ignore */ path)) as Pagefind;
+      } catch {
+        pagefind = null;
+      }
+      return pagefind;
+    };
+
+    const open = async () => {
+      if (dialog.open) return;
+      dialog.showModal();
+      input.select();
+      if (!(await load())) status.textContent = '검색을 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.';
+    };
+
+    document.querySelectorAll('[data-search-open]').forEach((el) => el.addEventListener('click', open));
+    document.addEventListener('keydown', (e) => {
+      const typing = (e.target as HTMLElement).closest('input, textarea, [contenteditable]');
+      if ((e.key === 'k' && (e.metaKey || e.ctrlKey)) || (e.key === '/' && !typing)) {
+        e.preventDefault();
+        open();
+      }
+    });
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) dialog.close(); // 바깥(backdrop) 클릭
+    });
+
+    input.addEventListener('input', async () => {
+      const q = input.value.trim();
+      const pf = await load();
+      if (!pf) return;
+      if (!q) {
+        list.replaceChildren();
+        status.textContent = '';
+        return;
+      }
+      const search = await pf.debouncedSearch(q);
+      if (!search) return; // 더 새 입력으로 취소됨
+      const items = await Promise.all(search.results.slice(0, 8).map((r) => r.data()));
+      status.textContent = items.length ? `${search.results.length}개 결과` : 'Oops! No results found.';
+      list.replaceChildren(
+        ...items.map((item) => {
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = item.url;
+          const title = document.createElement('span');
+          title.className = 'r-title';
+          title.textContent = item.meta.title ?? item.url;
+          const excerpt = document.createElement('span');
+          excerpt.className = 'r-excerpt';
+          excerpt.innerHTML = item.excerpt; // Pagefind가 이스케이프한 본문 + <mark>
+          a.append(title, excerpt);
+          li.append(a);
+          return li;
+        }),
+      );
+    });
+
+    // 결과 목록 ↑↓ 이동
+    dialog.addEventListener('keydown', (e) => {
+      if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+      const links = [...list.querySelectorAll('a')];
+      if (!links.length) return;
+      e.preventDefault();
+      const i = links.indexOf(document.activeElement as HTMLAnchorElement);
+      const next = e.key === 'ArrowDown' ? (i + 1) % links.length : i <= 0 ? -1 : i - 1;
+      (next === -1 ? input : links[next]).focus();
+    });
+  }
+</script>
+
+<style>
+  .search {
+    width: min(100% - 2 * var(--gutter), 40rem);
+    max-height: min(80dvh, 40rem);
+    margin: 12vh auto auto;
+    border: var(--border-thin) solid var(--line);
+    background: var(--bg-raised);
+    color: var(--fg);
+  }
+
+  .search::backdrop {
+    background: var(--bg-scrim);
+    backdrop-filter: blur(4px);
+  }
+
+  .search[open] {
+    display: flex;
+    flex-direction: column;
+    animation: fredko-search-in var(--duration-base) var(--ease-out);
+  }
+
+  @keyframes fredko-search-in {
+    from {
+      opacity: 0;
+      transform: translateY(-0.5rem);
+    }
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: 0 var(--space-4);
+    border-bottom: var(--border-thin) solid var(--line);
+    color: var(--fg-subtle);
+  }
+
+  input {
+    flex: 1;
+    min-height: 3.5rem;
+    border: 0;
+    background: transparent;
+    color: var(--fg-strong);
+    font-size: var(--text-lg);
+    outline: none;
+  }
+
+  input::placeholder {
+    color: var(--fg-subtle);
+  }
+
+  .esc {
+    padding: var(--space-1) var(--space-2);
+    border: var(--border-thin) solid var(--line-control);
+    color: var(--fg-subtle);
+  }
+
+  .status {
+    padding: var(--space-3) var(--space-4) 0;
+    color: var(--fg-subtle);
+    font-size: var(--text-xs);
+  }
+
+  .status:empty {
+    display: none;
+  }
+
+  .results {
+    padding: var(--space-2) 0;
+    margin: 0;
+    overflow-y: auto;
+    list-style: none;
+  }
+
+  .results :global(a) {
+    display: grid;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .results :global(a:is(:hover, :focus-visible)) {
+    background: var(--bg-hover);
+    outline: none;
+    box-shadow: inset var(--border-thick) 0 var(--accent);
+  }
+
+  .results :global(.r-series) {color:var(--fg-subtle);font-size:var(--text-xs);line-height:1.5;}
+  .results :global(.r-title) {
+    color: var(--fg-strong);
+    font-family: var(--font-display);
+    font-weight: var(--weight-semibold);
+    line-height:1.45;
+  }
+
+  .results :global(.r-excerpt) {
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:2;
+    line-clamp:2;
+    overflow:hidden;
+    color: var(--fg-muted);
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+  }
+
+  .results :global(mark) {
+    background: var(--accent-soft);
+    color: var(--fg-strong);
+  }
+</style>

@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import {publishedAt,type Post} from '../../lib/posts';
+interface Props{kind:'tags'|'categories';name:string;posts:Post[]}
+const {name,posts}=Astro.props;
+const date=(post:Post)=>publishedAt(post).toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric',timeZone:'Asia/Seoul'});
+---
+<BaseLayout title={name}><section class="container-prose collection"><h1>{name} <small>{posts.length}</small></h1><ul class="taxonomy-posts" role="list">{posts.map(post=><li><a href={post.data.permalink}>{post.data.title}</a><span class="dash"/><time datetime={publishedAt(post).toISOString()}>{date(post)}</time></li>)}</ul></section></BaseLayout>
+<style>.collection{padding-block:var(--space-16)}h1{font-size:2rem;font-weight:400;line-height:1.2;margin-bottom:var(--space-10)}small{font-size:var(--text-lg);color:var(--fg-subtle)}ul{padding:0;list-style:none}li{display:flex;align-items:baseline;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line-soft)}a{color:var(--fg-strong);text-decoration:none}.dash{flex:1;min-width:1rem;border-bottom:1px dashed var(--line-soft)}time{white-space:nowrap;font-size:var(--text-xs);color:var(--fg-subtle)}a:hover{color:var(--accent)}@media(width<600px){li{flex-wrap:wrap;gap:.4rem}li>a{width:100%}.dash{display:none}}</style>

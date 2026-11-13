@@ -1,0 +1,46 @@
+{
+  "source_commit": "4f659e55b0f593231989e7ccc600e91594082087",
+  "title": "Fredko Dev Log",
+  "description": "백엔드 개발자 Fredko의 기술 블로그.",
+  "url": "https://fredko.kr",
+  "lang": "ko",
+  "timezone": "Asia/Seoul",
+  "social": {
+    "name": "Fredko",
+    "email": "fredko328@gmail.com",
+    "links": [
+      "https://github.com/fred-ko",
+      "https://www.linkedin.com/in/junho-ko-30b2a3287/"
+    ]
+  },
+  "analytics": {
+    "google": {
+      "id": "G-RTQVB2TJ8M"
+    }
+  },
+  "dynamic_blog": {
+    "enabled": true,
+    "api_base": "/api",
+    "view_delay_ms": 8000
+  },
+  "pwa": {
+    "enabled": true,
+    "cache": {
+      "enabled": false
+    }
+  },
+  "paginate": 20,
+  "post_permalink": "/<nanoId>/",
+  "legacy_routes": [
+    "/page2/",
+    "/tags/:name/",
+    "/categories/:name/",
+    "/archives/",
+    "/about/",
+    "/404.html",
+    "/feed.xml",
+    "/sitemap.xml",
+    "/robots.txt",
+    "/sw.min.js"
+  ]
+}

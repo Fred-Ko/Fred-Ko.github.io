@@ -1,0 +1,535 @@
+{
+  "sourceCommit": "4f659e55b0f593231989e7ccc600e91594082087",
+  "posts": [
+    {
+      "id": "dYSMTzahZjBns8DTJXHhTIFHI",
+      "title": "AI Native 방식으로 서비스 개발하기 - 4부 - 프로젝트 전체를 AI Native하게 만드는 방법",
+      "published": "2026-10-22T00:00:00+09:00",
+      "updated": 1792658529,
+      "minutes": 23
+    },
+    {
+      "id": "K6lhBZ2uIgfHInDC81yde5OJl",
+      "title": "AI Native 방식으로 서비스 개발하기 - 3부 - 엔트로피를 통제하는 방법",
+      "published": "2026-10-22T00:00:00+09:00",
+      "updated": 1792658529,
+      "minutes": 37
+    },
+    {
+      "id": "sf3SlrsJR9ymrzfQxKnUyjoMS",
+      "title": "AI Native 방식으로 서비스 개발하기 - 2부 - 도구로서의 AI",
+      "published": "2026-09-15T00:00:00+09:00",
+      "updated": 1792658529,
+      "minutes": 19
+    },
+    {
+      "id": "sI3gN7kSmw4apJNMaYK57ljMd",
+      "title": "AI Native 방식으로 서비스 개발하기 - 1부",
+      "published": "2026-09-15T00:00:00+09:00",
+      "updated": 1792658529,
+      "minutes": 21
+    },
+    {
+      "id": "htkKSIurJ1rBmPfv4ELOMuS5I",
+      "title": "AI가 코드를 빨리 쓸수록 더 중요해진 것",
+      "published": "2026-06-11T00:00:00+09:00",
+      "updated": 1789482812,
+      "minutes": 37
+    },
+    {
+      "id": "IDB5lqdeRfdEZAP3aXEBjPrvG",
+      "title": "GraphQL과 DDD (3) - Cross-domain Query와 Command는 어떻게 풀어야 할까?",
+      "published": "2026-02-22T00:00:00+09:00",
+      "updated": 1793076579,
+      "minutes": 37
+    },
+    {
+      "id": "zz7x9WMHUg4YYfPKfVVhYqWc3",
+      "title": "GraphQL과 DDD (2) - Relay, DDD, CQRS는 어디서 충돌할까?",
+      "published": "2026-02-22T00:00:00+09:00",
+      "updated": 1789482812,
+      "minutes": 32
+    },
+    {
+      "id": "BmN8lVtxWOZeJWa8JtA7R9GWx",
+      "title": "GraphQL과 DDD (1) - GraphQL을 REST처럼 쓰고 있지는 않나요?",
+      "published": "2026-02-22T00:00:00+09:00",
+      "updated": 1789482812,
+      "minutes": 21
+    },
+    {
+      "id": "jUbARn1TyHjM47AzUKWO4EZeQ",
+      "title": "Long-Lived Transactions의 한계와 Saga",
+      "published": "2026-01-07T00:00:00+09:00",
+      "updated": 1793076579,
+      "minutes": 24
+    },
+    {
+      "id": "seLNccQ9CzXgim9FfSXZeqYFj",
+      "title": "파편화된 개발 환경을 통합하자 - mise로 구축하는 No-Shim 통합 환경",
+      "published": "2025-12-24T00:00:00+09:00",
+      "updated": 1793073614,
+      "minutes": 10
+    },
+    {
+      "id": "HmVhyrhAOJoChFINt2TXf1Gwh",
+      "title": "분산 시스템 PK 전략 - UUIDv7은 과연 AUTO_INCREMENT를 대체할 수 있는가? 성능은?",
+      "published": "2025-12-23T00:00:00+09:00",
+      "updated": 1793076579,
+      "minutes": 13
+    },
+    {
+      "id": "vYHJYnUa2kYDGEOSrxIWSvelP",
+      "title": "멀티테넌시? 어떻게 설계하고 접근하지?",
+      "published": "2025-12-19T00:00:00+09:00",
+      "updated": 1793073614,
+      "minutes": 18
+    },
+    {
+      "id": "cmceo3miwnU457IcI9LiPDZkY",
+      "title": "Write Forwarding - 코드 변경 없이 Read - Write 부하분산하기",
+      "published": "2025-09-03T00:00:00+09:00",
+      "updated": 1793073614,
+      "minutes": 11
+    },
+    {
+      "id": "VdstsXHwadn7TgXzGkhxdVLrk",
+      "title": "Vault 이전을 위한 HashiCorp Vault MCP 서버 개발",
+      "published": "2025-08-03T00:00:00+09:00",
+      "updated": 1793073614,
+      "minutes": 9
+    },
+    {
+      "id": "pnCF97Gk5Py7lXukcucbpAAPm",
+      "title": "SIGNOZ - 보안 제약 환경에서의 OpenTelemetry 기반 자체 모니터링 시스템 구축하기",
+      "published": "2025-03-25T00:00:00+09:00",
+      "updated": 1789482812,
+      "minutes": 14
+    },
+    {
+      "id": "kTvRrhMPdtggfqSEdSr1LRN67",
+      "title": "이벤트를 통한 비동기 처리와 오류 사례",
+      "published": "2025-03-11T00:00:00+09:00",
+      "updated": 1789482812,
+      "minutes": 13
+    },
+    {
+      "id": "sQTxfZtVQb7ctSUNMawPSVMPN",
+      "title": "이기종 트랜잭션과 Best-Effort Atomicity",
+      "published": "2025-01-24T00:00:00+09:00",
+      "updated": 1793073614,
+      "minutes": 9
+    },
+    {
+      "id": "LlkFX4sjBORTiJzZlamVN2CSB",
+      "title": "Opentelemetry - Zero-Code Instrumentation MSA 환경에서 Context 전파 문제와 해결 경험 공유",
+      "published": "2025-01-15T00:00:00+09:00",
+      "updated": 1789482812,
+      "minutes": 5
+    },
+    {
+      "id": "YGBY1KdZ7ykvFQ7qxrQXPy7Zm",
+      "title": "Volta (NVM Alternative)",
+      "published": "2024-12-22T00:00:00+09:00",
+      "updated": 1789482812,
+      "minutes": 6
+    },
+    {
+      "id": "MnDXcl4Q8Fj3KCHUkBcrnOStY",
+      "title": "SDKMAN 으로 JDK,Gradle 관리하기",
+      "published": "2024-12-22T00:00:00+09:00",
+      "updated": 1789482812,
+      "minutes": 6
+    },
+    {
+      "id": "ewIpCLwxS9u7f6iptneNLTbiF",
+      "title": "Fast Node Manager (Nvm Alternative)",
+      "published": "2024-12-22T00:00:00+09:00",
+      "updated": 1793073614,
+      "minutes": 7
+    },
+    {
+      "id": "WQRsDo1cgUM3bnp8yzIRUgTSn",
+      "title": "Opentelemetry - Zero-code instrumentation의 NODE_OPTIONS 적용 안되는 문제",
+      "published": "2024-12-21T00:00:00+09:00",
+      "updated": 1793073614,
+      "minutes": 5
+    },
+    {
+      "id": "vhIHDEqcHAMQz1kQnub9xjd3f",
+      "title": "Opentelemetry - Zero-Code Instrumentation을 활용한 NestJS 계측 패키지 개발",
+      "published": "2024-12-21T00:00:00+09:00",
+      "updated": 1793073614,
+      "minutes": 10
+    },
+    {
+      "id": "yjCxVy1uMGz5CUzypKY9rP4Mw",
+      "title": "Opentelemetry - AutoInstrumentation ( Nodejs )",
+      "published": "2024-12-21T00:00:00+09:00",
+      "updated": 1793076579,
+      "minutes": 14
+    },
+    {
+      "id": "1n1RxDQUaGnJt7dvoGJOOBaHi",
+      "title": "OpenTelemetry - OpenTelemetry란?",
+      "published": "2024-12-19T00:00:00+09:00",
+      "updated": 1789482812,
+      "minutes": 7
+    },
+    {
+      "id": "EjFgOk9UuO29kS92H7gf4aKET",
+      "title": "Obsidian Publish에서 GitHub 블로그로",
+      "published": "2024-12-19T00:00:00+09:00",
+      "updated": 1789482812,
+      "minutes": 9
+    },
+    {
+      "id": "w1fGIy5OgbcqoYV4nvqRsHJZS",
+      "title": "Obsidian - Cursor(LLM)을 활용에 대한 팁",
+      "published": "2024-12-19T00:00:00+09:00",
+      "updated": 1789482812,
+      "minutes": 6
+    },
+    {
+      "id": "6crS1GYctcBpj1m9HPZck9mLg",
+      "title": "Jekyll Exporter Obsidian에서 Jekyll 블로그로의 자동화",
+      "published": "2024-12-19T00:00:00+09:00",
+      "updated": 1789482812,
+      "minutes": 7
+    }
+  ],
+  "taxonomy": {
+    "tags": [
+      [
+        "/tags/agentic-coding/",
+        "agentic-coding2"
+      ],
+      [
+        "/tags/ai-native/",
+        "ai-native2"
+      ],
+      [
+        "/tags/ai-에이전트/",
+        "ai-에이전트1"
+      ],
+      [
+        "/tags/asynchronous-processing/",
+        "asynchronous-processing1"
+      ],
+      [
+        "/tags/automation/",
+        "automation1"
+      ],
+      [
+        "/tags/aws-aurora/",
+        "aws-aurora1"
+      ],
+      [
+        "/tags/benchmarking/",
+        "benchmarking1"
+      ],
+      [
+        "/tags/best-effort-atomicity/",
+        "best-effort-atomicity1"
+      ],
+      [
+        "/tags/blogging/",
+        "blogging3"
+      ],
+      [
+        "/tags/bounded-context/",
+        "bounded-context1"
+      ],
+      [
+        "/tags/codebase-entropy/",
+        "codebase-entropy1"
+      ],
+      [
+        "/tags/context-management/",
+        "context-management1"
+      ],
+      [
+        "/tags/context-propagation/",
+        "context-propagation1"
+      ],
+      [
+        "/tags/cqrs/",
+        "cqrs2"
+      ],
+      [
+        "/tags/cursor/",
+        "cursor1"
+      ],
+      [
+        "/tags/cursor-pagination/",
+        "cursor-pagination1"
+      ],
+      [
+        "/tags/database-concurrency/",
+        "database-concurrency1"
+      ],
+      [
+        "/tags/database-performance/",
+        "database-performance1"
+      ],
+      [
+        "/tags/database-scaling/",
+        "database-scaling1"
+      ],
+      [
+        "/tags/database-transactions/",
+        "database-transactions1"
+      ],
+      [
+        "/tags/development-environment/",
+        "development-environment1"
+      ],
+      [
+        "/tags/distributed-tracing/",
+        "distributed-tracing2"
+      ],
+      [
+        "/tags/distributed-transactions/",
+        "distributed-transactions2"
+      ],
+      [
+        "/tags/domain-driven-design/",
+        "domain-driven-design5"
+      ],
+      [
+        "/tags/event-driven-architecture/",
+        "event-driven-architecture1"
+      ],
+      [
+        "/tags/fnm/",
+        "fnm1"
+      ],
+      [
+        "/tags/github-pages/",
+        "github-pages1"
+      ],
+      [
+        "/tags/gradle/",
+        "gradle1"
+      ],
+      [
+        "/tags/graphql/",
+        "graphql3"
+      ],
+      [
+        "/tags/graphql-federation/",
+        "graphql-federation2"
+      ],
+      [
+        "/tags/hashicorp-vault/",
+        "hashicorp-vault1"
+      ],
+      [
+        "/tags/instrumentation/",
+        "instrumentation1"
+      ],
+      [
+        "/tags/java/",
+        "java1"
+      ],
+      [
+        "/tags/jekyll/",
+        "jekyll2"
+      ],
+      [
+        "/tags/kafka/",
+        "kafka1"
+      ],
+      [
+        "/tags/kubernetes/",
+        "kubernetes2"
+      ],
+      [
+        "/tags/llm/",
+        "llm1"
+      ],
+      [
+        "/tags/mcp/",
+        "mcp1"
+      ],
+      [
+        "/tags/microservices/",
+        "microservices1"
+      ],
+      [
+        "/tags/mise/",
+        "mise1"
+      ],
+      [
+        "/tags/monitoring/",
+        "monitoring1"
+      ],
+      [
+        "/tags/multi-tenancy/",
+        "multi-tenancy2"
+      ],
+      [
+        "/tags/mysql/",
+        "mysql2"
+      ],
+      [
+        "/tags/nestjs/",
+        "nestjs3"
+      ],
+      [
+        "/tags/nodejs/",
+        "nodejs3"
+      ],
+      [
+        "/tags/observability/",
+        "observability2"
+      ],
+      [
+        "/tags/obsidian/",
+        "obsidian3"
+      ],
+      [
+        "/tags/opentelemetry/",
+        "opentelemetry6"
+      ],
+      [
+        "/tags/outbox-pattern/",
+        "outbox-pattern1"
+      ],
+      [
+        "/tags/read-after-write/",
+        "read-after-write1"
+      ],
+      [
+        "/tags/relay/",
+        "relay2"
+      ],
+      [
+        "/tags/requirements-engineering/",
+        "requirements-engineering1"
+      ],
+      [
+        "/tags/saga-pattern/",
+        "saga-pattern2"
+      ],
+      [
+        "/tags/sdkman/",
+        "sdkman1"
+      ],
+      [
+        "/tags/secret-management/",
+        "secret-management1"
+      ],
+      [
+        "/tags/signoz/",
+        "signoz1"
+      ],
+      [
+        "/tags/software-engineering/",
+        "software-engineering1"
+      ],
+      [
+        "/tags/tenant-isolation/",
+        "tenant-isolation1"
+      ],
+      [
+        "/tags/transactional-consistency/",
+        "transactional-consistency1"
+      ],
+      [
+        "/tags/troubleshooting/",
+        "troubleshooting1"
+      ],
+      [
+        "/tags/uuidv7/",
+        "uuidv71"
+      ],
+      [
+        "/tags/version-management/",
+        "version-management4"
+      ],
+      [
+        "/tags/volta/",
+        "volta1"
+      ],
+      [
+        "/tags/write-forwarding/",
+        "write-forwarding1"
+      ],
+      [
+        "/tags/zero-code-instrumentation/",
+        "zero-code-instrumentation4"
+      ],
+      [
+        "/tags/결정-트리/",
+        "결정-트리1"
+      ],
+      [
+        "/tags/기술-문서화/",
+        "기술-문서화1"
+      ],
+      [
+        "/tags/요구사항-분석/",
+        "요구사항-분석1"
+      ],
+      [
+        "/tags/인간-ai-협업/",
+        "인간-ai-협업1"
+      ],
+      [
+        "/tags/컨텍스트-관리/",
+        "컨텍스트-관리1"
+      ]
+    ],
+    "categories": [
+      [
+        "/categories/블로그/",
+        "블로그"
+      ],
+      [
+        "/categories/ai-native/",
+        "AI-Native"
+      ],
+      [
+        "/categories/db/",
+        "DB"
+      ],
+      [
+        "/categories/graphql/",
+        "Graphql"
+      ],
+      [
+        "/categories/llm/",
+        "LLM"
+      ],
+      [
+        "/categories/obsidian/",
+        "Obsidian"
+      ],
+      [
+        "/categories/opentelemetry/",
+        "Opentelemetry"
+      ],
+      [
+        "/categories/개발/",
+        "개발"
+      ],
+      [
+        "/categories/개발환경/",
+        "개발환경"
+      ],
+      [
+        "/categories/벤치마크/",
+        "벤치마크"
+      ],
+      [
+        "/categories/설계/",
+        "설계"
+      ],
+      [
+        "/categories/이론/",
+        "이론"
+      ]
+    ]
+  }
+}

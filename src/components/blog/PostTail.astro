@@ -1,0 +1,24 @@
+---
+import type {Post} from '../../lib/posts';
+import {site,taxonomySlug,absolute} from '../../lib/site';
+interface Props{post:Post}
+const {post}=Astro.props;
+const url=absolute(post.data.permalink);
+const title=`${post.data.title} - ${site.title}`;
+const platforms=[
+ {name:'Twitter',mark:'𝕏',href:`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}`},
+ {name:'Facebook',mark:'f',href:`https://www.facebook.com/sharer/sharer.php?title=${encodeURIComponent(title)}&u=${encodeURIComponent(url)}`},
+ {name:'Telegram',mark:'↗',href:`https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`},
+];
+---
+<section class="post-tail" aria-label="Post information" data-pagefind-ignore>
+ <div class="categories">{post.data.categories.map((name,index)=><Fragment>{index>0&&<span>, </span>}<a href={`/categories/${taxonomySlug(name)}/`}>{name}</a></Fragment>)}</div>
+ <div class="tail-tags">{post.data.tags.map(name=><a href={`/tags/${taxonomySlug(name)}/`}>{name}</a>)}</div>
+ <div class="tail-bottom"><p>This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by the author.</p>
+ <div class="share"><span>Share</span>{platforms.map(platform=><a href={platform.href} target="_blank" rel="noopener" aria-label={platform.name} title={platform.name}><span aria-hidden="true">{platform.mark}</span></a>)}<button type="button" data-copy-link={url} aria-label="Copy link" title="Copy link"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 15 6-6m-7.5 9H6a4 4 0 0 1-2.8-6.8l4-4A4 4 0 0 1 14 10m-4 4a4 4 0 0 0 6.8 2.8l4-4A4 4 0 0 0 18 6h-1.5"/></svg></button><span class="sr-only" role="status" data-copy-link-status></span></div></div>
+</section>
+<script>
+ const button=document.querySelector<HTMLButtonElement>('[data-copy-link]');
+ button?.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(button.dataset.copyLink!);document.querySelector('[data-copy-link-status]')!.textContent='Link copied successfully!';button.title='Link copied successfully!';}catch{document.querySelector('[data-copy-link-status]')!.textContent='Copy failed';}});
+</script>
+<style>.post-tail{border-bottom:1px solid var(--line-soft);padding-block:var(--space-8);font-size:var(--text-xs);color:var(--fg-subtle)}a{color:var(--link);text-decoration:none}a:hover{text-decoration:underline}.tail-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:var(--space-4)}.tail-tags a{padding:.3rem .6rem;border:1px solid var(--line-soft);color:var(--fg-muted)}.tail-bottom{display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap;margin-top:var(--space-8)}.share{display:flex;align-items:center;gap:.25rem}.share>a,.share>button{display:grid;place-items:center;min-width:36px;min-height:36px;color:var(--fg-muted);font-size:1.1rem}.share>span:first-child{margin-right:.5rem}.share a:hover,.share button:hover{background:var(--hover-bg);color:var(--hover-fg)}</style>

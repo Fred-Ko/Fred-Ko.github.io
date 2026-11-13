@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostList from './PostList.astro';
+import Pagination from '../ui/Pagination.astro';
+import {getPosts} from '../../lib/posts';
+import {site,pageHref} from '../../lib/site';
+interface Props {page?:number}
+const {page=1}=Astro.props;
+const posts=await getPosts();
+const offset=(page-1)*site.pageSize;
+---
+<BaseLayout title={site.title} canonicalPath={pageHref(page)}>
+ <section class="container home">
+
+  <div class="list-heading"><div><p class="label">Notes from the field</p><h1>Latest writing</h1></div><span class="label">{posts.length} articles</span></div>
+  <PostList posts={posts.slice(offset,offset+site.pageSize)}/>
+  <Pagination current={page} last={Math.ceil(posts.length/site.pageSize)} href={pageHref}/>
+ </section>
+</BaseLayout>
+<style>
+.home{padding-block:var(--space-16)}.list-heading{display:flex;align-items:end;justify-content:space-between;gap:1rem;margin-bottom:var(--space-12)}h1{font-size:clamp(3rem,6vw,6rem);font-weight:600;line-height:.95}.list-heading p{color:var(--accent);margin-bottom:1rem}.label{color:var(--fg-subtle)}.home :global(.pagination){margin-top:var(--space-12)}
+@media(width<600px){.home{padding-block:3.85rem}.list-heading{align-items:start;flex-direction:column;gap:2rem}}
+</style>

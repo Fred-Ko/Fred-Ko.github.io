@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Tag from '../ui/Tag.astro';
+import {getPosts,taxonomy} from '../../lib/posts';
+interface Props{kind:'tags'|'categories'}
+const {kind}=Astro.props;
+const posts=await getPosts();
+const groups=taxonomy(posts,kind);
+const title=kind==='tags'?'Tags':'Categories';
+const roots=kind==='categories'?groups.filter(group=>group.posts.some(post=>post.data.categories[0]===group.name)):[];
+const children=(name:string)=>groups.filter(group=>group.name!==name&&posts.some(post=>post.data.categories[0]===name&&post.data.categories[1]===group.name));
+---
+<BaseLayout title={title}><section class="container-prose collection"><h1>{title}</h1>
+{kind==='tags'?<div class="groups">{groups.map(group=><Tag href={`/tags/${group.slug}/`} count={group.posts.length}>{group.name}</Tag>)}</div>:<div class="categories">{roots.map(group=><section class="category-group"><div class="category-header"><a href={`/categories/${group.slug}/`}>{group.name}</a><span>{children(group.name).length} categories, {group.posts.length} posts</span><button type="button" aria-expanded="true" aria-label={`Toggle ${group.name}`} data-category-toggle>⌄</button></div><ul role="list">{children(group.name).map(child=><li><a href={`/categories/${child.slug}/`}>{child.name}</a><span>{child.posts.length} {child.posts.length===1?'post':'posts'}</span></li>)}</ul></section>)}</div>}
+</section></BaseLayout>
+<script>
+ document.querySelectorAll<HTMLButtonElement>('[data-category-toggle]').forEach(button=>button.addEventListener('click',()=>{const list=button.closest('.category-group')!.querySelector('ul')!;const open=button.getAttribute('aria-expanded')==='true';button.setAttribute('aria-expanded',String(!open));list.hidden=open;}));
+</script>
+<style>.collection{padding-block:var(--space-16)}h1{font-size:2rem;font-weight:400;line-height:1.2;margin-bottom:var(--space-10)}.groups{display:flex;gap:var(--space-4);flex-wrap:wrap}.categories{border:1px solid var(--line-soft)}section+section{border-top:1px solid var(--line-soft)} .category-header{display:flex;align-items:center;gap:1rem;padding:1rem}.category-header button{margin-left:auto;min-width:44px;min-height:44px}.category-header span,li span{color:var(--fg-subtle);font-size:var(--text-xs)}ul{list-style:none;padding:0}li{display:flex;gap:1rem;align-items:center;padding:.8rem 1.5rem;border-top:1px solid var(--line-soft)}a{color:var(--fg-strong);text-decoration:none}a:hover{color:var(--accent)}</style>
