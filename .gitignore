@@ -1,6 +1,7 @@
 # Astro 및 Node 빌드 산출물
 node_modules/
 dist/
+_site/
 .astro/
 
 # 로컬 설정과 자격 증명
