@@ -193,3 +193,17 @@ test('이전 테마 저장값과 통계 숫자의 원래 표기를 유지한다'
  await page.route('**/api/posts/*/stats',route=>route.fulfill({json:{views:12345,likes:2300,comments:100,liked:false}}));
  await page.goto(saga);await expect(page.locator('[data-stat="views"]')).toHaveText('12,345');await expect(page.locator('[data-stat="likes"]')).toHaveText('2,300');
 });
+
+test('테마 애니메이션이 취소되어도 선택을 적용하고 오류를 남기지 않는다',async({page})=>{
+ const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
+ await page.addInitScript(()=>{
+  document.startViewTransition=((update:()=>void)=>{
+   update();
+   return {ready:Promise.reject(new DOMException('Transition aborted','AbortError')),finished:Promise.reject(new DOMException('Transition aborted','AbortError')),updateCallbackDone:Promise.resolve(),skipTransition(){}};
+  }) as typeof document.startViewTransition;
+ });
+ await page.goto('/');await page.getByRole('radio',{name:'라이트',exact:true}).click();
+ await expect(page.locator('html')).toHaveAttribute('data-theme','light');
+ await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+ expect(errors).toEqual([]);
+});

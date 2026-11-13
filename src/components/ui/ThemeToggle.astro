@@ -46,7 +46,10 @@ const options = [
     };
     // 지원 브라우저에서는 테마 전환도 부드럽게 (같은 문서 View Transition)
     if (document.startViewTransition && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.startViewTransition(update);
+      const transition = document.startViewTransition(update);
+      // 페이지 이동이나 연속 클릭으로 애니메이션이 취소돼도 테마 선택은 유지한다.
+      void transition.ready.catch(() => {});
+      void transition.finished.catch(() => {});
     } else update();
     try {
       localStorage.setItem('theme', mode);
